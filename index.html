@@ -657,6 +657,397 @@
   .lg-send:active{transform:none}
 }
 
+
+/* ============================================================
+   Commons from component.gallery (Endurance picks)
+   Operator surfaces only. CRM ink tokens. ONE hue --danger.
+   Geometry: radius 6/8/10/16/20; hairlines; 150ms ease;
+   transform/opacity; prefers-reduced-motion.
+   ============================================================ */
+.cg-stack{display:flex;flex-direction:column;gap:20px;width:100%}
+.cg-block{display:flex;flex-direction:column;gap:10px;width:100%;min-width:0}
+.cg-block-label{margin:0;font-size:10px;font-weight:650;letter-spacing:0.06em;text-transform:uppercase;color:var(--subtle)}
+.cg-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.cg-col{display:flex;flex-direction:column;gap:8px;width:100%}
+.cg-subhead{
+  margin:calc(3*var(--u)) 0 calc(1.5*var(--u));
+  font-size:13px;font-weight:650;letter-spacing:-0.01em;color:var(--page-ink);
+}
+.cg-subhead:first-of-type{margin-top:0}
+.cg-demo-card{
+  background:var(--surface);border:1px solid var(--hairline);border-radius:16px;
+  box-shadow:var(--shadow-sm);padding:16px;color:var(--ink);width:100%;
+}
+
+/* Alert + Toast */
+.cg-alert{
+  display:flex;gap:10px;align-items:flex-start;
+  border:1px solid var(--hairline);border-radius:10px;padding:12px 14px;
+  background:var(--surface);color:var(--ink);font-size:13px;line-height:1.4;
+}
+.cg-alert-ico{flex-shrink:0;width:16px;height:16px;margin-top:1px;color:var(--muted)}
+.cg-alert-body{flex:1;min-width:0}
+.cg-alert-title{margin:0;font-weight:600;font-size:13px;color:var(--ink)}
+.cg-alert-msg{margin:2px 0 0;font-size:12px;color:var(--muted)}
+.cg-alert.is-info{background:var(--surface-2);border-color:var(--hairline)}
+.cg-alert.is-info .cg-alert-ico{color:var(--muted)}
+.cg-alert.is-error{background:var(--danger-tint);border-color:transparent}
+.cg-alert.is-error .cg-alert-ico,.cg-alert.is-error .cg-alert-title{color:var(--danger)}
+.cg-alert.is-success{background:var(--surface);border-color:var(--hairline-strong)}
+.cg-alert.is-success .cg-alert-ico{color:var(--ink)}
+.cg-toast-stage{position:relative;min-height:56px}
+.cg-toast{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--ink-solid);color:var(--ink-solid-fg);
+  border-radius:10px;padding:10px 14px;font-size:13px;font-weight:550;
+  box-shadow:var(--shadow-md);
+  transform:translateY(0);opacity:1;
+  transition:transform 150ms var(--ease),opacity 150ms var(--ease);
+}
+.cg-toast svg{width:14px;height:14px;flex-shrink:0}
+
+/* Modal / Dialog (center; distinct from Sheet) */
+.cg-modal-stage{position:relative;min-height:260px;border-radius:16px;overflow:hidden}
+.cg-modal-scrim{
+  position:absolute;inset:0;background:rgba(16,18,22,0.4);opacity:0;
+  pointer-events:none;transition:opacity 150ms var(--ease);z-index:1;
+}
+.t-dark .cg-modal-scrim{background:rgba(0,0,0,0.6)}
+.cg-modal-stage.is-open .cg-modal-scrim{opacity:1;pointer-events:auto}
+.cg-modal{
+  position:absolute;left:50%;top:50%;z-index:2;
+  width:min(100% - 32px,320px);
+  transform:translate(-50%,-48%) scale(0.98);opacity:0;
+  background:var(--surface);border:1px solid var(--hairline);border-radius:16px;
+  box-shadow:var(--shadow-lg);padding:20px;color:var(--ink);
+  transition:transform 150ms var(--ease),opacity 150ms var(--ease);
+  pointer-events:none;
+}
+.cg-modal-stage.is-open .cg-modal{
+  transform:translate(-50%,-50%) scale(1);opacity:1;pointer-events:auto;
+}
+.cg-modal-title{margin:0;font-size:16px;font-weight:650;letter-spacing:-0.02em}
+.cg-modal-body{margin:8px 0 0;font-size:13px;color:var(--muted);line-height:1.45}
+.cg-modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}
+.cg-modal-trigger{margin-top:12px;text-align:center}
+
+/* Search input */
+.cg-search{
+  position:relative;display:flex;align-items:center;width:100%;
+  border:1px solid var(--hairline);border-radius:10px;background:var(--surface);
+  transition:border-color 150ms var(--ease),box-shadow 150ms var(--ease);
+}
+.cg-search:focus-within{outline:2px solid var(--ink);outline-offset:2px;border-color:var(--hairline-strong)}
+@media (hover:hover) and (pointer:fine){
+  .cg-search:hover:not(:focus-within){border-color:var(--hairline-strong)}
+}
+.cg-search-ico{
+  position:absolute;left:12px;width:16px;height:16px;color:var(--subtle);pointer-events:none;
+}
+.cg-search-input{
+  flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:13px;
+  color:var(--ink);padding:9px 68px 9px 36px;outline:none;
+}
+.cg-search-input::placeholder{color:var(--subtle)}
+.cg-search-actions{position:absolute;right:6px;display:flex;align-items:center;gap:2px}
+.cg-search-btn{
+  appearance:none;border:0;background:transparent;cursor:pointer;padding:0;
+  width:28px;height:28px;border-radius:6px;display:grid;place-items:center;color:var(--subtle);
+  transition:background-color 150ms var(--ease),color 150ms var(--ease),opacity 150ms var(--ease);
+}
+@media (hover:hover) and (pointer:fine){
+  .cg-search-btn:hover{background:var(--surface-2);color:var(--ink)}
+}
+.cg-search-btn:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.cg-search.is-loading .cg-search-spin{opacity:1}
+.cg-search-spin{opacity:0;width:14px;height:14px}
+.cg-search-clear[hidden]{display:none}
+
+/* Combobox */
+.cg-combo{position:relative;width:100%}
+.cg-combo-list{
+  position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:5;
+  margin:0;padding:4px;list-style:none;
+  background:var(--surface);border:1px solid var(--hairline);border-radius:10px;
+  box-shadow:var(--shadow-md);max-height:180px;overflow:auto;
+  opacity:0;transform:translateY(-4px);pointer-events:none;
+  transition:opacity 150ms var(--ease),transform 150ms var(--ease);
+}
+.cg-combo.is-open .cg-combo-list{opacity:1;transform:translateY(0);pointer-events:auto}
+.cg-combo-opt{
+  display:flex;flex-direction:column;gap:2px;width:100%;text-align:left;
+  appearance:none;border:0;background:transparent;cursor:pointer;font:inherit;
+  padding:8px 10px;border-radius:8px;color:var(--ink);
+  transition:background-color 150ms var(--ease);
+}
+.cg-combo-opt strong{font-size:13px;font-weight:550}
+.cg-combo-opt span{font-size:11px;color:var(--subtle)}
+@media (hover:hover) and (pointer:fine){
+  .cg-combo-opt:hover,.cg-combo-opt[aria-selected="true"]{background:var(--surface-2)}
+}
+.cg-combo-opt[aria-selected="true"]{background:var(--surface-2)}
+.cg-combo-empty{padding:10px;font-size:12px;color:var(--subtle)}
+
+/* Checkbox + Radio */
+.cg-check,.cg-radio{
+  display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink);
+  cursor:pointer;user-select:none;
+}
+.cg-check input,.cg-radio input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.cg-check-box,.cg-radio-dot{
+  width:16px;height:16px;flex-shrink:0;border:1px solid var(--hairline-strong);
+  background:var(--surface);display:grid;place-items:center;
+  transition:background-color 150ms var(--ease),border-color 150ms var(--ease),opacity 150ms var(--ease),transform 150ms var(--ease);
+}
+.cg-check-box{border-radius:4px}
+.cg-radio-dot{border-radius:999px}
+.cg-check-box svg{width:10px;height:10px;opacity:0;color:var(--ink-solid-fg);transition:opacity 150ms var(--ease)}
+.cg-radio-dot::after{
+  content:"";width:8px;height:8px;border-radius:999px;background:var(--ink-solid);
+  opacity:0;transform:scale(0.6);transition:opacity 150ms var(--ease),transform 150ms var(--ease);
+}
+.cg-check input:checked + .cg-check-box{
+  background:var(--ink-solid);border-color:var(--ink-solid);
+}
+.cg-check input:checked + .cg-check-box svg{opacity:1}
+.cg-radio input:checked + .cg-radio-dot{border-color:var(--ink-solid)}
+.cg-radio input:checked + .cg-radio-dot::after{opacity:1;transform:scale(1)}
+@media (hover:hover) and (pointer:fine){
+  .cg-check:hover:not(.is-disabled) .cg-check-box,
+  .cg-radio:hover:not(.is-disabled) .cg-radio-dot{border-color:var(--ink)}
+}
+.cg-check.is-hover .cg-check-box,.cg-radio.is-hover .cg-radio-dot{border-color:var(--ink)}
+.cg-check.is-disabled,.cg-radio.is-disabled{opacity:0.45;cursor:not-allowed;pointer-events:none}
+.cg-check.is-error .cg-check-box,.cg-radio.is-error .cg-radio-dot{border-color:var(--danger)}
+.cg-check input:focus-visible + .cg-check-box,
+.cg-radio input:focus-visible + .cg-radio-dot{outline:2px solid var(--ink);outline-offset:2px}
+.cg-fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.cg-legend{margin:0 0 4px;font-size:12px;font-weight:550;color:var(--muted);padding:0}
+
+/* Toggle / Switch */
+.cg-switch{
+  display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--ink);cursor:pointer;
+}
+.cg-switch input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.cg-switch-track{
+  width:36px;height:22px;border-radius:999px;background:var(--track);
+  position:relative;flex-shrink:0;
+  transition:background-color 150ms var(--ease),opacity 150ms var(--ease);
+}
+.cg-switch-thumb{
+  position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:999px;
+  background:var(--surface);box-shadow:var(--shadow-sm);
+  transition:transform 150ms var(--ease);
+}
+.cg-switch input:checked + .cg-switch-track{background:var(--ink-solid)}
+.cg-switch input:checked + .cg-switch-track .cg-switch-thumb{transform:translateX(14px)}
+.t-dark .cg-switch input:checked + .cg-switch-track .cg-switch-thumb{background:var(--ink-solid-fg)}
+.cg-switch.is-disabled{opacity:0.45;cursor:not-allowed;pointer-events:none}
+.cg-switch input:focus-visible + .cg-switch-track{outline:2px solid var(--ink);outline-offset:2px}
+
+/* Tabs (underline; distinct from Segmented pills) */
+.cg-tabs{width:100%}
+.cg-tablist{
+  display:flex;gap:0;border-bottom:1px solid var(--hairline);margin:0 0 14px;
+}
+.cg-tab{
+  appearance:none;border:0;background:transparent;cursor:pointer;font:inherit;
+  padding:10px 14px;font-size:13px;font-weight:550;color:var(--muted);
+  border-bottom:2px solid transparent;margin-bottom:-1px;
+  transition:color 150ms var(--ease),border-color 150ms var(--ease);
+}
+.cg-tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink-solid)}
+@media (hover:hover) and (pointer:fine){
+  .cg-tab:hover:not([aria-selected="true"]){color:var(--ink)}
+}
+.cg-tab:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:6px 6px 0 0}
+.cg-tabpanel{font-size:13px;color:var(--muted);line-height:1.45;min-height:48px}
+.cg-tabpanel[hidden]{display:none}
+.cg-tabpanel strong{color:var(--ink);font-weight:600}
+
+/* Skeleton + Spinner */
+.cg-skel{display:flex;flex-direction:column;gap:10px;width:100%}
+.cg-skel-row{display:flex;align-items:center;gap:12px}
+.cg-skel-avatar{
+  width:36px;height:36px;border-radius:10px;background:var(--surface-2);flex-shrink:0;
+}
+.cg-skel-lines{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0}
+.cg-skel-line{
+  height:10px;border-radius:6px;background:var(--surface-2);
+  position:relative;overflow:hidden;
+}
+.cg-skel-line.w-80{width:80%}.cg-skel-line.w-55{width:55%}.cg-skel-line.w-70{width:70%}
+.cg-skel-shimmer::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.35),transparent);
+  transform:translateX(-100%);
+  animation:cg-shimmer 1.4s var(--ease) infinite;
+}
+.t-dark .cg-skel-shimmer::after{
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);
+}
+@keyframes cg-shimmer{to{transform:translateX(100%)}}
+.cg-spin{
+  width:18px;height:18px;border:2px solid var(--hairline-strong);border-top-color:var(--ink-solid);
+  border-radius:999px;animation:cg-spin 700ms linear infinite;flex-shrink:0;
+}
+.cg-spin-lg{width:28px;height:28px;border-width:2.5px}
+.f-btn-primary .cg-spin,.cg-toast .cg-spin{border-color:rgba(255,255,255,0.28);border-top-color:currentColor}
+.t-dark .f-btn-primary .cg-spin{border-color:rgba(0,0,0,0.2);border-top-color:currentColor}
+@keyframes cg-spin{to{transform:rotate(360deg)}}
+.cg-spin-wrap{display:inline-flex;align-items:center;gap:10px;font-size:12px;color:var(--muted)}
+
+/* Breadcrumbs */
+.cg-crumbs{
+  display:flex;flex-wrap:wrap;align-items:center;gap:6px;
+  list-style:none;margin:0;padding:0;font-size:13px;
+}
+.cg-crumbs li{display:inline-flex;align-items:center;gap:6px;color:var(--subtle)}
+.cg-crumbs a{
+  color:var(--muted);text-decoration:none;
+  transition:color 150ms var(--ease);
+}
+@media (hover:hover) and (pointer:fine){.cg-crumbs a:hover{color:var(--ink)}}
+.cg-crumbs [aria-current="page"]{color:var(--ink);font-weight:550}
+.cg-crumbs-sep{color:var(--hairline-strong);font-size:12px}
+
+/* Dropdown menu */
+.cg-dd{position:relative;display:inline-block}
+.cg-dd-menu{
+  position:absolute;left:0;top:calc(100% + 6px);z-index:6;min-width:180px;
+  margin:0;padding:4px;list-style:none;
+  background:var(--surface);border:1px solid var(--hairline);border-radius:10px;
+  box-shadow:var(--shadow-md);
+  opacity:0;transform:translateY(-4px) scale(0.98);pointer-events:none;
+  transform-origin:top left;
+  transition:opacity 150ms var(--ease),transform 150ms var(--ease);
+}
+.cg-dd.is-open .cg-dd-menu{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+.cg-dd-item{
+  display:flex;align-items:center;gap:8px;width:100%;text-align:left;
+  appearance:none;border:0;background:transparent;cursor:pointer;font:inherit;
+  padding:8px 10px;border-radius:8px;font-size:13px;color:var(--ink);
+  transition:background-color 150ms var(--ease);
+}
+@media (hover:hover) and (pointer:fine){.cg-dd-item:hover{background:var(--surface-2)}}
+.cg-dd-item.is-danger{color:var(--danger)}
+.cg-dd-sep{height:1px;background:var(--hairline);margin:4px 6px}
+
+/* File upload */
+.cg-drop{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  border:1px dashed var(--hairline-strong);border-radius:10px;padding:20px 16px;
+  background:var(--surface-2);text-align:center;color:var(--muted);font-size:13px;
+  transition:border-color 150ms var(--ease),background-color 150ms var(--ease);
+}
+.cg-drop strong{color:var(--ink);font-weight:600}
+.cg-drop-hint{font-size:11px;color:var(--subtle)}
+@media (hover:hover) and (pointer:fine){
+  .cg-drop:hover{border-color:var(--ink);background:var(--surface)}
+}
+.cg-file-row{
+  display:flex;align-items:center;gap:10px;margin-top:10px;
+  border:1px solid var(--hairline);border-radius:10px;padding:10px 12px;background:var(--surface);
+}
+.cg-file-ico{
+  width:32px;height:32px;border-radius:8px;background:var(--surface-2);
+  display:grid;place-items:center;color:var(--ink);flex-shrink:0;
+}
+.cg-file-ico svg{width:14px;height:14px}
+.cg-file-meta{flex:1;min-width:0}
+.cg-file-name{margin:0;font-size:13px;font-weight:550;color:var(--ink)}
+.cg-file-size{margin:2px 0 0;font-size:11px;color:var(--subtle)}
+.cg-file-rm{
+  appearance:none;border:0;background:transparent;cursor:pointer;color:var(--subtle);
+  font:inherit;font-size:12px;font-weight:550;padding:4px 6px;border-radius:6px;
+  transition:color 150ms var(--ease),background-color 150ms var(--ease);
+}
+@media (hover:hover) and (pointer:fine){.cg-file-rm:hover{color:var(--danger);background:var(--danger-tint)}}
+
+/* Accordion */
+.cg-acc{border:1px solid var(--hairline);border-radius:16px;overflow:hidden;background:var(--surface)}
+.cg-acc-item + .cg-acc-item{border-top:1px solid var(--hairline)}
+.cg-acc-trig{
+  appearance:none;border:0;background:transparent;cursor:pointer;font:inherit;
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 16px;font-size:13px;font-weight:550;color:var(--ink);text-align:left;
+  transition:background-color 150ms var(--ease);
+}
+@media (hover:hover) and (pointer:fine){.cg-acc-trig:hover{background:var(--surface-2)}}
+.cg-acc-trig:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+.cg-acc-chev{
+  width:16px;height:16px;color:var(--subtle);flex-shrink:0;
+  transition:transform 150ms var(--ease);
+}
+.cg-acc-item.is-open .cg-acc-chev{transform:rotate(180deg)}
+.cg-acc-panel{
+  padding:0 16px 14px;font-size:13px;color:var(--muted);line-height:1.45;
+  display:none;
+}
+.cg-acc-item.is-open .cg-acc-panel{display:block}
+
+/* Progress indicator / stepper (discrete; not mode rail) */
+.cg-steps{
+  display:flex;align-items:flex-start;gap:0;width:100%;list-style:none;margin:0;padding:0;
+}
+.cg-step{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;min-width:0}
+.cg-step:not(:last-child)::after{
+  content:"";position:absolute;top:11px;left:calc(50% + 14px);right:calc(-50% + 14px);
+  height:1px;background:var(--hairline-strong);
+}
+.cg-step.is-done:not(:last-child)::after,.cg-step.is-current:not(:last-child)::after{
+  background:var(--ink-solid);
+}
+.cg-step-dot{
+  width:22px;height:22px;border-radius:999px;border:1px solid var(--hairline-strong);
+  background:var(--surface);display:grid;place-items:center;z-index:1;
+  font-size:10px;font-weight:650;color:var(--subtle);
+  transition:background-color 150ms var(--ease),border-color 150ms var(--ease),color 150ms var(--ease);
+}
+.cg-step.is-done .cg-step-dot{
+  background:var(--ink-solid);border-color:var(--ink-solid);color:var(--ink-solid-fg);
+}
+.cg-step.is-current .cg-step-dot{
+  border-color:var(--ink-solid);color:var(--ink);box-shadow:0 0 0 3px var(--surface-2);
+}
+.cg-step-label{font-size:11px;font-weight:550;color:var(--subtle);text-align:center;line-height:1.25}
+.cg-step.is-done .cg-step-label,.cg-step.is-current .cg-step-label{color:var(--ink)}
+
+/* Popover + Tooltip */
+.cg-pop-wrap,.cg-tip-wrap{position:relative;display:inline-flex}
+.cg-pop{
+  position:absolute;left:0;bottom:calc(100% + 8px);z-index:7;width:220px;
+  background:var(--surface);border:1px solid var(--hairline);border-radius:10px;
+  box-shadow:var(--shadow-md);padding:12px;color:var(--ink);
+  opacity:0;transform:translateY(4px);pointer-events:none;
+  transition:opacity 150ms var(--ease),transform 150ms var(--ease);
+}
+.cg-pop-wrap.is-open .cg-pop{opacity:1;transform:translateY(0);pointer-events:auto}
+.cg-pop-title{margin:0;font-size:13px;font-weight:600}
+.cg-pop-body{margin:4px 0 0;font-size:12px;color:var(--muted);line-height:1.4}
+.cg-pop-actions{margin-top:10px;display:flex;gap:6px}
+.cg-tip{
+  position:absolute;left:50%;bottom:calc(100% + 8px);z-index:7;
+  transform:translateX(-50%) translateY(4px);
+  background:var(--ink-solid);color:var(--ink-solid-fg);
+  border-radius:6px;padding:6px 10px;font-size:11px;font-weight:550;white-space:nowrap;
+  opacity:0;pointer-events:none;
+  transition:opacity 150ms var(--ease),transform 150ms var(--ease);
+  box-shadow:var(--shadow-sm);
+}
+.cg-tip-wrap:hover .cg-tip,.cg-tip-wrap:focus-within .cg-tip,
+.cg-tip-wrap.is-show .cg-tip{
+  opacity:1;transform:translateX(-50%) translateY(0);
+}
+
+@media (prefers-reduced-motion:reduce){
+  .cg-skel-shimmer::after,.cg-spin{animation:none !important}
+  .cg-skel-shimmer::after{opacity:0.35;transform:none}
+  .cg-modal,.cg-modal-scrim,.cg-toast,.cg-combo-list,.cg-dd-menu,.cg-pop,.cg-tip,.cg-acc-chev,.cg-switch-thumb{
+    transition:none !important;
+  }
+}
+
 </style></head><body><header class="topbar"><h1>Endurance components · Foundations</h1><div class="filters" role="group" aria-label="Theme filter"><button type="button" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="light" aria-pressed="false">Light</button><button type="button" data-filter="dark" aria-pressed="false">Dark</button></div></header><main class="page"><section id="focus-timer" aria-labelledby="ft-heading"><div class="section-head"><h2 id="ft-heading">Focus timer</h2></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="ft-card" id="ft-light" data-state="running" role="group" aria-label="Focus timer light"><div class="ft-header"><div class="ft-title">Focus</div><div class="ft-status" data-state="running">In progress</div></div><div class="ft-dial-wrap"><div class="ft-dial"><div class="ft-breath" aria-hidden="true"></div><svg viewBox="0 0 200 200" aria-hidden="true"><g class="ft-ticks" transform="translate(100,100)"></g></svg><div class="ft-time">13:41</div></div></div><div class="ft-controls"><button class="ft-btn ft-btn-icon" type="button" data-action="reset" aria-label="Reset timer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button><button class="ft-btn ft-btn-main" type="button" data-action="toggle" aria-label="Pause timer"><svg class="ft-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg><span class="ft-label">Pause</span></button></div></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="ft-card" id="ft-dark" data-state="running" role="group" aria-label="Focus timer dark"><div class="ft-header"><div class="ft-title">Focus</div><div class="ft-status" data-state="running">In progress</div></div><div class="ft-dial-wrap"><div class="ft-dial"><div class="ft-breath" aria-hidden="true"></div><svg viewBox="0 0 200 200" aria-hidden="true"><g class="ft-ticks" transform="translate(100,100)"></g></svg><div class="ft-time">13:41</div></div></div><div class="ft-controls"><button class="ft-btn ft-btn-icon" type="button" data-action="reset" aria-label="Reset timer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button><button class="ft-btn ft-btn-main" type="button" data-action="toggle" aria-label="Pause timer"><svg class="ft-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg><span class="ft-label">Pause</span></button></div></div></div></div></section><section id="flip-counter" aria-labelledby="fc-heading"><div class="section-head"><h2 id="fc-heading">Flip counter</h2></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="fc-card" role="group" aria-label="Flip counter light"><div class="fc-head"><div class="fc-title">Count</div><div class="fc-status" data-state="idle">Ready</div></div><div class="fc-counter" data-flip="light" aria-live="polite" aria-atomic="true"></div><div class="fc-controls"><button class="fc-btn fc-btn-icon" type="button" data-flip-action="reset" data-flip-target="light" aria-label="Reset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.3"/><path d="M21 3v6h-6"/></svg></button><button class="fc-btn" type="button" data-flip-action="demo" data-flip-target="light">1,333</button><button class="fc-btn" type="button" data-flip-action="big" data-flip-target="light">12,847</button></div></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="fc-card" role="group" aria-label="Flip counter dark"><div class="fc-head"><div class="fc-title">Count</div><div class="fc-status" data-state="idle">Ready</div></div><div class="fc-counter" data-flip="dark" aria-live="polite" aria-atomic="true"></div><div class="fc-controls"><button class="fc-btn fc-btn-icon" type="button" data-flip-action="reset" data-flip-target="dark" aria-label="Reset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.3"/><path d="M21 3v6h-6"/></svg></button><button class="fc-btn" type="button" data-flip-action="demo" data-flip-target="dark">1,333</button><button class="fc-btn" type="button" data-flip-action="big" data-flip-target="dark">12,847</button></div></div></div></div></section><section id="mode-status" aria-labelledby="mode-heading"><div class="section-head"><h2 id="mode-heading">Mode status</h2><p class="doctrine-note">Ink rails + icons (var(--ink-solid)), not blue. One-shot settle only; no tip-glow or marker breath loops.</p></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="mode-grid" data-mode-stage="light"></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="mode-grid" data-mode-stage="dark"></div></div></div></section><section id="button" aria-labelledby="button-heading">
 <div class="section-head">
 <h2 id="button-heading">Button + LinkButton</h2>
@@ -1673,6 +2064,458 @@
 </div>
 </section>
 
+
+<section id="cg-gallery" aria-labelledby="cg-heading">
+<div class="section-head">
+<h2 id="cg-heading">Commons from component.gallery (Endurance picks)</h2>
+<p class="doctrine-note">Picked from component.gallery for operator surfaces; omitted decorative/marketing components (Hero, Carousel, Quote, Rating, RTE, Video, Color picker, Footer). CRM ink only; --danger is the sole hue. Light + Dark via .t-light / .t-dark.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light</p>
+<div class="cg-stack">
+
+<div class="cg-block">
+<p class="cg-block-label">Alert</p>
+<div class="cg-col">
+<div class="cg-alert is-info" role="status">
+<svg class="cg-alert-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+<div class="cg-alert-body"><p class="cg-alert-title">Lane rate refreshed</p><p class="cg-alert-msg">DAL to ATL spot rate updated from tender feed.</p></div>
+</div>
+<div class="cg-alert is-error" role="alert">
+<svg class="cg-alert-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16h.01"/></svg>
+<div class="cg-alert-body"><p class="cg-alert-title">Tender rejected</p><p class="cg-alert-msg">Carrier declined LD-2841. Reassign before cutoff.</p></div>
+</div>
+<div class="cg-alert is-success" role="status">
+<svg class="cg-alert-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+<div class="cg-alert-body"><p class="cg-alert-title">Assignment saved</p><p class="cg-alert-msg">Ink emphasis only. No green success hue.</p></div>
+</div>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Toast (compact)</p>
+<div class="cg-toast-stage">
+<div class="cg-toast" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Saved</div>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Modal / Dialog</p>
+<div class="cg-modal-stage" data-cg-modal>
+<div class="cg-modal-scrim" data-cg-modal-scrim></div>
+<div class="cg-modal" role="dialog" aria-modal="true" aria-labelledby="cg-modal-title-L">
+<p class="cg-modal-title" id="cg-modal-title-L">Assign carrier</p>
+<p class="cg-modal-body">Confirm Schneider for LD-2841 on DAL to ATL. Center overlay, not a sheet.</p>
+<div class="cg-modal-actions">
+<button type="button" class="f-btn f-btn-secondary f-btn-sm" data-cg-modal-close>Cancel</button>
+<button type="button" class="f-btn f-btn-primary f-btn-sm" data-cg-modal-close>Assign</button>
+</div>
+</div>
+</div>
+<div class="cg-modal-trigger"><button type="button" class="f-btn f-btn-secondary f-btn-sm" data-cg-modal-open>Open dialog</button></div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Search input</p>
+<div class="cg-search" data-cg-search>
+<svg class="cg-search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+<input class="cg-search-input" type="search" placeholder="Search loads, carriers…" value="Schneider" aria-label="Search" data-cg-search-input />
+<div class="cg-search-actions">
+<span class="cg-search-spin cg-spin" aria-hidden="true"></span>
+<button type="button" class="cg-search-btn cg-search-clear" aria-label="Clear search" data-cg-search-clear><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+</div>
+</div>
+<div class="cg-search is-loading" data-cg-search>
+<svg class="cg-search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+<input class="cg-search-input" type="search" placeholder="Search…" value="DAL" aria-label="Search loading" data-cg-search-input />
+<div class="cg-search-actions">
+<span class="cg-search-spin cg-spin" aria-hidden="true"></span>
+<button type="button" class="cg-search-btn cg-search-clear" aria-label="Clear search" data-cg-search-clear hidden><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+</div>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Combobox</p>
+<div class="cg-combo is-open" data-cg-combo>
+<label class="f-field-label" for="cg-combo-L">Carrier / lane</label>
+<input id="cg-combo-L" class="f-input" type="text" role="combobox" aria-expanded="true" aria-controls="cg-list-L" aria-autocomplete="list" placeholder="Filter carriers…" value="Sch" data-cg-combo-input autocomplete="off" />
+<ul class="cg-combo-list" role="listbox" id="cg-list-L" data-cg-combo-list>
+<li role="presentation"><button type="button" class="cg-combo-opt" role="option" aria-selected="true" data-value="Schneider · DAL-ATL"><strong>Schneider</strong><span>DAL to ATL · FTL dry van</span></button></li>
+<li role="presentation"><button type="button" class="cg-combo-opt" role="option" aria-selected="false" data-value="Swift · CHI-NYC"><strong>Swift</strong><span>CHI to NYC · Intermodal</span></button></li>
+<li role="presentation"><button type="button" class="cg-combo-opt" role="option" aria-selected="false" data-value="Werner · SFO-LAX"><strong>Werner</strong><span>SFO to LAX · LTL</span></button></li>
+</ul>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Checkbox</p>
+<div class="cg-col">
+<label class="cg-check"><input type="checkbox" /><span class="cg-check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Default</label>
+<label class="cg-check is-hover"><input type="checkbox" /><span class="cg-check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Hover</label>
+<label class="cg-check"><input type="checkbox" checked /><span class="cg-check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Checked</label>
+<label class="cg-check is-disabled"><input type="checkbox" disabled /><span class="cg-check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Disabled</label>
+<label class="cg-check is-error"><input type="checkbox" /><span class="cg-check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Error</label>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Radio group</p>
+<fieldset class="cg-fieldset">
+<legend class="cg-legend">Mode</legend>
+<label class="cg-radio"><input type="radio" name="cg-radio-L" checked /><span class="cg-radio-dot" aria-hidden="true"></span> Truck</label>
+<label class="cg-radio is-hover"><input type="radio" name="cg-radio-L" /><span class="cg-radio-dot" aria-hidden="true"></span> Hover</label>
+<label class="cg-radio is-disabled"><input type="radio" name="cg-radio-L" disabled /><span class="cg-radio-dot" aria-hidden="true"></span> Disabled</label>
+<label class="cg-radio is-error"><input type="radio" name="cg-radio-err-L" /><span class="cg-radio-dot" aria-hidden="true"></span> Error</label>
+</fieldset>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Toggle / Switch</p>
+<div class="cg-row">
+<label class="cg-switch"><input type="checkbox" /><span class="cg-switch-track"><span class="cg-switch-thumb"></span></span> Off</label>
+<label class="cg-switch"><input type="checkbox" checked /><span class="cg-switch-track"><span class="cg-switch-thumb"></span></span> On</label>
+<label class="cg-switch is-disabled"><input type="checkbox" disabled /><span class="cg-switch-track"><span class="cg-switch-thumb"></span></span> Disabled</label>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Tabs</p>
+<div class="cg-tabs" data-cg-tabs>
+<div class="cg-tablist" role="tablist" aria-label="Record panels">
+<button type="button" class="cg-tab" role="tab" id="cg-tab-o-L" aria-controls="cg-panel-o-L" aria-selected="true" data-cg-tab>Overview</button>
+<button type="button" class="cg-tab" role="tab" id="cg-tab-a-L" aria-controls="cg-panel-a-L" aria-selected="false" data-cg-tab>Activity</button>
+<button type="button" class="cg-tab" role="tab" id="cg-tab-f-L" aria-controls="cg-panel-f-L" aria-selected="false" data-cg-tab>Files</button>
+</div>
+<div class="cg-tabpanel" role="tabpanel" id="cg-panel-o-L" aria-labelledby="cg-tab-o-L" data-cg-panel><strong>Overview.</strong> Account Acme, deal stage Negotiation, owner Alex.</div>
+<div class="cg-tabpanel" role="tabpanel" id="cg-panel-a-L" aria-labelledby="cg-tab-a-L" data-cg-panel hidden><strong>Activity.</strong> Tender sent 2h ago. Carrier replied with counter.</div>
+<div class="cg-tabpanel" role="tabpanel" id="cg-panel-f-L" aria-labelledby="cg-tab-f-L" data-cg-panel hidden><strong>Files.</strong> BOL.pdf, rate confirmation, POD pending.</div>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Skeleton + Spinner</p>
+<div class="cg-skel" aria-hidden="true">
+<div class="cg-skel-row"><div class="cg-skel-avatar cg-skel-shimmer"></div><div class="cg-skel-lines"><div class="cg-skel-line w-80 cg-skel-shimmer"></div><div class="cg-skel-line w-55 cg-skel-shimmer"></div></div></div>
+<div class="cg-skel-row"><div class="cg-skel-avatar cg-skel-shimmer"></div><div class="cg-skel-lines"><div class="cg-skel-line w-70 cg-skel-shimmer"></div><div class="cg-skel-line w-55 cg-skel-shimmer"></div></div></div>
+</div>
+<div class="cg-row" style="margin-top:8px">
+<button type="button" class="f-btn f-btn-primary f-btn-sm" disabled><span class="cg-spin" aria-hidden="true"></span> Saving</button>
+<span class="cg-spin-wrap"><span class="cg-spin cg-spin-lg" aria-hidden="true"></span> Loading page</span>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Breadcrumbs</p>
+<nav aria-label="Breadcrumb">
+<ol class="cg-crumbs">
+<li><a href="#cg-gallery">Accounts</a><span class="cg-crumbs-sep" aria-hidden="true">/</span></li>
+<li><a href="#cg-gallery">Acme</a><span class="cg-crumbs-sep" aria-hidden="true">/</span></li>
+<li><span aria-current="page">Deal</span></li>
+</ol>
+</nav>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Dropdown menu</p>
+<div class="cg-dd is-open" data-cg-dd>
+<button type="button" class="f-btn f-btn-secondary f-btn-sm" data-cg-dd-trig aria-haspopup="menu" aria-expanded="true">Actions</button>
+<ul class="cg-dd-menu" role="menu" data-cg-dd-menu>
+<li role="none"><button type="button" class="cg-dd-item" role="menuitem">Edit</button></li>
+<li role="none"><button type="button" class="cg-dd-item" role="menuitem">Assign</button></li>
+<li class="cg-dd-sep" role="separator"></li>
+<li role="none"><button type="button" class="cg-dd-item is-danger" role="menuitem">Archive</button></li>
+</ul>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">File upload</p>
+<div class="cg-drop" role="button" tabindex="0" aria-label="Upload files">
+<strong>Drop BOL or click to upload</strong>
+<span class="cg-drop-hint">PDF up to 10 MB</span>
+</div>
+<div class="cg-file-row">
+<div class="cg-file-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg></div>
+<div class="cg-file-meta"><p class="cg-file-name">BOL.pdf</p><p class="cg-file-size">248 KB</p></div>
+<button type="button" class="cg-file-rm" aria-label="Remove BOL.pdf">Remove</button>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Accordion</p>
+<div class="cg-acc" data-cg-acc>
+<div class="cg-acc-item is-open" data-cg-acc-item>
+<button type="button" class="cg-acc-trig" aria-expanded="true" data-cg-acc-trig>Notifications<svg class="cg-acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+<div class="cg-acc-panel">Email on tender accept and exception. Quiet hours 22:00 to 06:00 PT.</div>
+</div>
+<div class="cg-acc-item" data-cg-acc-item>
+<button type="button" class="cg-acc-trig" aria-expanded="false" data-cg-acc-trig>Defaults<svg class="cg-acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+<div class="cg-acc-panel" hidden>Default mode Truck. Preferred carriers from account lane book.</div>
+</div>
+<div class="cg-acc-item" data-cg-acc-item>
+<button type="button" class="cg-acc-trig" aria-expanded="false" data-cg-acc-trig>Access<svg class="cg-acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+<div class="cg-acc-panel" hidden>Operators can assign. Admins can archive.</div>
+</div>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Progress indicator (stepper)</p>
+<ol class="cg-steps" aria-label="Load onboarding">
+<li class="cg-step is-done"><span class="cg-step-dot" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="cg-step-label">Created</span></li>
+<li class="cg-step is-done"><span class="cg-step-dot" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="cg-step-label">Tendered</span></li>
+<li class="cg-step is-current"><span class="cg-step-dot" aria-hidden="true">3</span><span class="cg-step-label">Assigned</span></li>
+<li class="cg-step"><span class="cg-step-dot" aria-hidden="true">4</span><span class="cg-step-label">In transit</span></li>
+</ol>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Popover vs Tooltip</p>
+<div class="cg-row">
+<div class="cg-pop-wrap is-open" data-cg-pop>
+<button type="button" class="f-btn f-btn-secondary f-btn-sm" data-cg-pop-trig aria-expanded="true">Info</button>
+<div class="cg-pop" role="dialog" aria-label="Lane info">
+<p class="cg-pop-title">Lane DAL to ATL</p>
+<p class="cg-pop-body">Click-triggered. Can hold actions. Distinct from hover tooltip.</p>
+<div class="cg-pop-actions"><button type="button" class="f-btn f-btn-primary f-btn-sm" data-cg-pop-trig>Got it</button></div>
+</div>
+</div>
+<div class="cg-tip-wrap is-show">
+<button type="button" class="f-btn f-btn-secondary f-btn-sm" aria-describedby="cg-tip-L">ETA</button>
+<span class="cg-tip" role="tooltip" id="cg-tip-L">Hover hint only</span>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark</p>
+<div class="cg-stack">
+
+<div class="cg-block">
+<p class="cg-block-label">Alert</p>
+<div class="cg-col">
+<div class="cg-alert is-info" role="status">
+<svg class="cg-alert-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+<div class="cg-alert-body"><p class="cg-alert-title">Lane rate refreshed</p><p class="cg-alert-msg">DAL to ATL spot rate updated from tender feed.</p></div>
+</div>
+<div class="cg-alert is-error" role="alert">
+<svg class="cg-alert-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16h.01"/></svg>
+<div class="cg-alert-body"><p class="cg-alert-title">Tender rejected</p><p class="cg-alert-msg">Carrier declined LD-2841. Reassign before cutoff.</p></div>
+</div>
+<div class="cg-alert is-success" role="status">
+<svg class="cg-alert-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+<div class="cg-alert-body"><p class="cg-alert-title">Assignment saved</p><p class="cg-alert-msg">Ink emphasis only. No green success hue.</p></div>
+</div>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Toast (compact)</p>
+<div class="cg-toast-stage">
+<div class="cg-toast" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Saved</div>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Modal / Dialog</p>
+<div class="cg-modal-stage" data-cg-modal>
+<div class="cg-modal-scrim" data-cg-modal-scrim></div>
+<div class="cg-modal" role="dialog" aria-modal="true" aria-labelledby="cg-modal-title-D">
+<p class="cg-modal-title" id="cg-modal-title-D">Assign carrier</p>
+<p class="cg-modal-body">Confirm Schneider for LD-2841 on DAL to ATL. Center overlay, not a sheet.</p>
+<div class="cg-modal-actions">
+<button type="button" class="f-btn f-btn-secondary f-btn-sm" data-cg-modal-close>Cancel</button>
+<button type="button" class="f-btn f-btn-primary f-btn-sm" data-cg-modal-close>Assign</button>
+</div>
+</div>
+</div>
+<div class="cg-modal-trigger"><button type="button" class="f-btn f-btn-secondary f-btn-sm" data-cg-modal-open>Open dialog</button></div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Search input</p>
+<div class="cg-search" data-cg-search>
+<svg class="cg-search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+<input class="cg-search-input" type="search" placeholder="Search loads, carriers…" value="Schneider" aria-label="Search" data-cg-search-input />
+<div class="cg-search-actions">
+<span class="cg-search-spin cg-spin" aria-hidden="true"></span>
+<button type="button" class="cg-search-btn cg-search-clear" aria-label="Clear search" data-cg-search-clear><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+</div>
+</div>
+<div class="cg-search is-loading" data-cg-search>
+<svg class="cg-search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+<input class="cg-search-input" type="search" placeholder="Search…" value="DAL" aria-label="Search loading" data-cg-search-input />
+<div class="cg-search-actions">
+<span class="cg-search-spin cg-spin" aria-hidden="true"></span>
+<button type="button" class="cg-search-btn cg-search-clear" aria-label="Clear search" data-cg-search-clear hidden><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+</div>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Combobox</p>
+<div class="cg-combo is-open" data-cg-combo>
+<label class="f-field-label" for="cg-combo-D">Carrier / lane</label>
+<input id="cg-combo-D" class="f-input" type="text" role="combobox" aria-expanded="true" aria-controls="cg-list-D" aria-autocomplete="list" placeholder="Filter carriers…" value="Sch" data-cg-combo-input autocomplete="off" />
+<ul class="cg-combo-list" role="listbox" id="cg-list-D" data-cg-combo-list>
+<li role="presentation"><button type="button" class="cg-combo-opt" role="option" aria-selected="true" data-value="Schneider · DAL-ATL"><strong>Schneider</strong><span>DAL to ATL · FTL dry van</span></button></li>
+<li role="presentation"><button type="button" class="cg-combo-opt" role="option" aria-selected="false" data-value="Swift · CHI-NYC"><strong>Swift</strong><span>CHI to NYC · Intermodal</span></button></li>
+<li role="presentation"><button type="button" class="cg-combo-opt" role="option" aria-selected="false" data-value="Werner · SFO-LAX"><strong>Werner</strong><span>SFO to LAX · LTL</span></button></li>
+</ul>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Checkbox</p>
+<div class="cg-col">
+<label class="cg-check"><input type="checkbox" /><span class="cg-check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Default</label>
+<label class="cg-check is-hover"><input type="checkbox" /><span class="cg-check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Hover</label>
+<label class="cg-check"><input type="checkbox" checked /><span class="cg-check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Checked</label>
+<label class="cg-check is-disabled"><input type="checkbox" disabled /><span class="cg-check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Disabled</label>
+<label class="cg-check is-error"><input type="checkbox" /><span class="cg-check-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Error</label>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Radio group</p>
+<fieldset class="cg-fieldset">
+<legend class="cg-legend">Mode</legend>
+<label class="cg-radio"><input type="radio" name="cg-radio-D" checked /><span class="cg-radio-dot" aria-hidden="true"></span> Truck</label>
+<label class="cg-radio is-hover"><input type="radio" name="cg-radio-D" /><span class="cg-radio-dot" aria-hidden="true"></span> Hover</label>
+<label class="cg-radio is-disabled"><input type="radio" name="cg-radio-D" disabled /><span class="cg-radio-dot" aria-hidden="true"></span> Disabled</label>
+<label class="cg-radio is-error"><input type="radio" name="cg-radio-err-D" /><span class="cg-radio-dot" aria-hidden="true"></span> Error</label>
+</fieldset>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Toggle / Switch</p>
+<div class="cg-row">
+<label class="cg-switch"><input type="checkbox" /><span class="cg-switch-track"><span class="cg-switch-thumb"></span></span> Off</label>
+<label class="cg-switch"><input type="checkbox" checked /><span class="cg-switch-track"><span class="cg-switch-thumb"></span></span> On</label>
+<label class="cg-switch is-disabled"><input type="checkbox" disabled /><span class="cg-switch-track"><span class="cg-switch-thumb"></span></span> Disabled</label>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Tabs</p>
+<div class="cg-tabs" data-cg-tabs>
+<div class="cg-tablist" role="tablist" aria-label="Record panels">
+<button type="button" class="cg-tab" role="tab" id="cg-tab-o-D" aria-controls="cg-panel-o-D" aria-selected="true" data-cg-tab>Overview</button>
+<button type="button" class="cg-tab" role="tab" id="cg-tab-a-D" aria-controls="cg-panel-a-D" aria-selected="false" data-cg-tab>Activity</button>
+<button type="button" class="cg-tab" role="tab" id="cg-tab-f-D" aria-controls="cg-panel-f-D" aria-selected="false" data-cg-tab>Files</button>
+</div>
+<div class="cg-tabpanel" role="tabpanel" id="cg-panel-o-D" aria-labelledby="cg-tab-o-D" data-cg-panel><strong>Overview.</strong> Account Acme, deal stage Negotiation, owner Alex.</div>
+<div class="cg-tabpanel" role="tabpanel" id="cg-panel-a-D" aria-labelledby="cg-tab-a-D" data-cg-panel hidden><strong>Activity.</strong> Tender sent 2h ago. Carrier replied with counter.</div>
+<div class="cg-tabpanel" role="tabpanel" id="cg-panel-f-D" aria-labelledby="cg-tab-f-D" data-cg-panel hidden><strong>Files.</strong> BOL.pdf, rate confirmation, POD pending.</div>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Skeleton + Spinner</p>
+<div class="cg-skel" aria-hidden="true">
+<div class="cg-skel-row"><div class="cg-skel-avatar cg-skel-shimmer"></div><div class="cg-skel-lines"><div class="cg-skel-line w-80 cg-skel-shimmer"></div><div class="cg-skel-line w-55 cg-skel-shimmer"></div></div></div>
+<div class="cg-skel-row"><div class="cg-skel-avatar cg-skel-shimmer"></div><div class="cg-skel-lines"><div class="cg-skel-line w-70 cg-skel-shimmer"></div><div class="cg-skel-line w-55 cg-skel-shimmer"></div></div></div>
+</div>
+<div class="cg-row" style="margin-top:8px">
+<button type="button" class="f-btn f-btn-primary f-btn-sm" disabled><span class="cg-spin" aria-hidden="true"></span> Saving</button>
+<span class="cg-spin-wrap"><span class="cg-spin cg-spin-lg" aria-hidden="true"></span> Loading page</span>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Breadcrumbs</p>
+<nav aria-label="Breadcrumb">
+<ol class="cg-crumbs">
+<li><a href="#cg-gallery">Accounts</a><span class="cg-crumbs-sep" aria-hidden="true">/</span></li>
+<li><a href="#cg-gallery">Acme</a><span class="cg-crumbs-sep" aria-hidden="true">/</span></li>
+<li><span aria-current="page">Deal</span></li>
+</ol>
+</nav>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Dropdown menu</p>
+<div class="cg-dd is-open" data-cg-dd>
+<button type="button" class="f-btn f-btn-secondary f-btn-sm" data-cg-dd-trig aria-haspopup="menu" aria-expanded="true">Actions</button>
+<ul class="cg-dd-menu" role="menu" data-cg-dd-menu>
+<li role="none"><button type="button" class="cg-dd-item" role="menuitem">Edit</button></li>
+<li role="none"><button type="button" class="cg-dd-item" role="menuitem">Assign</button></li>
+<li class="cg-dd-sep" role="separator"></li>
+<li role="none"><button type="button" class="cg-dd-item is-danger" role="menuitem">Archive</button></li>
+</ul>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">File upload</p>
+<div class="cg-drop" role="button" tabindex="0" aria-label="Upload files">
+<strong>Drop BOL or click to upload</strong>
+<span class="cg-drop-hint">PDF up to 10 MB</span>
+</div>
+<div class="cg-file-row">
+<div class="cg-file-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg></div>
+<div class="cg-file-meta"><p class="cg-file-name">BOL.pdf</p><p class="cg-file-size">248 KB</p></div>
+<button type="button" class="cg-file-rm" aria-label="Remove BOL.pdf">Remove</button>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Accordion</p>
+<div class="cg-acc" data-cg-acc>
+<div class="cg-acc-item is-open" data-cg-acc-item>
+<button type="button" class="cg-acc-trig" aria-expanded="true" data-cg-acc-trig>Notifications<svg class="cg-acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+<div class="cg-acc-panel">Email on tender accept and exception. Quiet hours 22:00 to 06:00 PT.</div>
+</div>
+<div class="cg-acc-item" data-cg-acc-item>
+<button type="button" class="cg-acc-trig" aria-expanded="false" data-cg-acc-trig>Defaults<svg class="cg-acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+<div class="cg-acc-panel" hidden>Default mode Truck. Preferred carriers from account lane book.</div>
+</div>
+<div class="cg-acc-item" data-cg-acc-item>
+<button type="button" class="cg-acc-trig" aria-expanded="false" data-cg-acc-trig>Access<svg class="cg-acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+<div class="cg-acc-panel" hidden>Operators can assign. Admins can archive.</div>
+</div>
+</div>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Progress indicator (stepper)</p>
+<ol class="cg-steps" aria-label="Load onboarding">
+<li class="cg-step is-done"><span class="cg-step-dot" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="cg-step-label">Created</span></li>
+<li class="cg-step is-done"><span class="cg-step-dot" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="cg-step-label">Tendered</span></li>
+<li class="cg-step is-current"><span class="cg-step-dot" aria-hidden="true">3</span><span class="cg-step-label">Assigned</span></li>
+<li class="cg-step"><span class="cg-step-dot" aria-hidden="true">4</span><span class="cg-step-label">In transit</span></li>
+</ol>
+</div>
+
+<div class="cg-block">
+<p class="cg-block-label">Popover vs Tooltip</p>
+<div class="cg-row">
+<div class="cg-pop-wrap is-open" data-cg-pop>
+<button type="button" class="f-btn f-btn-secondary f-btn-sm" data-cg-pop-trig aria-expanded="true">Info</button>
+<div class="cg-pop" role="dialog" aria-label="Lane info">
+<p class="cg-pop-title">Lane DAL to ATL</p>
+<p class="cg-pop-body">Click-triggered. Can hold actions. Distinct from hover tooltip.</p>
+<div class="cg-pop-actions"><button type="button" class="f-btn f-btn-primary f-btn-sm" data-cg-pop-trig>Got it</button></div>
+</div>
+</div>
+<div class="cg-tip-wrap is-show">
+<button type="button" class="f-btn f-btn-secondary f-btn-sm" aria-describedby="cg-tip-D">ETA</button>
+<span class="cg-tip" role="tooltip" id="cg-tip-D">Hover hint only</span>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+</section>
+
 <section id="training-chrome" aria-labelledby="train-heading">
 <div class="section-head">
 <h2 id="train-heading">Training chrome</h2>
@@ -1705,7 +2548,7 @@
 </div>
 </div>
 </section>
-</main><p class="footer-note">Focus · Flip · Mode · Commons (Button, Panel/Card, Forms, Badge, Page chrome, Avatar, DataTable) · Lane · List · Kpi · Segmented · Sheet · Breakdown · Empty · Looking Glass (shell, line, handoff, commons, Yoda rail, connections, shift-brief) · Training chrome. Light / Dark. Ink-on-paper: ink rails, --danger only, no blue accents. LG remapped to CRM ink. Training charcoal stays training-only.</p><script>(function () {
+</main><p class="footer-note">Focus · Flip · Mode · Commons (Button, Panel/Card, Forms, Badge, Page chrome, Avatar, DataTable) · Lane · List · Kpi · Segmented · Sheet · Breakdown · Empty · Looking Glass · component.gallery picks (Alert/Toast, Modal, Search, Combobox, Checkbox/Radio, Toggle, Tabs, Skeleton/Spinner, Breadcrumbs, Dropdown, File upload, Accordion, Stepper, Popover/Tooltip) · Training chrome. Light / Dark. Ink-on-paper: ink rails, --danger only, no blue accents. Marketing gallery components omitted.</p><script>(function () {
 var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 document.querySelectorAll(".filters button").forEach(function (btn) {
 btn.addEventListener("click", function () {
@@ -2164,4 +3007,112 @@ document.querySelectorAll("[data-sheet]").forEach(function (stage) {
   if (closeBtn) closeBtn.addEventListener("click", function () { setOpen(false); });
   if (backdrop) backdrop.addEventListener("click", function () { setOpen(false); });
 });
+
+/* component.gallery Endurance picks interactions */
+document.querySelectorAll("[data-cg-modal]").forEach(function (stage) {
+  var openBtn = stage.parentElement && stage.parentElement.querySelector("[data-cg-modal-open]");
+  var closeBtns = stage.querySelectorAll("[data-cg-modal-close]");
+  var scrim = stage.querySelector("[data-cg-modal-scrim]");
+  function setOpen(open) {
+    stage.classList.toggle("is-open", open);
+    if (openBtn) openBtn.textContent = open ? "Dialog open" : "Open dialog";
+  }
+  setOpen(true);
+  if (openBtn) openBtn.addEventListener("click", function () { setOpen(true); });
+  closeBtns.forEach(function (b) { b.addEventListener("click", function () { setOpen(false); }); });
+  if (scrim) scrim.addEventListener("click", function () { setOpen(false); });
+});
+document.querySelectorAll("[data-cg-search]").forEach(function (wrap) {
+  var input = wrap.querySelector("[data-cg-search-input]");
+  var clear = wrap.querySelector("[data-cg-search-clear]");
+  function sync() {
+    if (!clear || !input) return;
+    if (wrap.classList.contains("is-loading")) {
+      clear.hidden = true;
+      return;
+    }
+    clear.hidden = !input.value;
+  }
+  sync();
+  if (input) input.addEventListener("input", sync);
+  if (clear) clear.addEventListener("click", function () {
+    input.value = "";
+    input.focus();
+    sync();
+  });
+});
+document.querySelectorAll("[data-cg-combo]").forEach(function (combo) {
+  var input = combo.querySelector("[data-cg-combo-input]");
+  var list = combo.querySelector("[data-cg-combo-list]");
+  if (!input || !list) return;
+  var opts = Array.prototype.slice.call(list.querySelectorAll(".cg-combo-opt"));
+  function filter() {
+    var q = (input.value || "").toLowerCase();
+    var shown = 0;
+    opts.forEach(function (opt) {
+      var text = opt.textContent.toLowerCase();
+      var match = !q || text.indexOf(q) !== -1;
+      opt.parentElement.style.display = match ? "" : "none";
+      if (match) shown++;
+    });
+    combo.classList.add("is-open");
+    input.setAttribute("aria-expanded", "true");
+  }
+  input.addEventListener("focus", function () { combo.classList.add("is-open"); input.setAttribute("aria-expanded", "true"); });
+  input.addEventListener("input", filter);
+  opts.forEach(function (opt) {
+    opt.addEventListener("click", function () {
+      input.value = opt.getAttribute("data-value") || opt.querySelector("strong").textContent;
+      opts.forEach(function (o) { o.setAttribute("aria-selected", String(o === opt)); });
+      combo.classList.remove("is-open");
+      input.setAttribute("aria-expanded", "false");
+    });
+  });
+});
+document.querySelectorAll("[data-cg-tabs]").forEach(function (tabs) {
+  var tabBtns = tabs.querySelectorAll("[data-cg-tab]");
+  var panels = tabs.querySelectorAll("[data-cg-panel]");
+  tabBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      tabBtns.forEach(function (b) { b.setAttribute("aria-selected", String(b === btn)); });
+      panels.forEach(function (p) {
+        var show = p.id === btn.getAttribute("aria-controls");
+        p.hidden = !show;
+      });
+    });
+  });
+});
+document.querySelectorAll("[data-cg-dd]").forEach(function (dd) {
+  var trig = dd.querySelector("[data-cg-dd-trig]");
+  if (!trig) return;
+  trig.addEventListener("click", function () {
+    var open = !dd.classList.contains("is-open");
+    dd.classList.toggle("is-open", open);
+    trig.setAttribute("aria-expanded", String(open));
+  });
+});
+document.querySelectorAll("[data-cg-acc]").forEach(function (acc) {
+  acc.querySelectorAll("[data-cg-acc-item]").forEach(function (item) {
+    var trig = item.querySelector("[data-cg-acc-trig]");
+    var panel = item.querySelector(".cg-acc-panel");
+    if (!trig) return;
+    trig.addEventListener("click", function () {
+      var open = !item.classList.contains("is-open");
+      item.classList.toggle("is-open", open);
+      trig.setAttribute("aria-expanded", String(open));
+      if (panel) panel.hidden = !open;
+    });
+  });
+});
+document.querySelectorAll("[data-cg-pop]").forEach(function (wrap) {
+  wrap.querySelectorAll("[data-cg-pop-trig]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var open = !wrap.classList.contains("is-open");
+      wrap.classList.toggle("is-open", open);
+      var main = wrap.querySelector("[data-cg-pop-trig]");
+      if (main) main.setAttribute("aria-expanded", String(open));
+    });
+  });
+});
+
 })();</script></body></html>
