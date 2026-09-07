@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+/**
+ * Design tokens. One spacing scale (Tailwind's 4px base), a six-step type
+ * ramp, semantic colour roles, one radius family, layered shadows, one easing
+ * curve. Everything in the app references these — no raw hex in components.
+ *
+ * The palette is ink on paper. There is no decorative colour anywhere: an icon,
+ * an avatar, a chart segment and a stage marker are all steps on one neutral
+ * ramp, so nothing competes for attention and hierarchy is carried by size,
+ * weight and space instead. Exactly one hue survives — `--danger` — because
+ * "this is wrong" is the one message a shape alone reads too slowly.
+ *
+ * Colours are declared once with `light-dark()`, so the palette lives in a
+ * single place and the theme is switched by `color-scheme` alone: the system
+ * preference by default, or an explicit choice via `data-theme` on <html>.
+ */
+
+:root {
+  color-scheme: light dark;
+
+  /* The canvas is a soft grey and cards sit on it in white — the separation
+     does the work that borders and shadows would otherwise have to. */
+  --bg: light-dark(#efefef, #0e0f11);
+  --surface: light-dark(#ffffff, #17181c);
+  --surface-2: light-dark(#f4f4f4, #212328);
+  --surface-inset: light-dark(#f7f7f7, #121316);
+  --border: light-dark(#ececec, #26282d);
+  --border-strong: light-dark(#dcdcdc, #34373d);
+
+  /* Three text weights, all at or above 4.5:1 on their own surface. */
+  --text: light-dark(#1a1a1a, #ececed);
+  --text-muted: light-dark(#5f5f5f, #a5a7ac);
+  --text-subtle: light-dark(#767676, #8e9096);
+
+  /* Solid near-black is the primary action, not a colour. */
+  --ink-solid: light-dark(#1a1a1a, #ececed);
+  --ink-solid-hover: light-dark(#333333, #ffffff);
+  --ink-solid-fg: light-dark(#ffffff, #17181c);
+
+  /* Chart and legend segments are one ink stepped by weight, mixed between
+     these two ends. `seriesFill()` in components/ui.tsx picks the step, so a
+     series of any length spans the full ramp instead of recycling four hues.
+     Both ends are theme-aware, so the ramp inverts with the rest of the app. */
+  --series-ink: light-dark(#1a1a1a, #f2f2f3);
+  --series-base: light-dark(#e0e0e0, #2b2d33);
+
+  /* The only hue in the system: something needs attention or has gone wrong.
+     Always paired with the words it is colouring. */
+  --danger: light-dark(#c4342f, #f08b86);
+  --danger-tint: light-dark(rgba(196, 52, 47, 0.09), rgba(240, 139, 134, 0.14));
+
+  /* Keyboard focus is ink, not a colour — 12:1 on paper, and it reads as part
+     of the same system as everything else. */
+  --ring: light-dark(rgba(26, 26, 26, 0.55), rgba(236, 236, 237, 0.6));
+  --selection: light-dark(rgba(26, 26, 26, 0.13), rgba(236, 236, 237, 0.2));
+
+  /* Cards lean on a hairline; shadow is reserved for things that lift off the
+     page — the active nav pill, an overlay, a dragged card. */
+  --shadow-sm: 0 1px 2px light-dark(rgba(16, 18, 22, 0.05), rgba(0, 0, 0, 0.4));
+  --shadow-md:
+    0 1px 2px light-dark(rgba(16, 18, 22, 0.05), rgba(0, 0, 0, 0.35)),
+    0 6px 16px light-dark(rgba(16, 18, 22, 0.06), rgba(0, 0, 0, 0.45));
+  --shadow-lg:
+    0 1px 3px light-dark(rgba(16, 18, 22, 0.07), rgba(0, 0, 0, 0.4)),
+    0 16px 40px light-dark(rgba(16, 18, 22, 0.1), rgba(0, 0, 0, 0.55));
+}
+
+/* An explicit choice overrides the system preference. */
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/*
+ * Brand wordmark: two fixed-fill SVGs (ink / white). Swap with color-scheme so
+ * the same rule works for system preference and an explicit data-theme.
+ */
+.brand-logo-dark {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .brand-logo-light {
+    display: none;
+  }
+  :root:not([data-theme="light"]) .brand-logo-dark {
+    display: inline;
+  }
+}
+:root[data-theme="dark"] .brand-logo-light {
+  display: none;
+}
+:root[data-theme="dark"] .brand-logo-dark {
+  display: inline;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-inset: var(--surface-inset);
+  --color-hairline: var(--border);
+  --color-hairline-strong: var(--border-strong);
+
+  --color-ink: var(--text);
+  --color-muted: var(--text-muted);
+  --color-subtle: var(--text-subtle);
+
+  --color-ink-solid: var(--ink-solid);
+  --color-ink-solid-hover: var(--ink-solid-hover);
+  --color-ink-solid-fg: var(--ink-solid-fg);
+
+  --color-danger: var(--danger);
+  --color-danger-tint: var(--danger-tint);
+
+  /* Four text sizes and one display size for headline metrics. Line-height
+     tracks size inversely: body reads loose, the big figures sit tight. */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.4;
+  --text-sm: 0.8125rem;
+  --text-sm--line-height: 1.5;
+  --text-base: 0.9375rem;
+  --text-base--line-height: 1.55;
+  --text-2xl: 1.75rem;
+  --text-2xl--line-height: 1.15;
+  --text-3xl: 2.25rem;
+  --text-3xl--line-height: 1.05;
+
+  /* Generous rounding is the loudest part of this design language: 10px for
+     icon chips, 16px for cards, 20px for the large panels. */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+
+  --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@layer base {
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Visible keyboard focus everywhere, once, so no component has to remember. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  ::selection {
+    background: var(--selection);
+    color: var(--text);
+  }
+
+  /*
+   * Native <select> / <option> menus are painted by the OS, but we can still
+   * keep the closed field and option list on-token so they do not flash the
+   * browser's default white/blue chrome against our ink-on-paper surfaces.
+   */
+  select {
+    color-scheme: inherit;
+  }
+  select option,
+  select optgroup {
+    background-color: var(--surface);
+    color: var(--text);
+  }
+
+  /* Headings want tighter tracking than body at these sizes. */
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.011em;
+  }
+
+  /* Slim scrollbars that match the neutral ramp. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-thumb {

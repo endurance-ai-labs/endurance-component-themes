@@ -192,6 +192,165 @@
 .f-empty-title{margin:0;font-size:13px;font-weight:550;color:var(--ink)}
 .f-empty-desc{margin:6px 0 0;max-width:42ch;font-size:13px;color:var(--muted);line-height:1.45}
 .f-empty-action{margin-top:16px}
+
+/* --- Commons: Button + LinkButton (audit #1 / #16) ---
+   Recipe: rounded-full; sm h-8 px-3.5; md h-9 px-4; text-sm font-medium;
+   primary ink-solid; secondary surface+hairline; subtle surface-2; ghost muted;
+   danger only hue; disabled opacity-45; active translateY 1px; loading spinner. */
+.f-btn-sm{height:32px;padding:0 14px;font-size:12px}
+.f-btn-md{height:36px;padding:0 16px;font-size:13px}
+.f-btn-subtle{background:var(--surface-2);color:var(--ink);border:0}
+.f-btn-ghost{background:transparent;color:var(--muted);border:0;box-shadow:none}
+.f-btn-link{
+  appearance:none;border:0;cursor:pointer;font:inherit;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  border-radius:999px;height:36px;padding:0 16px;
+  font-size:13px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;
+  transition:background-color 150ms var(--ease),color 150ms var(--ease),border-color 150ms var(--ease),box-shadow 150ms var(--ease),transform 150ms var(--ease),opacity 150ms var(--ease);
+}
+.f-btn-link.f-btn-primary{background:var(--ink-solid);color:var(--ink-solid-fg);box-shadow:var(--shadow-sm)}
+.f-btn-link.f-btn-secondary{background:var(--surface);color:var(--ink);border:1px solid var(--hairline);box-shadow:var(--shadow-sm)}
+.f-btn-link.f-btn-ghost{background:transparent;color:var(--muted)}
+@media (hover:hover) and (pointer:fine){
+  .f-btn-subtle:hover{background:var(--hairline)}
+  .f-btn-ghost:hover{background:var(--surface-2);color:var(--ink)}
+  .f-btn-link.f-btn-primary:hover{background:var(--ink-solid-hover)}
+  .f-btn-link.f-btn-secondary:hover{border-color:var(--hairline-strong)}
+  .f-btn-link.f-btn-ghost:hover{background:var(--surface-2);color:var(--ink)}
+  .f-btn.is-hover.f-btn-primary,.f-btn-link.is-hover.f-btn-primary{background:var(--ink-solid-hover)}
+  .f-btn.is-hover.f-btn-secondary,.f-btn-link.is-hover.f-btn-secondary{border-color:var(--hairline-strong)}
+  .f-btn.is-hover.f-btn-subtle{background:var(--hairline)}
+  .f-btn.is-hover.f-btn-ghost,.f-btn-link.is-hover.f-btn-ghost{background:var(--surface-2);color:var(--ink)}
+  .f-btn.is-pressed,.f-btn-link.is-pressed{transform:translateY(1px)}
+}
+.f-btn-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.f-btn-stack{display:flex;flex-direction:column;gap:12px;width:100%}
+
+/* --- Commons: Panel + Card + SectionLabel (audit #2 / #22 / #6) ---
+   Panel radius 20 (2xl); Card radius 16 (xl); SectionLabel text-base 650. */
+.f-panel-xl{
+  background:var(--surface);border:1px solid var(--hairline);border-radius:20px;
+  box-shadow:var(--shadow-sm);overflow:hidden;color:var(--ink);width:100%;
+}
+.f-card-md{
+  background:var(--surface);border:1px solid var(--hairline);border-radius:16px;
+  box-shadow:var(--shadow-sm);padding:20px;color:var(--ink);width:100%;
+}
+.f-sec-lab{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:8px 16px;margin:0 0 12px;
+}
+.f-sec-lab h3{margin:0;font-size:15px;font-weight:650;letter-spacing:-0.02em;color:var(--ink)}
+.f-chrome-demo{display:flex;flex-direction:column;gap:16px;width:100%}
+.f-chrome-body{padding:16px 20px;font-size:13px;color:var(--muted);line-height:1.45}
+
+/* --- Commons: Forms Field+Input+Select+Textarea+ErrorText (audit #3/#9/#7/#14/#5) ---
+   Recipe: label text-sm medium mb-1.5; control rounded-lg(10) hairline px-3.5;
+   focus ring ink; error danger text-xs; disabled opacity-45. */
+.f-field{display:block;width:100%;min-width:0}
+.f-field-label{display:block;margin:0 0 6px;font-size:13px;font-weight:550;color:var(--ink)}
+.f-field-hint{display:block;margin:6px 0 0;font-size:11px;color:var(--subtle);line-height:1.4}
+.f-input,.f-select,.f-textarea{
+  display:block;width:100%;box-sizing:border-box;
+  border-radius:10px;border:1px solid var(--hairline);background:var(--surface);
+  padding:8px 14px;font:inherit;font-size:13px;color:var(--ink);
+  transition:border-color 150ms var(--ease),box-shadow 150ms var(--ease),opacity 150ms var(--ease);
+}
+.f-input::placeholder,.f-textarea::placeholder{color:var(--subtle)}
+.f-select{
+  height:36px;padding:0 36px 0 14px;appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23767676' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 10px center;
+}
+.t-dark .f-select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%238a8a90' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+}
+.f-textarea{min-height:80px;resize:vertical;line-height:1.45}
+.f-input:focus-visible,.f-select:focus-visible,.f-textarea:focus-visible{
+  outline:2px solid var(--ink);outline-offset:2px;border-color:var(--hairline-strong);
+}
+.f-input.is-focus,.f-select.is-focus,.f-textarea.is-focus{
+  outline:2px solid var(--ink);outline-offset:2px;border-color:var(--hairline-strong);
+}
+@media (hover:hover) and (pointer:fine){
+  .f-input:hover:not(:disabled):not(.is-error),.f-select:hover:not(:disabled):not(.is-error),.f-textarea:hover:not(:disabled):not(.is-error){border-color:var(--hairline-strong)}
+}
+.f-input.is-error,.f-select.is-error,.f-textarea.is-error{border-color:var(--danger)}
+.f-input:disabled,.f-select:disabled,.f-textarea:disabled,
+.f-input.is-disabled,.f-select.is-disabled,.f-textarea.is-disabled{opacity:0.45;cursor:not-allowed}
+.f-err{margin:6px 0 0;font-size:11px;font-weight:500;color:var(--danger);line-height:1.35}
+.f-form-stack{display:flex;flex-direction:column;gap:14px;width:100%}
+
+/* --- Commons: Badge + StageBadge + Unassigned (audit #4 / #32 / #24) --- */
+.f-badge-strong{background:var(--surface-2);color:var(--ink)}
+.f-badge-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.f-unassigned{font-size:13px;color:var(--subtle)}
+
+/* --- Commons: PageHeader + BackLink + Toolbar (audit #11 / #21 / #17) --- */
+.f-page-head{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;
+}
+.f-page-title{margin:0;min-width:0;font-size:28px;font-weight:650;letter-spacing:-0.03em;color:var(--ink);line-height:1.15}
+.f-page-actions{display:flex;flex-shrink:0;align-items:center;gap:8px}
+.f-back{
+  display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--subtle);
+  text-decoration:none;transition:color 150ms var(--ease);margin-bottom:8px;
+}
+.f-back .f-back-arrow{display:inline-block;transition:transform 150ms var(--ease)}
+@media (hover:hover) and (pointer:fine){
+  .f-back:hover{color:var(--ink)}
+  .f-back:hover .f-back-arrow{transform:translateX(-2px)}
+}
+.f-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+.f-chrome-block{
+  background:var(--surface);border:1px solid var(--hairline);border-radius:16px;
+  box-shadow:var(--shadow-sm);padding:20px;color:var(--ink);
+}
+
+/* --- Commons: Avatar (audit #12) ---
+   sm 28/xs/md8; md 36/sm/lg10; lg 44/base/xl16; surface-2 + hairline-strong ring. */
+.f-avatar{
+  display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-weight:650;background:var(--surface-2);color:var(--ink);
+  box-shadow:inset 0 0 0 1px var(--hairline-strong);
+}
+.f-avatar-sm{width:28px;height:28px;font-size:11px;border-radius:8px}
+.f-avatar-md{width:36px;height:36px;font-size:13px;border-radius:10px}
+.f-avatar-lg{width:44px;height:44px;font-size:15px;border-radius:16px}
+.f-avatar-ph{
+  background:repeating-linear-gradient(-45deg,var(--surface-2),var(--surface-2) 4px,var(--hairline) 4px,var(--hairline) 5px);
+  color:transparent;
+}
+.f-avatar-row{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
+
+/* --- Commons: DataTable + Pagination (audit #26 / #31) ---
+   Recipe: text-sm; th/td px-5 py-3; hairline rows; hover surface-2; paginate border-t. */
+.f-table-wrap{width:100%;overflow:auto}
+.f-table{width:100%;border-collapse:collapse;font-size:13px;color:var(--ink)}
+.f-table th{
+  text-align:left;font-weight:500;color:var(--subtle);padding:12px 20px;
+  border-bottom:1px solid var(--hairline);white-space:nowrap;
+}
+.f-table td{
+  padding:12px 20px;border-bottom:1px solid var(--hairline);
+  font-variant-numeric:tabular-nums;vertical-align:middle;
+}
+.f-table tbody tr:last-child td{border-bottom:0}
+.f-table th.num,.f-table td.num{text-align:right}
+@media (hover:hover) and (pointer:fine){
+  .f-table tbody tr:hover td{background:var(--surface-2)}
+}
+.f-table tbody tr.is-hover td{background:var(--surface-2)}
+.f-paginate{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;
+  border-top:1px solid var(--hairline);padding:12px 20px;
+}
+.f-paginate-meta{margin:0;font-size:11px;color:var(--subtle);font-variant-numeric:tabular-nums}
+.f-paginate-controls{display:flex;align-items:center;gap:8px}
+.f-paginate-page{font-size:11px;color:var(--subtle);font-variant-numeric:tabular-nums;padding:0 4px}
+
+.f-audit-tag{font-size:10px;font-weight:650;letter-spacing:0.04em;text-transform:uppercase;color:var(--subtle)}
+
 /* --- Training chrome (Focus language): clearly separate from product ink --- */
 .train-cluster{
   max-width:320px;margin:0 auto;border-radius:24px;padding:20px;
@@ -302,7 +461,387 @@
   .f-sheet-card.is-open{transform:none}
   .f-btn:active,.train-pill:active{transform:none}
 }
-</style></head><body><header class="topbar"><h1>Endurance components · Foundations</h1><div class="filters" role="group" aria-label="Theme filter"><button type="button" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="light" aria-pressed="false">Light</button><button type="button" data-filter="dark" aria-pressed="false">Dark</button></div></header><main class="page"><section id="focus-timer" aria-labelledby="ft-heading"><div class="section-head"><h2 id="ft-heading">Focus timer</h2></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="ft-card" id="ft-light" data-state="running" role="group" aria-label="Focus timer light"><div class="ft-header"><div class="ft-title">Focus</div><div class="ft-status" data-state="running">In progress</div></div><div class="ft-dial-wrap"><div class="ft-dial"><div class="ft-breath" aria-hidden="true"></div><svg viewBox="0 0 200 200" aria-hidden="true"><g class="ft-ticks" transform="translate(100,100)"></g></svg><div class="ft-time">13:41</div></div></div><div class="ft-controls"><button class="ft-btn ft-btn-icon" type="button" data-action="reset" aria-label="Reset timer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button><button class="ft-btn ft-btn-main" type="button" data-action="toggle" aria-label="Pause timer"><svg class="ft-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg><span class="ft-label">Pause</span></button></div></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="ft-card" id="ft-dark" data-state="running" role="group" aria-label="Focus timer dark"><div class="ft-header"><div class="ft-title">Focus</div><div class="ft-status" data-state="running">In progress</div></div><div class="ft-dial-wrap"><div class="ft-dial"><div class="ft-breath" aria-hidden="true"></div><svg viewBox="0 0 200 200" aria-hidden="true"><g class="ft-ticks" transform="translate(100,100)"></g></svg><div class="ft-time">13:41</div></div></div><div class="ft-controls"><button class="ft-btn ft-btn-icon" type="button" data-action="reset" aria-label="Reset timer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button><button class="ft-btn ft-btn-main" type="button" data-action="toggle" aria-label="Pause timer"><svg class="ft-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg><span class="ft-label">Pause</span></button></div></div></div></div></section><section id="flip-counter" aria-labelledby="fc-heading"><div class="section-head"><h2 id="fc-heading">Flip counter</h2></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="fc-card" role="group" aria-label="Flip counter light"><div class="fc-head"><div class="fc-title">Count</div><div class="fc-status" data-state="idle">Ready</div></div><div class="fc-counter" data-flip="light" aria-live="polite" aria-atomic="true"></div><div class="fc-controls"><button class="fc-btn fc-btn-icon" type="button" data-flip-action="reset" data-flip-target="light" aria-label="Reset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.3"/><path d="M21 3v6h-6"/></svg></button><button class="fc-btn" type="button" data-flip-action="demo" data-flip-target="light">1,333</button><button class="fc-btn" type="button" data-flip-action="big" data-flip-target="light">12,847</button></div></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="fc-card" role="group" aria-label="Flip counter dark"><div class="fc-head"><div class="fc-title">Count</div><div class="fc-status" data-state="idle">Ready</div></div><div class="fc-counter" data-flip="dark" aria-live="polite" aria-atomic="true"></div><div class="fc-controls"><button class="fc-btn fc-btn-icon" type="button" data-flip-action="reset" data-flip-target="dark" aria-label="Reset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.3"/><path d="M21 3v6h-6"/></svg></button><button class="fc-btn" type="button" data-flip-action="demo" data-flip-target="dark">1,333</button><button class="fc-btn" type="button" data-flip-action="big" data-flip-target="dark">12,847</button></div></div></div></div></section><section id="mode-status" aria-labelledby="mode-heading"><div class="section-head"><h2 id="mode-heading">Mode status</h2><p class="doctrine-note">Ink rails + icons (var(--ink-solid)), not blue. One-shot settle only; no tip-glow or marker breath loops.</p></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="mode-grid" data-mode-stage="light"></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="mode-grid" data-mode-stage="dark"></div></div></div></section><section id="lane" aria-labelledby="lane-heading"><div class="section-head"><h2 id="lane-heading">Lane</h2><p class="doctrine-note">Airy vs dense operator strip: same DAL→ATL, ink progress marker (not blue). Dense: tighter 8px rhythm, ETA delta, exception chip, mode, ref id.</p></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="lane-stack"><p class="lane-variant-label">Airy (current)</p><article class="lane-card" aria-label="Lane status Dallas to Atlanta light airy"><div class="lane-head"><h3>Lane</h3><span class="lane-badge"><span class="dot" aria-hidden="true"></span> In transit</span></div><div class="lane-route"><div class="lane-city"><div class="code">DAL</div><div class="name">Dallas, TX</div></div><div class="lane-progress-wrap" aria-hidden="true"><div class="lane-rail"><div class="lane-rail-fill" data-lane="light-airy"></div><div class="lane-marker" data-lane-marker="light-airy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7v-5z"/><circle cx="7" cy="17" r="1.6" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="1.6" fill="currentColor" stroke="none"/></svg></div></div></div><div class="lane-city to"><div class="code">ATL</div><div class="name">Atlanta, GA</div></div></div><div class="lane-times"><div><div class="lane-when">06:00</div><div class="lane-meta">Pickup · CT</div></div><div class="right"><div class="lane-when">18:30</div><div class="lane-meta">Delivery · ET</div></div></div><div class="lane-foot"><div class="lane-chips"><span class="lane-chip">FTL · Dry van</span><span class="lane-chip">Load LD-2841</span></div><button type="button" class="lane-link">Track</button></div></article><p class="lane-variant-label">Dense (operator)</p><article class="lane-dense" aria-label="Lane operator strip Dallas to Atlanta light"><div class="lane-head"><h3>Lane</h3><span class="lane-badge"><span class="dot" aria-hidden="true"></span> In transit</span></div><div class="lane-dense-meta"><span>FTL · Truck</span><span class="lane-eta">ETA <span class="lane-eta-delta">+12m</span></span><span class="lane-chip lane-chip-danger">Exception</span><span class="ref">LD-2841</span></div><div class="lane-route"><div class="lane-city"><div class="code">DAL</div><div class="name">Dallas, TX</div></div><div class="lane-progress-wrap" aria-hidden="true"><div class="lane-rail"><div class="lane-rail-fill" data-lane="light-dense"></div><div class="lane-marker" data-lane-marker="light-dense"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7v-5z"/><circle cx="7" cy="17" r="1.6" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="1.6" fill="currentColor" stroke="none"/></svg></div></div></div><div class="lane-city to"><div class="code">ATL</div><div class="name">Atlanta, GA</div></div></div><div class="lane-times"><div><div class="lane-when">06:00</div><div class="lane-meta">Pickup · CT</div></div><div class="right"><div class="lane-when">18:42</div><div class="lane-meta">Delivery · ET · +12m</div></div></div><div class="lane-foot"><div class="lane-chips"><span class="lane-chip">Dry van</span><span class="lane-chip">Schneider</span><span class="lane-chip lane-chip-danger">Delay</span></div><button type="button" class="lane-link">Track</button></div></article></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="lane-stack"><p class="lane-variant-label">Airy (current)</p><article class="lane-card" aria-label="Lane status Dallas to Atlanta dark airy"><div class="lane-head"><h3>Lane</h3><span class="lane-badge"><span class="dot" aria-hidden="true"></span> In transit</span></div><div class="lane-route"><div class="lane-city"><div class="code">DAL</div><div class="name">Dallas, TX</div></div><div class="lane-progress-wrap" aria-hidden="true"><div class="lane-rail"><div class="lane-rail-fill" data-lane="dark-airy"></div><div class="lane-marker" data-lane-marker="dark-airy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7v-5z"/><circle cx="7" cy="17" r="1.6" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="1.6" fill="currentColor" stroke="none"/></svg></div></div></div><div class="lane-city to"><div class="code">ATL</div><div class="name">Atlanta, GA</div></div></div><div class="lane-times"><div><div class="lane-when">06:00</div><div class="lane-meta">Pickup · CT</div></div><div class="right"><div class="lane-when">18:30</div><div class="lane-meta">Delivery · ET</div></div></div><div class="lane-foot"><div class="lane-chips"><span class="lane-chip">FTL · Dry van</span><span class="lane-chip">Load LD-2841</span></div><button type="button" class="lane-link">Track</button></div></article><p class="lane-variant-label">Dense (operator)</p><article class="lane-dense" aria-label="Lane operator strip Dallas to Atlanta dark"><div class="lane-head"><h3>Lane</h3><span class="lane-badge"><span class="dot" aria-hidden="true"></span> In transit</span></div><div class="lane-dense-meta"><span>FTL · Truck</span><span class="lane-eta">ETA <span class="lane-eta-delta">+12m</span></span><span class="lane-chip lane-chip-danger">Exception</span><span class="ref">LD-2841</span></div><div class="lane-route"><div class="lane-city"><div class="code">DAL</div><div class="name">Dallas, TX</div></div><div class="lane-progress-wrap" aria-hidden="true"><div class="lane-rail"><div class="lane-rail-fill" data-lane="dark-dense"></div><div class="lane-marker" data-lane-marker="dark-dense"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7v-5z"/><circle cx="7" cy="17" r="1.6" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="1.6" fill="currentColor" stroke="none"/></svg></div></div></div><div class="lane-city to"><div class="code">ATL</div><div class="name">Atlanta, GA</div></div></div><div class="lane-times"><div><div class="lane-when">06:00</div><div class="lane-meta">Pickup · CT</div></div><div class="right"><div class="lane-when">18:42</div><div class="lane-meta">Delivery · ET · +12m</div></div></div><div class="lane-foot"><div class="lane-chips"><span class="lane-chip">Dry van</span><span class="lane-chip">Schneider</span><span class="lane-chip lane-chip-danger">Delay</span></div><button type="button" class="lane-link">Track</button></div></article></div></div></div></section>
+</style></head><body><header class="topbar"><h1>Endurance components · Foundations</h1><div class="filters" role="group" aria-label="Theme filter"><button type="button" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="light" aria-pressed="false">Light</button><button type="button" data-filter="dark" aria-pressed="false">Dark</button></div></header><main class="page"><section id="focus-timer" aria-labelledby="ft-heading"><div class="section-head"><h2 id="ft-heading">Focus timer</h2></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="ft-card" id="ft-light" data-state="running" role="group" aria-label="Focus timer light"><div class="ft-header"><div class="ft-title">Focus</div><div class="ft-status" data-state="running">In progress</div></div><div class="ft-dial-wrap"><div class="ft-dial"><div class="ft-breath" aria-hidden="true"></div><svg viewBox="0 0 200 200" aria-hidden="true"><g class="ft-ticks" transform="translate(100,100)"></g></svg><div class="ft-time">13:41</div></div></div><div class="ft-controls"><button class="ft-btn ft-btn-icon" type="button" data-action="reset" aria-label="Reset timer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button><button class="ft-btn ft-btn-main" type="button" data-action="toggle" aria-label="Pause timer"><svg class="ft-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg><span class="ft-label">Pause</span></button></div></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="ft-card" id="ft-dark" data-state="running" role="group" aria-label="Focus timer dark"><div class="ft-header"><div class="ft-title">Focus</div><div class="ft-status" data-state="running">In progress</div></div><div class="ft-dial-wrap"><div class="ft-dial"><div class="ft-breath" aria-hidden="true"></div><svg viewBox="0 0 200 200" aria-hidden="true"><g class="ft-ticks" transform="translate(100,100)"></g></svg><div class="ft-time">13:41</div></div></div><div class="ft-controls"><button class="ft-btn ft-btn-icon" type="button" data-action="reset" aria-label="Reset timer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button><button class="ft-btn ft-btn-main" type="button" data-action="toggle" aria-label="Pause timer"><svg class="ft-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg><span class="ft-label">Pause</span></button></div></div></div></div></section><section id="flip-counter" aria-labelledby="fc-heading"><div class="section-head"><h2 id="fc-heading">Flip counter</h2></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="fc-card" role="group" aria-label="Flip counter light"><div class="fc-head"><div class="fc-title">Count</div><div class="fc-status" data-state="idle">Ready</div></div><div class="fc-counter" data-flip="light" aria-live="polite" aria-atomic="true"></div><div class="fc-controls"><button class="fc-btn fc-btn-icon" type="button" data-flip-action="reset" data-flip-target="light" aria-label="Reset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.3"/><path d="M21 3v6h-6"/></svg></button><button class="fc-btn" type="button" data-flip-action="demo" data-flip-target="light">1,333</button><button class="fc-btn" type="button" data-flip-action="big" data-flip-target="light">12,847</button></div></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="fc-card" role="group" aria-label="Flip counter dark"><div class="fc-head"><div class="fc-title">Count</div><div class="fc-status" data-state="idle">Ready</div></div><div class="fc-counter" data-flip="dark" aria-live="polite" aria-atomic="true"></div><div class="fc-controls"><button class="fc-btn fc-btn-icon" type="button" data-flip-action="reset" data-flip-target="dark" aria-label="Reset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.3"/><path d="M21 3v6h-6"/></svg></button><button class="fc-btn" type="button" data-flip-action="demo" data-flip-target="dark">1,333</button><button class="fc-btn" type="button" data-flip-action="big" data-flip-target="dark">12,847</button></div></div></div></div></section><section id="mode-status" aria-labelledby="mode-heading"><div class="section-head"><h2 id="mode-heading">Mode status</h2><p class="doctrine-note">Ink rails + icons (var(--ink-solid)), not blue. One-shot settle only; no tip-glow or marker breath loops.</p></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="mode-grid" data-mode-stage="light"></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="mode-grid" data-mode-stage="dark"></div></div></div></section><section id="button" aria-labelledby="button-heading">
+<div class="section-head">
+<h2 id="button-heading">Button + LinkButton</h2>
+<p class="doctrine-note">Audit #1 / #16. Primary ink-solid, secondary, subtle, ghost, danger. Sizes sm/md. State matrix: default, hover, pressed, disabled, loading. No blue.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light · Button matrix</p>
+<div class="f-btn-stack">
+<div class="f-matrix-cell"><p class="f-matrix-label">Variants (md)</p>
+<div class="f-btn-row">
+<button type="button" class="f-btn f-btn-md f-btn-primary">Primary</button>
+<button type="button" class="f-btn f-btn-md f-btn-secondary">Secondary</button>
+<button type="button" class="f-btn f-btn-md f-btn-subtle">Subtle</button>
+<button type="button" class="f-btn f-btn-md f-btn-ghost">Ghost</button>
+<button type="button" class="f-btn f-btn-md f-btn-danger">Danger</button>
+</div></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">Sizes</p>
+<div class="f-btn-row">
+<button type="button" class="f-btn f-btn-sm f-btn-primary">Save sm</button>
+<button type="button" class="f-btn f-btn-md f-btn-primary">Save md</button>
+<button type="button" class="f-btn f-btn-sm f-btn-secondary">Cancel sm</button>
+<button type="button" class="f-btn f-btn-md f-btn-secondary">Cancel md</button>
+</div></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">State matrix (primary)</p>
+<div class="f-btn-row">
+<button type="button" class="f-btn f-btn-md f-btn-primary">Default</button>
+<button type="button" class="f-btn f-btn-md f-btn-primary is-hover">Hover</button>
+<button type="button" class="f-btn f-btn-md f-btn-primary is-pressed">Pressed</button>
+<button type="button" class="f-btn f-btn-md f-btn-primary" disabled>Disabled</button>
+<button type="button" class="f-btn f-btn-md f-btn-primary is-loading" aria-busy="true">Loading</button>
+</div></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">LinkButton</p>
+<div class="f-btn-row">
+<a class="f-btn-link f-btn-md f-btn-primary" href="#button">Open record</a>
+<a class="f-btn-link f-btn-md f-btn-secondary" href="#button">View list</a>
+<a class="f-btn-link f-btn-sm f-btn-ghost" href="#button">Skip</a>
+</div></div>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark · Button matrix</p>
+<div class="f-btn-stack">
+<div class="f-matrix-cell"><p class="f-matrix-label">Variants (md)</p>
+<div class="f-btn-row">
+<button type="button" class="f-btn f-btn-md f-btn-primary">Primary</button>
+<button type="button" class="f-btn f-btn-md f-btn-secondary">Secondary</button>
+<button type="button" class="f-btn f-btn-md f-btn-subtle">Subtle</button>
+<button type="button" class="f-btn f-btn-md f-btn-ghost">Ghost</button>
+<button type="button" class="f-btn f-btn-md f-btn-danger">Danger</button>
+</div></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">Sizes</p>
+<div class="f-btn-row">
+<button type="button" class="f-btn f-btn-sm f-btn-primary">Save sm</button>
+<button type="button" class="f-btn f-btn-md f-btn-primary">Save md</button>
+<button type="button" class="f-btn f-btn-sm f-btn-secondary">Cancel sm</button>
+<button type="button" class="f-btn f-btn-md f-btn-secondary">Cancel md</button>
+</div></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">State matrix (primary)</p>
+<div class="f-btn-row">
+<button type="button" class="f-btn f-btn-md f-btn-primary">Default</button>
+<button type="button" class="f-btn f-btn-md f-btn-primary is-hover">Hover</button>
+<button type="button" class="f-btn f-btn-md f-btn-primary is-pressed">Pressed</button>
+<button type="button" class="f-btn f-btn-md f-btn-primary" disabled>Disabled</button>
+<button type="button" class="f-btn f-btn-md f-btn-primary is-loading" aria-busy="true">Loading</button>
+</div></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">LinkButton</p>
+<div class="f-btn-row">
+<a class="f-btn-link f-btn-md f-btn-primary" href="#button">Open record</a>
+<a class="f-btn-link f-btn-md f-btn-secondary" href="#button">View list</a>
+<a class="f-btn-link f-btn-sm f-btn-ghost" href="#button">Skip</a>
+</div></div>
+</div>
+</div>
+</div>
+</section>
+<section id="panel-card" aria-labelledby="panel-heading">
+<div class="section-head">
+<h2 id="panel-heading">Panel + Card + SectionLabel</h2>
+<p class="doctrine-note">Audit #2 / #22 / #6. Panel radius 20 for wide chrome. Card radius 16 for compact blocks. SectionLabel introduces a band.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light</p>
+<div class="f-chrome-demo">
+<div>
+<div class="f-sec-lab"><h3>Performance</h3><button type="button" class="f-btn f-btn-sm f-btn-ghost">Export</button></div>
+<div class="f-panel-xl"><div class="f-chrome-body">Panel (radius 20). Charts, legends, and tables sit here.</div></div>
+</div>
+<div>
+<div class="f-sec-lab"><h3>Account</h3></div>
+<div class="f-card-md">
+<p style="margin:0 0 6px;font-size:13px;font-weight:550;color:var(--ink)">Schneider National</p>
+<p style="margin:0;font-size:12px;color:var(--muted);line-height:1.4">Card (radius 16). White on grey canvas; hairline for the edge.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark</p>
+<div class="f-chrome-demo">
+<div>
+<div class="f-sec-lab"><h3>Performance</h3><button type="button" class="f-btn f-btn-sm f-btn-ghost">Export</button></div>
+<div class="f-panel-xl"><div class="f-chrome-body">Panel (radius 20). Charts, legends, and tables sit here.</div></div>
+</div>
+<div>
+<div class="f-sec-lab"><h3>Account</h3></div>
+<div class="f-card-md">
+<p style="margin:0 0 6px;font-size:13px;font-weight:550;color:var(--ink)">Schneider National</p>
+<p style="margin:0;font-size:12px;color:var(--muted);line-height:1.4">Card (radius 16). White on grey canvas; hairline for the edge.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="forms" aria-labelledby="forms-heading">
+<div class="section-head">
+<h2 id="forms-heading">Forms</h2>
+<p class="doctrine-note">Audit #3 Field, #9 Input, #7 Select, #14 Textarea, #5 ErrorText. States: default, focus, error, disabled. Radius 10, hairline, ink focus ring.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light · Field matrix</p>
+<div class="f-form-stack">
+<div class="f-matrix-cell"><p class="f-matrix-label">Default</p>
+<label class="f-field"><span class="f-field-label">Company</span>
+<input class="f-input" type="text" value="Endurance Logistics" /></label></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">Focus</p>
+<label class="f-field"><span class="f-field-label">Lane</span>
+<input class="f-input is-focus" type="text" value="DAL to ATL" /></label></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">Error</p>
+<label class="f-field"><span class="f-field-label">Rate</span>
+<input class="f-input is-error" type="text" value="" placeholder="Enter rate" />
+<span class="f-err" role="alert">Rate is required.</span></label></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">Disabled</p>
+<label class="f-field"><span class="f-field-label">Owner</span>
+<input class="f-input" type="text" value="Alex Sok" disabled /></label></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">Select</p>
+<label class="f-field"><span class="f-field-label">Mode</span>
+<select class="f-select"><option>FTL</option><option>LTL</option><option>Air</option></select>
+<span class="f-field-hint">Native select, dressed as Input.</span></label></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">Textarea</p>
+<label class="f-field"><span class="f-field-label">Notes</span>
+<textarea class="f-textarea" rows="3">Pickup window confirmed with Schneider.</textarea></label></div>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark · Field matrix</p>
+<div class="f-form-stack">
+<div class="f-matrix-cell"><p class="f-matrix-label">Default</p>
+<label class="f-field"><span class="f-field-label">Company</span>
+<input class="f-input" type="text" value="Endurance Logistics" /></label></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">Focus</p>
+<label class="f-field"><span class="f-field-label">Lane</span>
+<input class="f-input is-focus" type="text" value="DAL to ATL" /></label></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">Error</p>
+<label class="f-field"><span class="f-field-label">Rate</span>
+<input class="f-input is-error" type="text" value="" placeholder="Enter rate" />
+<span class="f-err" role="alert">Rate is required.</span></label></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">Disabled</p>
+<label class="f-field"><span class="f-field-label">Owner</span>
+<input class="f-input" type="text" value="Alex Sok" disabled /></label></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">Select</p>
+<label class="f-field"><span class="f-field-label">Mode</span>
+<select class="f-select"><option>FTL</option><option>LTL</option><option>Air</option></select>
+<span class="f-field-hint">Native select, dressed as Input.</span></label></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">Textarea</p>
+<label class="f-field"><span class="f-field-label">Notes</span>
+<textarea class="f-textarea" rows="3">Pickup window confirmed with Schneider.</textarea></label></div>
+</div>
+</div>
+</div>
+</section>
+<section id="badge" aria-labelledby="badge-heading">
+<div class="section-head">
+<h2 id="badge-heading">Badge + StageBadge + Unassigned</h2>
+<p class="doctrine-note">Audit #4 / #32 / #24. Neutral, strong, outline, danger tones. Stage uses shape weight, not hue. Unassigned is quiet subtle text.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light</p>
+<div class="f-btn-stack">
+<div class="f-matrix-cell"><p class="f-matrix-label">Badge tones</p>
+<div class="f-badge-row">
+<span class="f-badge">12</span>
+<span class="f-badge f-badge-strong">Won</span>
+<span class="f-badge f-badge-outline">Lost</span>
+<span class="f-badge f-badge-danger">Exception</span>
+</div></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">StageBadge</p>
+<div class="f-badge-row">
+<span class="f-badge">Discovery</span>
+<span class="f-badge f-badge-strong">Closed won</span>
+<span class="f-badge f-badge-outline">Closed lost</span>
+</div></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">Unassigned</p>
+<p class="f-unassigned" style="margin:0">Unassigned</p></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">With StatusDot</p>
+<div class="f-badge-row">
+<span class="f-list-status"><span class="f-dot f-dot-ink f-dot-pulse" aria-hidden="true"></span>In transit</span>
+<span class="f-list-status"><span class="f-dot f-dot-danger" aria-hidden="true"></span>Exception</span>
+<span class="f-list-status"><span class="f-dot" aria-hidden="true"></span>Booked</span>
+</div></div>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark</p>
+<div class="f-btn-stack">
+<div class="f-matrix-cell"><p class="f-matrix-label">Badge tones</p>
+<div class="f-badge-row">
+<span class="f-badge">12</span>
+<span class="f-badge f-badge-strong">Won</span>
+<span class="f-badge f-badge-outline">Lost</span>
+<span class="f-badge f-badge-danger">Exception</span>
+</div></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">StageBadge</p>
+<div class="f-badge-row">
+<span class="f-badge">Discovery</span>
+<span class="f-badge f-badge-strong">Closed won</span>
+<span class="f-badge f-badge-outline">Closed lost</span>
+</div></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">Unassigned</p>
+<p class="f-unassigned" style="margin:0">Unassigned</p></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">With StatusDot</p>
+<div class="f-badge-row">
+<span class="f-list-status"><span class="f-dot f-dot-ink f-dot-pulse" aria-hidden="true"></span>In transit</span>
+<span class="f-list-status"><span class="f-dot f-dot-danger" aria-hidden="true"></span>Exception</span>
+<span class="f-list-status"><span class="f-dot" aria-hidden="true"></span>Booked</span>
+</div></div>
+</div>
+</div>
+</div>
+</section>
+<section id="page-chrome" aria-labelledby="page-chrome-heading">
+<div class="section-head">
+<h2 id="page-chrome-heading">PageHeader + BackLink + Toolbar</h2>
+<p class="doctrine-note">Audit #11 / #21 / #17. List title row with actions. Back link above detail titles. Toolbar sizes controls to content.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light</p>
+<div class="f-chrome-block">
+<a class="f-back" href="#page-chrome"><span class="f-back-arrow" aria-hidden="true">←</span> Loads</a>
+<div class="f-page-head">
+<h3 class="f-page-title">Loads</h3>
+<div class="f-page-actions">
+<button type="button" class="f-btn f-btn-sm f-btn-secondary">Import</button>
+<button type="button" class="f-btn f-btn-sm f-btn-primary">New load</button>
+</div>
+</div>
+<div class="f-toolbar" style="margin-top:16px">
+<nav class="f-seg" aria-label="Load scope"><button type="button" class="f-seg-btn" aria-pressed="true">Mine</button><button type="button" class="f-seg-btn" aria-pressed="false">Team</button><button type="button" class="f-seg-btn" aria-pressed="false">All</button></nav>
+<span class="f-pill">This week</span>
+<input class="f-input" style="max-width:160px;height:36px;padding-top:0;padding-bottom:0" type="search" placeholder="Search loads" />
+</div>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark</p>
+<div class="f-chrome-block">
+<a class="f-back" href="#page-chrome"><span class="f-back-arrow" aria-hidden="true">←</span> Loads</a>
+<div class="f-page-head">
+<h3 class="f-page-title">Loads</h3>
+<div class="f-page-actions">
+<button type="button" class="f-btn f-btn-sm f-btn-secondary">Import</button>
+<button type="button" class="f-btn f-btn-sm f-btn-primary">New load</button>
+</div>
+</div>
+<div class="f-toolbar" style="margin-top:16px">
+<nav class="f-seg" aria-label="Load scope"><button type="button" class="f-seg-btn" aria-pressed="true">Mine</button><button type="button" class="f-seg-btn" aria-pressed="false">Team</button><button type="button" class="f-seg-btn" aria-pressed="false">All</button></nav>
+<span class="f-pill">This week</span>
+<input class="f-input" style="max-width:160px;height:36px;padding-top:0;padding-bottom:0" type="search" placeholder="Search loads" />
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="avatar" aria-labelledby="avatar-heading">
+<div class="section-head">
+<h2 id="avatar-heading">Avatar</h2>
+<p class="doctrine-note">Audit #12. Lettered monochrome tiles (sm/md/lg). Image placeholder uses hatch, not a hue. Ring via hairline-strong.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light</p>
+<div class="f-btn-stack">
+<div class="f-matrix-cell"><p class="f-matrix-label">Initials</p>
+<div class="f-avatar-row">
+<span class="f-avatar f-avatar-sm" aria-hidden="true">AS</span>
+<span class="f-avatar f-avatar-md" aria-hidden="true">SN</span>
+<span class="f-avatar f-avatar-lg" aria-hidden="true">EL</span>
+</div></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">Image placeholder</p>
+<div class="f-avatar-row">
+<span class="f-avatar f-avatar-sm f-avatar-ph" aria-hidden="true">·</span>
+<span class="f-avatar f-avatar-md f-avatar-ph" aria-hidden="true">·</span>
+<span class="f-avatar f-avatar-lg f-avatar-ph" aria-hidden="true">·</span>
+</div></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">In a row</p>
+<div class="f-panel"><ul class="f-list"><li class="f-list-row"><a class="f-list-row-body" href="#avatar"><span class="f-avatar f-avatar-sm" aria-hidden="true">JK</span><span class="f-list-name">Jordan Kim</span><span class="f-list-kpi">Owner</span></a></li><li class="f-list-row"><a class="f-list-row-body" href="#avatar"><span class="f-avatar f-avatar-sm" aria-hidden="true">MR</span><span class="f-list-name">Morgan Reyes</span><span class="f-unassigned">Unassigned</span></a></li></ul></div></div>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark</p>
+<div class="f-btn-stack">
+<div class="f-matrix-cell"><p class="f-matrix-label">Initials</p>
+<div class="f-avatar-row">
+<span class="f-avatar f-avatar-sm" aria-hidden="true">AS</span>
+<span class="f-avatar f-avatar-md" aria-hidden="true">SN</span>
+<span class="f-avatar f-avatar-lg" aria-hidden="true">EL</span>
+</div></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">Image placeholder</p>
+<div class="f-avatar-row">
+<span class="f-avatar f-avatar-sm f-avatar-ph" aria-hidden="true">·</span>
+<span class="f-avatar f-avatar-md f-avatar-ph" aria-hidden="true">·</span>
+<span class="f-avatar f-avatar-lg f-avatar-ph" aria-hidden="true">·</span>
+</div></div>
+<div class="f-matrix-cell"><p class="f-matrix-label">In a row</p>
+<div class="f-panel"><ul class="f-list"><li class="f-list-row"><a class="f-list-row-body" href="#avatar"><span class="f-avatar f-avatar-sm" aria-hidden="true">JK</span><span class="f-list-name">Jordan Kim</span><span class="f-list-kpi">Owner</span></a></li><li class="f-list-row"><a class="f-list-row-body" href="#avatar"><span class="f-avatar f-avatar-sm" aria-hidden="true">MR</span><span class="f-list-name">Morgan Reyes</span><span class="f-unassigned">Unassigned</span></a></li></ul></div></div>
+</div>
+</div>
+</div>
+</section>
+<section id="datatable" aria-labelledby="datatable-heading">
+<div class="section-head">
+<h2 id="datatable-heading">DataTable + Pagination</h2>
+<p class="doctrine-note">Audit #26 / #31. Compact hairline table (px-20 py-12). Hover surface-2. Pagination footer with Previous / Next.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light · Table</p>
+<div class="f-panel">
+<div class="f-table-wrap">
+<table class="f-table">
+<thead><tr><th>Load</th><th>Lane</th><th>Status</th><th class="num">Rate</th></tr></thead>
+<tbody>
+<tr><td>LD-2841</td><td>DAL to ATL</td><td><span class="f-list-status"><span class="f-dot f-dot-ink f-dot-pulse" aria-hidden="true"></span>In transit</span></td><td class="num">$2,840</td></tr>
+<tr class="is-hover"><td>LD-2842</td><td>CHI to NYC</td><td><span class="f-list-status"><span class="f-dot f-dot-ink" aria-hidden="true"></span>Delivered</span></td><td class="num">$1,920</td></tr>
+<tr><td>LD-2843</td><td>LAX to SEA</td><td><span class="f-list-status"><span class="f-dot f-dot-danger" aria-hidden="true"></span>Exception</span></td><td class="num">$3,110</td></tr>
+<tr><td>LD-2844</td><td>DEN to PHX</td><td><span class="f-list-status"><span class="f-dot" aria-hidden="true"></span>Booked</span></td><td class="num">$1,480</td></tr>
+</tbody>
+</table>
+</div>
+<nav class="f-paginate" aria-label="Pagination">
+<p class="f-paginate-meta">1 to 4 of 84 loads</p>
+<div class="f-paginate-controls">
+<button type="button" class="f-btn f-btn-sm f-btn-secondary" disabled>Previous</button>
+<span class="f-paginate-page">Page 1 of 21</span>
+<button type="button" class="f-btn f-btn-sm f-btn-secondary">Next</button>
+</div>
+</nav>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark · Table</p>
+<div class="f-panel">
+<div class="f-table-wrap">
+<table class="f-table">
+<thead><tr><th>Load</th><th>Lane</th><th>Status</th><th class="num">Rate</th></tr></thead>
+<tbody>
+<tr><td>LD-2841</td><td>DAL to ATL</td><td><span class="f-list-status"><span class="f-dot f-dot-ink f-dot-pulse" aria-hidden="true"></span>In transit</span></td><td class="num">$2,840</td></tr>
+<tr class="is-hover"><td>LD-2842</td><td>CHI to NYC</td><td><span class="f-list-status"><span class="f-dot f-dot-ink" aria-hidden="true"></span>Delivered</span></td><td class="num">$1,920</td></tr>
+<tr><td>LD-2843</td><td>LAX to SEA</td><td><span class="f-list-status"><span class="f-dot f-dot-danger" aria-hidden="true"></span>Exception</span></td><td class="num">$3,110</td></tr>
+<tr><td>LD-2844</td><td>DEN to PHX</td><td><span class="f-list-status"><span class="f-dot" aria-hidden="true"></span>Booked</span></td><td class="num">$1,480</td></tr>
+</tbody>
+</table>
+</div>
+<nav class="f-paginate" aria-label="Pagination">
+<p class="f-paginate-meta">1 to 4 of 84 loads</p>
+<div class="f-paginate-controls">
+<button type="button" class="f-btn f-btn-sm f-btn-secondary" disabled>Previous</button>
+<span class="f-paginate-page">Page 1 of 21</span>
+<button type="button" class="f-btn f-btn-sm f-btn-secondary">Next</button>
+</div>
+</nav>
+</div>
+</div>
+</div>
+</section>
+<section id="lane" aria-labelledby="lane-heading"><div class="section-head"><h2 id="lane-heading">Lane</h2><p class="doctrine-note">Airy vs dense operator strip: same DAL→ATL, ink progress marker (not blue). Dense: tighter 8px rhythm, ETA delta, exception chip, mode, ref id.</p></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="lane-stack"><p class="lane-variant-label">Airy (current)</p><article class="lane-card" aria-label="Lane status Dallas to Atlanta light airy"><div class="lane-head"><h3>Lane</h3><span class="lane-badge"><span class="dot" aria-hidden="true"></span> In transit</span></div><div class="lane-route"><div class="lane-city"><div class="code">DAL</div><div class="name">Dallas, TX</div></div><div class="lane-progress-wrap" aria-hidden="true"><div class="lane-rail"><div class="lane-rail-fill" data-lane="light-airy"></div><div class="lane-marker" data-lane-marker="light-airy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7v-5z"/><circle cx="7" cy="17" r="1.6" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="1.6" fill="currentColor" stroke="none"/></svg></div></div></div><div class="lane-city to"><div class="code">ATL</div><div class="name">Atlanta, GA</div></div></div><div class="lane-times"><div><div class="lane-when">06:00</div><div class="lane-meta">Pickup · CT</div></div><div class="right"><div class="lane-when">18:30</div><div class="lane-meta">Delivery · ET</div></div></div><div class="lane-foot"><div class="lane-chips"><span class="lane-chip">FTL · Dry van</span><span class="lane-chip">Load LD-2841</span></div><button type="button" class="lane-link">Track</button></div></article><p class="lane-variant-label">Dense (operator)</p><article class="lane-dense" aria-label="Lane operator strip Dallas to Atlanta light"><div class="lane-head"><h3>Lane</h3><span class="lane-badge"><span class="dot" aria-hidden="true"></span> In transit</span></div><div class="lane-dense-meta"><span>FTL · Truck</span><span class="lane-eta">ETA <span class="lane-eta-delta">+12m</span></span><span class="lane-chip lane-chip-danger">Exception</span><span class="ref">LD-2841</span></div><div class="lane-route"><div class="lane-city"><div class="code">DAL</div><div class="name">Dallas, TX</div></div><div class="lane-progress-wrap" aria-hidden="true"><div class="lane-rail"><div class="lane-rail-fill" data-lane="light-dense"></div><div class="lane-marker" data-lane-marker="light-dense"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7v-5z"/><circle cx="7" cy="17" r="1.6" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="1.6" fill="currentColor" stroke="none"/></svg></div></div></div><div class="lane-city to"><div class="code">ATL</div><div class="name">Atlanta, GA</div></div></div><div class="lane-times"><div><div class="lane-when">06:00</div><div class="lane-meta">Pickup · CT</div></div><div class="right"><div class="lane-when">18:42</div><div class="lane-meta">Delivery · ET · +12m</div></div></div><div class="lane-foot"><div class="lane-chips"><span class="lane-chip">Dry van</span><span class="lane-chip">Schneider</span><span class="lane-chip lane-chip-danger">Delay</span></div><button type="button" class="lane-link">Track</button></div></article></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="lane-stack"><p class="lane-variant-label">Airy (current)</p><article class="lane-card" aria-label="Lane status Dallas to Atlanta dark airy"><div class="lane-head"><h3>Lane</h3><span class="lane-badge"><span class="dot" aria-hidden="true"></span> In transit</span></div><div class="lane-route"><div class="lane-city"><div class="code">DAL</div><div class="name">Dallas, TX</div></div><div class="lane-progress-wrap" aria-hidden="true"><div class="lane-rail"><div class="lane-rail-fill" data-lane="dark-airy"></div><div class="lane-marker" data-lane-marker="dark-airy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7v-5z"/><circle cx="7" cy="17" r="1.6" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="1.6" fill="currentColor" stroke="none"/></svg></div></div></div><div class="lane-city to"><div class="code">ATL</div><div class="name">Atlanta, GA</div></div></div><div class="lane-times"><div><div class="lane-when">06:00</div><div class="lane-meta">Pickup · CT</div></div><div class="right"><div class="lane-when">18:30</div><div class="lane-meta">Delivery · ET</div></div></div><div class="lane-foot"><div class="lane-chips"><span class="lane-chip">FTL · Dry van</span><span class="lane-chip">Load LD-2841</span></div><button type="button" class="lane-link">Track</button></div></article><p class="lane-variant-label">Dense (operator)</p><article class="lane-dense" aria-label="Lane operator strip Dallas to Atlanta dark"><div class="lane-head"><h3>Lane</h3><span class="lane-badge"><span class="dot" aria-hidden="true"></span> In transit</span></div><div class="lane-dense-meta"><span>FTL · Truck</span><span class="lane-eta">ETA <span class="lane-eta-delta">+12m</span></span><span class="lane-chip lane-chip-danger">Exception</span><span class="ref">LD-2841</span></div><div class="lane-route"><div class="lane-city"><div class="code">DAL</div><div class="name">Dallas, TX</div></div><div class="lane-progress-wrap" aria-hidden="true"><div class="lane-rail"><div class="lane-rail-fill" data-lane="dark-dense"></div><div class="lane-marker" data-lane-marker="dark-dense"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7v-5z"/><circle cx="7" cy="17" r="1.6" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="1.6" fill="currentColor" stroke="none"/></svg></div></div></div><div class="lane-city to"><div class="code">ATL</div><div class="name">Atlanta, GA</div></div></div><div class="lane-times"><div><div class="lane-when">06:00</div><div class="lane-meta">Pickup · CT</div></div><div class="right"><div class="lane-when">18:42</div><div class="lane-meta">Delivery · ET · +12m</div></div></div><div class="lane-foot"><div class="lane-chips"><span class="lane-chip">Dry van</span><span class="lane-chip">Schneider</span><span class="lane-chip lane-chip-danger">Delay</span></div><button type="button" class="lane-link">Track</button></div></article></div></div></div></section>
 <section id="list" aria-labelledby="list-heading">
 <div class="section-head">
 <h2 id="list-heading">List</h2>
@@ -637,7 +1176,7 @@
 </div>
 </div>
 </section>
-</main><p class="footer-note">Focus · Flip · Mode · Lane (airy/dense) · List matrix · Kpi · Segmented matrix · Sheet matrix · Breakdown · Empty · Training chrome. Light / Dark. Ink-on-paper: ink rails, --danger only, no blue accents. Training charcoal stays training-only.</p><script>(function () {
+</main><p class="footer-note">Focus · Flip · Mode · Commons (Button, Panel/Card, Forms, Badge, Page chrome, Avatar, DataTable) · Lane · List · Kpi · Segmented · Sheet · Breakdown · Empty · Training chrome. Light / Dark. Ink-on-paper: ink rails, --danger only, no blue accents. Training charcoal stays training-only.</p><script>(function () {
 var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 document.querySelectorAll(".filters button").forEach(function (btn) {
 btn.addEventListener("click", function () {
