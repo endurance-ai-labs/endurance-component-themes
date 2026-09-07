@@ -1,4 +1,534 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Endurance components · Light / Dark</title><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Inter:wght@450;500;600;650;700&display=swap" rel="stylesheet" /><style>:root{--u:8px;--ease:cubic-bezier(0.4,0,0.2,1);--flip:cubic-bezier(0.45,0.05,0.55,0.95);--progress:#3B6FE8;--page-bg:#e8e8ea;--page-ink:#1a1a1a;--page-muted:#5f5f5f;--page-bar:rgba(255,255,255,0.92);--page-hair:#dcdcdc}*{box-sizing:border-box}html{scroll-behavior:smooth}html,body{margin:0;min-height:100%}body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased;background:var(--page-bg);color:var(--page-ink);padding-bottom:calc(8 * var(--u))}.topbar{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:calc(1.5 * var(--u));padding:calc(1.5 * var(--u)) calc(3 * var(--u));background:var(--page-bar);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--page-hair)}.topbar h1{margin:0;font-size:15px;font-weight:650;letter-spacing:-0.02em}.filters{display:flex;gap:6px}.filters button{appearance:none;border:1px solid var(--page-hair);background:#fff;color:var(--page-muted);border-radius:999px;height:32px;padding:0 14px;font:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:background 150ms var(--ease),color 150ms var(--ease),border-color 150ms var(--ease)}.filters button[aria-pressed="true"]{background:#1a1a1a;border-color:#1a1a1a;color:#fff}@media (hover:hover) and (pointer:fine){.filters button:hover:not([aria-pressed="true"]){border-color:#b0b0b0;color:var(--page-ink)}}.page{width:min(100%,1080px);margin:0 auto;padding:calc(4 * var(--u)) calc(3 * var(--u)) 0;display:flex;flex-direction:column;gap:calc(6 * var(--u))}.section-head{margin:0 0 calc(2.5 * var(--u))}.section-head h2{margin:0 0 6px;font-size:20px;font-weight:650;letter-spacing:-0.025em}.section-head p{margin:0;font-size:13px;color:var(--page-muted);line-height:1.45;max-width:52ch}.pair{display:grid;grid-template-columns:1fr 1fr;gap:calc(2.5 * var(--u));align-items:start}@media (max-width:820px){.pair{grid-template-columns:1fr}}.pane{border-radius:calc(2.5 * var(--u));padding:calc(2.5 * var(--u));display:flex;flex-direction:column;gap:calc(2 * var(--u));min-width:0}.pane-label{margin:0;font-size:11px;font-weight:650;letter-spacing:0.06em;text-transform:uppercase}.pane-light{background:#efefef;color:#1a1a1a}.pane-light .pane-label{color:#767676}.pane-dark{background:#121212;color:#f3f3f4}.pane-dark .pane-label{color:#8a8a90}body.filter-light .pane-dark,body.filter-dark .pane-light{display:none}body.filter-light .pair,body.filter-dark .pair{grid-template-columns:1fr;max-width:520px}.t-light{--canvas:#efefef;--surface:#ffffff;--surface-2:#f4f4f4;--ink:#1a1a1a;--muted:#5f5f5f;--subtle:#767676;--hairline:#ececec;--hairline-strong:#dcdcdc;--track:#e0e0e0;--progress:#3B6FE8;--ink-solid:#1a1a1a;--btn:#1a1a1a;--btn-hover:#333;--btn-ink:#fff;--radius:18px;--card-r:24px}.t-dark{--canvas:#121212;--surface:#1c1c1e;--surface-2:#2a2a2e;--ink:#f3f3f4;--muted:#a0a0a6;--subtle:#8a8a90;--hairline:#2e2e32;--hairline-strong:#3a3a40;--track:#3a3a40;--progress:#3B6FE8;--ink-solid:#f3f3f4;--btn:#2a2d36;--btn-hover:#353944;--btn-ink:#fff;--radius:18px;--card-r:24px}.ft-card{position:relative;width:100%;max-width:320px;margin:0 auto;aspect-ratio:40 / 46;border-radius:var(--card-r);padding:24px;display:flex;flex-direction:column;overflow:hidden;color:var(--ink)}.t-dark .ft-card{background:radial-gradient(90% 70% at 50% -10%,rgba(70,82,120,0.42),transparent 60%),linear-gradient(180deg,#1a1f2c 0%,#10131b 48%,#0b0e14 100%);box-shadow:0 12px 32px rgba(0,0,0,0.35);--ft-muted:rgba(255,255,255,0.45);--ft-tick-off:rgba(255,255,255,0.18);--ft-tick-on:#fff;--ft-btn:#2a2d36;--ft-btn-hover:#353944;--ft-breath:rgba(255,255,255,0.05);--ft-inset:rgba(255,255,255,0.055)}.t-light .ft-card{background:radial-gradient(90% 60% at 50% -8%,rgba(59,111,232,0.06),transparent 55%),linear-gradient(180deg,#ffffff 0%,#fafafa 100%);border:1px solid var(--hairline);box-shadow:0 8px 24px rgba(16,18,22,0.06);--ft-muted:#767676;--ft-tick-off:rgba(26,26,26,0.16);--ft-tick-on:#1a1a1a;--ft-btn:#1a1a1a;--ft-btn-hover:#333;--ft-breath:rgba(26,26,26,0.04);--ft-inset:rgba(255,255,255,0.8)}.ft-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 1px 0 var(--ft-inset)}.ft-header{display:grid;grid-template-columns:1fr auto;align-items:center;height:24px;margin-bottom:16px;z-index:1}.ft-title{font-size:16px;font-weight:600;letter-spacing:-0.02em;line-height:1}.ft-status{font-size:13px;font-weight:500;color:var(--ft-muted);line-height:1;transition:color 150ms var(--ease),opacity 100ms var(--ease),transform 150ms var(--ease)}.ft-status.is-swap{opacity:0;transform:translateY(2px)}.ft-status[data-state="paused"]{color:#c9842a}.t-dark .ft-status[data-state="paused"]{color:rgba(255,196,120,0.85)}.ft-status[data-state="done"]{color:#2f9e62}.t-dark .ft-status[data-state="done"]{color:rgba(150,230,180,0.9)}.ft-dial-wrap{display:grid;place-items:center;flex:1 1 auto;min-height:0;margin-bottom:24px;z-index:1}.ft-dial{position:relative;width:min(100%,192px);aspect-ratio:1}.ft-dial svg{width:100%;height:100%;display:block;overflow:visible}.ft-tick{stroke-linecap:round;transition:stroke 180ms var(--ease),stroke-opacity 180ms var(--ease)}.ft-tick.off{stroke:var(--ft-tick-off)}.ft-tick.on{stroke:var(--ft-tick-on)}.ft-card[data-state="paused"] .ft-tick.on{stroke-opacity:0.72}.ft-card[data-state="paused"] .ft-tick.off{stroke-opacity:0.65}.ft-time{position:absolute;inset:0;display:grid;place-items:center;font-variant-numeric:tabular-nums;font-size:48px;font-weight:650;letter-spacing:-0.045em;line-height:1;user-select:none;pointer-events:none;transition:transform 150ms var(--ease),opacity 150ms var(--ease)}.ft-time.pop{animation:count-pop 420ms var(--ease)}.ft-time.tick-sec{animation:sec-nudge 220ms var(--ease)}@keyframes count-pop{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}@keyframes sec-nudge{0%{transform:scale(1);opacity:1}35%{transform:scale(1.015);opacity:0.92}100%{transform:scale(1);opacity:1}}.ft-breath{position:absolute;inset:16%;border-radius:50%;background:radial-gradient(circle,var(--ft-breath),transparent 70%);pointer-events:none;opacity:0}.ft-card[data-state="running"] .ft-breath{animation:breath 2.4s var(--ease) infinite}@keyframes breath{0%,100%{opacity:0.15;transform:scale(0.96)}50%{opacity:0.55;transform:scale(1)}}.ft-controls{display:grid;grid-template-columns:48px 1fr;gap:8px;height:48px;flex:0 0 auto;z-index:1}.ft-btn{appearance:none;border:0;cursor:pointer;color:var(--btn-ink);background:var(--ft-btn);font:inherit;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:100%;transition:background-color 150ms var(--ease),transform 150ms var(--ease);-webkit-tap-highlight-color:transparent}.ft-btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}.t-dark .ft-btn:focus-visible{outline-color:rgba(255,255,255,0.55)}.ft-btn-icon{width:48px;border-radius:999px;padding:0}.ft-btn-main{border-radius:999px;font-size:15px;font-weight:600;letter-spacing:-0.015em;padding:0 16px}.ft-btn svg{width:15px;height:15px;display:block}.ft-btn.press{transform:scale(0.97)}.ft-btn-icon.spin svg{animation:reset-spin 520ms var(--ease)}@keyframes reset-spin{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}@media (hover:hover) and (pointer:fine){.ft-btn:hover{background:var(--ft-btn-hover)}.ft-btn:active{transform:scale(0.97)}}.fc-card{position:relative;width:100%;max-width:400px;margin:0 auto;border-radius:var(--card-r);padding:24px;overflow:hidden;color:var(--ink)}.t-dark .fc-card{background:radial-gradient(90% 70% at 50% -10%,rgba(70,82,120,0.42),transparent 60%),linear-gradient(180deg,#1a1f2c 0%,#10131b 48%,#0b0e14 100%);box-shadow:0 12px 32px rgba(0,0,0,0.35);--panel-top:#1c2130;--panel-mid:#141820;--panel-bot:#0c0e14;--panel-top2:#161a24;--panel-bot2:#12151c;--fc-muted:rgba(255,255,255,0.45);--fc-comma:rgba(255,255,255,0.4);--fc-btn:#2a2d36;--fc-btn-hover:#353944;--digit-ink:#fff;--digit-shadow:0 1px 1px rgba(0,0,0,0.4);--face-inset:inset 0 1px 0 rgba(255,255,255,0.07),inset 0 -2px 8px rgba(0,0,0,0.45);--seam-c:rgba(0,0,0,0.55);--pin-c:rgba(255,255,255,0.08);--stack-c:rgba(0,0,0,0.4)}.t-light .fc-card{background:#fff;border:1px solid var(--hairline);box-shadow:0 8px 24px rgba(16,18,22,0.06);--panel-top:#f7f7f8;--panel-mid:#ececee;--panel-bot:#e4e4e7;--panel-top2:#f0f0f2;--panel-bot2:#e8e8eb;--fc-muted:#767676;--fc-comma:#9a9aa0;--fc-btn:#1a1a1a;--fc-btn-hover:#333;--digit-ink:#1a1a1a;--digit-shadow:none;--face-inset:inset 0 1px 0 rgba(255,255,255,0.9),inset 0 -1px 4px rgba(0,0,0,0.06);--seam-c:rgba(0,0,0,0.12);--pin-c:rgba(0,0,0,0.18);--stack-c:rgba(0,0,0,0.12)}.fc-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 1px 0 rgba(255,255,255,0.055)}.t-light .fc-card::after{box-shadow:inset 0 1px 0 rgba(255,255,255,0.9)}.fc-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px;position:relative;z-index:1}.fc-title{font-size:16px;font-weight:600;letter-spacing:-0.02em}.fc-status{font-size:13px;font-weight:500;color:var(--fc-muted)}.fc-counter{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;min-height:96px;margin-bottom:24px;position:relative;z-index:1}.fc-group{display:flex;align-items:center;gap:6px}.fc-comma{width:18px;height:80px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;font-size:26px;font-weight:650;color:var(--fc-comma);line-height:1;user-select:none;transform:translateY(2px)}.fc-digit{position:relative;width:56px;height:80px;border-radius:12px;perspective:480px;font-variant-numeric:tabular-nums;flex:0 0 auto}.fc-digit-face{position:absolute;inset:0;border-radius:inherit;overflow:hidden;background:var(--panel-mid);box-shadow:var(--face-inset)}.fc-half{position:absolute;left:0;right:0;height:50%;overflow:hidden}.fc-half span{position:absolute;left:0;right:0;height:80px;display:grid;place-items:center;font-size:42px;font-weight:650;letter-spacing:-0.045em;color:var(--digit-ink);text-shadow:var(--digit-shadow);line-height:1}.fc-half.top{top:0;background:linear-gradient(180deg,var(--panel-top),var(--panel-top2));border-radius:12px 12px 0 0}.fc-half.top span{top:0}.fc-half.bottom{bottom:0;background:linear-gradient(180deg,var(--panel-bot2),var(--panel-bot));border-radius:0 0 12px 12px}.fc-half.bottom span{bottom:0}.fc-seam{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--seam-c);z-index:5;pointer-events:none}.fc-seam::before,.fc-seam::after{content:"";position:absolute;top:50%;width:2px;height:2px;border-radius:50%;background:var(--pin-c);transform:translateY(-50%);opacity:0.55}.fc-seam::before{left:7px}.fc-seam::after{right:7px}.fc-stack{position:absolute;left:5px;right:5px;bottom:4px;height:4px;border-radius:0 0 4px 4px;background:repeating-linear-gradient(to bottom,transparent 0 1px,var(--stack-c) 1px 2px);opacity:0.5;pointer-events:none;z-index:1}.fc-flipper{position:absolute;left:0;right:0;top:0;height:50%;transform-origin:bottom center;transform-style:preserve-3d;z-index:4;pointer-events:none;visibility:hidden}.fc-flipper .front,.fc-flipper .back{position:absolute;inset:0;overflow:hidden;backface-visibility:hidden;border-radius:12px 12px 0 0}.fc-flipper .front{background:linear-gradient(180deg,var(--panel-top),var(--panel-top2))}.fc-flipper .front span,.fc-flipper .back span{position:absolute;left:0;right:0;height:80px;display:grid;place-items:center;font-size:42px;font-weight:650;letter-spacing:-0.045em;color:var(--digit-ink);text-shadow:var(--digit-shadow)}.fc-flipper .front span{top:0}.fc-flipper .back{background:linear-gradient(0deg,var(--panel-bot),var(--panel-mid));transform:rotateX(180deg)}.fc-flipper .back span{bottom:0;transform:scaleY(-1)}.fc-digit.is-flipping .fc-flipper{visibility:visible;animation:flip-down 480ms var(--flip) forwards}@keyframes flip-down{from{transform:rotateX(0deg)}to{transform:rotateX(-180deg)}}.fc-controls{display:grid;grid-template-columns:48px 1fr 1fr;gap:8px;height:48px;position:relative;z-index:1}.fc-btn{appearance:none;border:0;cursor:pointer;color:#fff;background:var(--fc-btn);font:inherit;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:100%;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:-0.015em;transition:background-color 150ms var(--ease),transform 150ms var(--ease)}.fc-btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}.fc-btn-icon{width:48px;padding:0}.fc-btn svg{width:15px;height:15px;display:block}@media (hover:hover) and (pointer:fine){.fc-btn:hover{background:var(--fc-btn-hover)}.fc-btn:active{transform:scale(0.97)}}.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media (max-width:560px){.mode-grid{grid-template-columns:1fr}}.mode-card{width:100%;background:var(--surface);border-radius:var(--radius);box-shadow:0 1px 2px rgba(16,18,22,0.04),0 8px 24px rgba(16,18,22,0.06);padding:20px 22px 22px;display:flex;flex-direction:column;gap:20px;--progress-pct:50%;color:var(--ink);border:1px solid transparent}.t-dark .mode-card{border-color:var(--hairline);box-shadow:0 1px 2px rgba(0,0,0,0.2),0 8px 24px rgba(0,0,0,0.25)}.t-light .mode-card{border-color:var(--hairline)}.mode-head{margin:0;font-size:15px;font-weight:650;letter-spacing:-0.02em;line-height:1.2}.mode-route{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.mode-endpoint{display:flex;flex-direction:column;gap:4px;min-width:0}.mode-endpoint.to{text-align:right;align-items:flex-end}.mode-code{margin:0;font-size:26px;font-weight:700;letter-spacing:-0.03em;line-height:1;color:var(--ink)}.mode-city{margin:0;font-size:12px;font-weight:500;color:var(--subtle);letter-spacing:0.005em;line-height:1.25}.mode-progress{position:relative;height:22px;display:flex;align-items:center;margin:2px 0}.mode-progress-track{position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:var(--track);border-radius:999px}.mode-progress-fill{position:absolute;left:0;top:50%;height:3px;margin-top:-1.5px;width:var(--progress-pct);background:var(--progress);border-radius:999px;transform-origin:left center;transform:scaleX(0);opacity:0.85;transition:transform 720ms var(--ease),opacity 420ms var(--ease)}.mode-progress-fill::after{content:"";position:absolute;right:-1px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:var(--progress);opacity:0;transform:scale(0.6);pointer-events:none}.mode-icon{position:absolute;top:50%;left:0;width:22px;height:22px;margin-top:-11px;margin-left:-11px;color:var(--progress);opacity:0;transition:left 720ms var(--ease),opacity 360ms var(--ease);will-change:left,opacity;z-index:2}.mode-icon-motion{display:block;width:100%;height:100%;transform-origin:center center;will-change:transform}.mode-icon svg{display:block;width:100%;height:100%;overflow:visible}.mode-card.is-ready .mode-progress-fill{transform:scaleX(1);opacity:1}.mode-card.is-ready .mode-icon{left:var(--progress-pct);opacity:1}.mode-card.is-ready.is-live[data-mode="flight"] .mode-icon-motion{animation:flight-attitude 2.9s var(--ease) infinite alternate}.mode-card.is-ready.is-live[data-mode="truck"] .mode-icon-motion{animation:truck-bob 2.5s var(--ease) infinite alternate}.mode-card.is-ready.is-live[data-mode="ocean"] .mode-icon-motion{animation:ocean-swell 3.1s var(--ease) infinite alternate}.mode-card.is-ready.is-live[data-mode="rail"] .mode-icon-motion{animation:rail-pulse 2.6s var(--ease) infinite alternate}.mode-card.is-ready.is-live .mode-progress-fill::after{animation:tip-glow 0.9s var(--ease) infinite alternate}@keyframes flight-attitude{from{transform:translateX(-2.5px) rotate(-3.5deg) translateY(1px)}to{transform:translateX(2.5px) rotate(3.5deg) translateY(-1.5px)}}@keyframes truck-bob{from{transform:translateX(-2px) translateY(1.4px)}to{transform:translateX(2.5px) translateY(-1.4px)}}@keyframes ocean-swell{from{transform:translateX(-2px) rotate(-3deg) translateY(1.2px)}to{transform:translateX(2.5px) rotate(3deg) translateY(-1.2px)}}@keyframes rail-pulse{from{transform:translateX(-2.5px)}to{transform:translateX(2.5px)}}@keyframes tip-glow{from{opacity:0.15;transform:scale(0.55)}to{opacity:0.55;transform:scale(1)}}.mode-times{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.mode-time-block{display:flex;flex-direction:column;gap:4px;min-width:0}.mode-time-block.arr{text-align:right;align-items:flex-end}.mode-time{margin:0;font-size:17px;font-weight:650;letter-spacing:-0.025em;line-height:1.1;color:var(--ink)}.mode-meta{margin:0;font-size:11px;font-weight:500;color:var(--subtle);letter-spacing:0.01em;line-height:1.25}.lane-card{width:100%;max-width:320px;margin:0 auto;background:var(--surface);border-radius:16px;border:1px solid var(--hairline);box-shadow:0 1px 2px rgba(16,18,22,0.05);padding:20px;display:flex;flex-direction:column;gap:20px;color:var(--ink)}.t-dark .lane-card{box-shadow:0 1px 2px rgba(0,0,0,0.2),0 8px 24px rgba(0,0,0,0.25)}.lane-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.lane-head h3{margin:0;font-size:15px;font-weight:650;letter-spacing:-0.02em}.lane-badge{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;background:var(--surface-2);color:var(--muted);font-size:12px;font-weight:550}.lane-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--ink);animation:pulse 2.4s var(--ease) infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.28}}.lane-route{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:12px}.lane-city{min-width:0}.lane-city .code{font-size:28px;font-weight:700;letter-spacing:-0.04em;line-height:1;font-variant-numeric:tabular-nums}.lane-city .name{margin-top:6px;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.lane-city.to{text-align:right}.lane-progress-wrap{display:flex;flex-direction:column;align-items:center;gap:8px;padding-bottom:2px;min-width:88px}.lane-rail{position:relative;width:100%;height:2px;background:var(--track);border-radius:999px;overflow:visible}.lane-rail-fill{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--ink-solid);border-radius:inherit;transition:width 900ms var(--ease)}.lane-marker{position:absolute;top:50%;left:0%;width:28px;height:28px;margin-left:-14px;margin-top:-14px;border-radius:999px;background:var(--ink-solid);color:#fff;display:grid;place-items:center;box-shadow:0 1px 2px rgba(16,18,22,0.12),0 6px 16px rgba(16,18,22,0.12);transition:left 900ms var(--ease)}.t-dark .lane-marker{color:#121212}.lane-marker svg{width:14px;height:14px;display:block}.lane-times{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-top:4px;border-top:1px solid var(--hairline)}.lane-when{font-size:18px;font-weight:650;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;line-height:1.2}.lane-meta{margin-top:4px;font-size:12px;color:var(--subtle)}.lane-times .right{text-align:right}.lane-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:-4px}.lane-chips{display:flex;flex-wrap:wrap;gap:6px}.lane-chip{height:24px;padding:0 10px;border-radius:999px;border:1px solid var(--hairline);font-size:11px;font-weight:550;color:var(--muted);display:inline-flex;align-items:center;background:var(--surface)}.lane-link{appearance:none;border:0;background:transparent;color:var(--ink);font:inherit;font-size:12px;font-weight:600;cursor:pointer;text-decoration:underline;text-decoration-color:var(--hairline-strong);text-underline-offset:3px;transition:text-decoration-color 150ms var(--ease);padding:0}@media (hover:hover) and (pointer:fine){.lane-link:hover{text-decoration-color:var(--ink)}}.footer-note{text-align:center;font-size:12px;color:var(--page-muted);margin-top:calc(2 * var(--u))}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}.ft-card[data-state="running"] .ft-breath{animation:none !important;opacity:0.35}.ft-btn:active,.ft-btn.press{transform:none}.ft-time.pop,.ft-time.tick-sec{animation:none !important}.fc-digit.is-flipping .fc-flipper{animation:none !important}.fc-btn:active{transform:none}.mode-progress-fill,.mode-icon{transition:none !important}.mode-card .mode-progress-fill{transform:scaleX(1);opacity:1}.mode-card .mode-icon{left:var(--progress-pct);opacity:1}.mode-card.is-ready.is-live .mode-icon-motion,.mode-card.is-ready.is-live[data-mode] .mode-icon-motion,.mode-card.is-ready.is-live .mode-progress-fill::after{animation:none !important}.mode-progress-fill::after{opacity:0 !important}.lane-badge .dot{animation:none !important;opacity:0.7}.lane-rail-fill,.lane-marker{transition:none !important}}</style></head><body><header class="topbar"><h1>Endurance components · Light / Dark</h1><div class="filters" role="group" aria-label="Theme filter"><button type="button" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="light" aria-pressed="false">Light</button><button type="button" data-filter="dark" aria-pressed="false">Dark</button></div></header><main class="page"><section id="focus-timer" aria-labelledby="ft-heading"><div class="section-head"><h2 id="ft-heading">Focus timer</h2></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="ft-card" id="ft-light" data-state="running" role="group" aria-label="Focus timer light"><div class="ft-header"><div class="ft-title">Focus</div><div class="ft-status" data-state="running">In progress</div></div><div class="ft-dial-wrap"><div class="ft-dial"><div class="ft-breath" aria-hidden="true"></div><svg viewBox="0 0 200 200" aria-hidden="true"><g class="ft-ticks" transform="translate(100,100)"></g></svg><div class="ft-time">13:41</div></div></div><div class="ft-controls"><button class="ft-btn ft-btn-icon" type="button" data-action="reset" aria-label="Reset timer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button><button class="ft-btn ft-btn-main" type="button" data-action="toggle" aria-label="Pause timer"><svg class="ft-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg><span class="ft-label">Pause</span></button></div></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="ft-card" id="ft-dark" data-state="running" role="group" aria-label="Focus timer dark"><div class="ft-header"><div class="ft-title">Focus</div><div class="ft-status" data-state="running">In progress</div></div><div class="ft-dial-wrap"><div class="ft-dial"><div class="ft-breath" aria-hidden="true"></div><svg viewBox="0 0 200 200" aria-hidden="true"><g class="ft-ticks" transform="translate(100,100)"></g></svg><div class="ft-time">13:41</div></div></div><div class="ft-controls"><button class="ft-btn ft-btn-icon" type="button" data-action="reset" aria-label="Reset timer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button><button class="ft-btn ft-btn-main" type="button" data-action="toggle" aria-label="Pause timer"><svg class="ft-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg><span class="ft-label">Pause</span></button></div></div></div></div></section><section id="flip-counter" aria-labelledby="fc-heading"><div class="section-head"><h2 id="fc-heading">Flip counter</h2></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="fc-card" role="group" aria-label="Flip counter light"><div class="fc-head"><div class="fc-title">Count</div><div class="fc-status" data-state="idle">Ready</div></div><div class="fc-counter" data-flip="light" aria-live="polite" aria-atomic="true"></div><div class="fc-controls"><button class="fc-btn fc-btn-icon" type="button" data-flip-action="reset" data-flip-target="light" aria-label="Reset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.3"/><path d="M21 3v6h-6"/></svg></button><button class="fc-btn" type="button" data-flip-action="demo" data-flip-target="light">1,333</button><button class="fc-btn" type="button" data-flip-action="big" data-flip-target="light">12,847</button></div></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="fc-card" role="group" aria-label="Flip counter dark"><div class="fc-head"><div class="fc-title">Count</div><div class="fc-status" data-state="idle">Ready</div></div><div class="fc-counter" data-flip="dark" aria-live="polite" aria-atomic="true"></div><div class="fc-controls"><button class="fc-btn fc-btn-icon" type="button" data-flip-action="reset" data-flip-target="dark" aria-label="Reset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.3"/><path d="M21 3v6h-6"/></svg></button><button class="fc-btn" type="button" data-flip-action="demo" data-flip-target="dark">1,333</button><button class="fc-btn" type="button" data-flip-action="big" data-flip-target="dark">12,847</button></div></div></div></div></section><section id="mode-status" aria-labelledby="mode-heading"><div class="section-head"><h2 id="mode-heading">Mode status</h2></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="mode-grid" data-mode-stage="light"></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="mode-grid" data-mode-stage="dark"></div></div></div></section><section id="lane" aria-labelledby="lane-heading"><div class="section-head"><h2 id="lane-heading">Lane</h2></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><article class="lane-card" aria-label="Lane status Dallas to Atlanta light"><div class="lane-head"><h3>Lane</h3><span class="lane-badge"><span class="dot" aria-hidden="true"></span> In transit</span></div><div class="lane-route"><div class="lane-city"><div class="code">DAL</div><div class="name">Dallas, TX</div></div><div class="lane-progress-wrap" aria-hidden="true"><div class="lane-rail"><div class="lane-rail-fill" data-lane="light"></div><div class="lane-marker" data-lane-marker="light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7v-5z"/><circle cx="7" cy="17" r="1.6" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="1.6" fill="currentColor" stroke="none"/></svg></div></div></div><div class="lane-city to"><div class="code">ATL</div><div class="name">Atlanta, GA</div></div></div><div class="lane-times"><div><div class="lane-when">06:00</div><div class="lane-meta">Pickup · CT</div></div><div class="right"><div class="lane-when">18:30</div><div class="lane-meta">Delivery · ET</div></div></div><div class="lane-foot"><div class="lane-chips"><span class="lane-chip">FTL · Dry van</span><span class="lane-chip">Load LD-2841</span></div><button type="button" class="lane-link">Track</button></div></article></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><article class="lane-card" aria-label="Lane status Dallas to Atlanta dark"><div class="lane-head"><h3>Lane</h3><span class="lane-badge"><span class="dot" aria-hidden="true"></span> In transit</span></div><div class="lane-route"><div class="lane-city"><div class="code">DAL</div><div class="name">Dallas, TX</div></div><div class="lane-progress-wrap" aria-hidden="true"><div class="lane-rail"><div class="lane-rail-fill" data-lane="dark"></div><div class="lane-marker" data-lane-marker="dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7v-5z"/><circle cx="7" cy="17" r="1.6" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="1.6" fill="currentColor" stroke="none"/></svg></div></div></div><div class="lane-city to"><div class="code">ATL</div><div class="name">Atlanta, GA</div></div></div><div class="lane-times"><div><div class="lane-when">06:00</div><div class="lane-meta">Pickup · CT</div></div><div class="right"><div class="lane-when">18:30</div><div class="lane-meta">Delivery · ET</div></div></div><div class="lane-foot"><div class="lane-chips"><span class="lane-chip">FTL · Dry van</span><span class="lane-chip">Load LD-2841</span></div><button type="button" class="lane-link">Track</button></div></article></div></div></section></main><script>(function () {
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Endurance components · Foundations gallery</title><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Inter:wght@450;500;600;650;700&display=swap" rel="stylesheet" /><style>:root{--u:8px;--ease:cubic-bezier(0.4,0,0.2,1);--flip:cubic-bezier(0.45,0.05,0.55,0.95);--progress:#3B6FE8;--page-bg:#e8e8ea;--page-ink:#1a1a1a;--page-muted:#5f5f5f;--page-bar:rgba(255,255,255,0.92);--page-hair:#dcdcdc}*{box-sizing:border-box}html{scroll-behavior:smooth}html,body{margin:0;min-height:100%}body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased;background:var(--page-bg);color:var(--page-ink);padding-bottom:calc(8 * var(--u))}.topbar{position:sticky;top:0;z-index:40;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:calc(1.5 * var(--u));padding:calc(1.5 * var(--u)) calc(3 * var(--u));background:var(--page-bar);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--page-hair)}.topbar h1{margin:0;font-size:15px;font-weight:650;letter-spacing:-0.02em}.filters{display:flex;gap:6px}.filters button{appearance:none;border:1px solid var(--page-hair);background:#fff;color:var(--page-muted);border-radius:999px;height:32px;padding:0 14px;font:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:background 150ms var(--ease),color 150ms var(--ease),border-color 150ms var(--ease)}.filters button[aria-pressed="true"]{background:#1a1a1a;border-color:#1a1a1a;color:#fff}@media (hover:hover) and (pointer:fine){.filters button:hover:not([aria-pressed="true"]){border-color:#b0b0b0;color:var(--page-ink)}}.page{width:min(100%,1080px);margin:0 auto;padding:calc(4 * var(--u)) calc(3 * var(--u)) 0;display:flex;flex-direction:column;gap:calc(6 * var(--u))}.section-head{margin:0 0 calc(2.5 * var(--u))}.section-head h2{margin:0 0 6px;font-size:20px;font-weight:650;letter-spacing:-0.025em}.section-head p{margin:0;font-size:13px;color:var(--page-muted);line-height:1.45;max-width:52ch}.pair{display:grid;grid-template-columns:1fr 1fr;gap:calc(2.5 * var(--u));align-items:start}@media (max-width:820px){.pair{grid-template-columns:1fr}}.pane{border-radius:calc(2.5 * var(--u));padding:calc(2.5 * var(--u));display:flex;flex-direction:column;gap:calc(2 * var(--u));min-width:0}.pane-label{margin:0;font-size:11px;font-weight:650;letter-spacing:0.06em;text-transform:uppercase}.pane-light{background:#efefef;color:#1a1a1a}.pane-light .pane-label{color:#767676}.pane-dark{background:#121212;color:#f3f3f4}.pane-dark .pane-label{color:#8a8a90}body.filter-light .pane-dark,body.filter-dark .pane-light{display:none}body.filter-light .pair,body.filter-dark .pair{grid-template-columns:1fr;max-width:520px}.t-light{--canvas:#efefef;--surface:#ffffff;--surface-2:#f4f4f4;--ink:#1a1a1a;--muted:#5f5f5f;--subtle:#767676;--hairline:#ececec;--hairline-strong:#dcdcdc;--track:#e0e0e0;--progress:#3B6FE8;--ink-solid:#1a1a1a;--btn:#1a1a1a;--btn-hover:#333;--btn-ink:#fff;--radius:18px;--card-r:24px}.t-dark{--canvas:#121212;--surface:#1c1c1e;--surface-2:#2a2a2e;--ink:#f3f3f4;--muted:#a0a0a6;--subtle:#8a8a90;--hairline:#2e2e32;--hairline-strong:#3a3a40;--track:#3a3a40;--progress:#3B6FE8;--ink-solid:#f3f3f4;--btn:#2a2d36;--btn-hover:#353944;--btn-ink:#fff;--radius:18px;--card-r:24px}.ft-card{position:relative;width:100%;max-width:320px;margin:0 auto;aspect-ratio:40 / 46;border-radius:var(--card-r);padding:24px;display:flex;flex-direction:column;overflow:hidden;color:var(--ink)}.t-dark .ft-card{background:radial-gradient(90% 70% at 50% -10%,rgba(70,82,120,0.42),transparent 60%),linear-gradient(180deg,#1a1f2c 0%,#10131b 48%,#0b0e14 100%);box-shadow:0 12px 32px rgba(0,0,0,0.35);--ft-muted:rgba(255,255,255,0.45);--ft-tick-off:rgba(255,255,255,0.18);--ft-tick-on:#fff;--ft-btn:#2a2d36;--ft-btn-hover:#353944;--ft-breath:rgba(255,255,255,0.05);--ft-inset:rgba(255,255,255,0.055)}.t-light .ft-card{background:radial-gradient(90% 60% at 50% -8%,rgba(59,111,232,0.06),transparent 55%),linear-gradient(180deg,#ffffff 0%,#fafafa 100%);border:1px solid var(--hairline);box-shadow:0 8px 24px rgba(16,18,22,0.06);--ft-muted:#767676;--ft-tick-off:rgba(26,26,26,0.16);--ft-tick-on:#1a1a1a;--ft-btn:#1a1a1a;--ft-btn-hover:#333;--ft-breath:rgba(26,26,26,0.04);--ft-inset:rgba(255,255,255,0.8)}.ft-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 1px 0 var(--ft-inset)}.ft-header{display:grid;grid-template-columns:1fr auto;align-items:center;height:24px;margin-bottom:16px;z-index:1}.ft-title{font-size:16px;font-weight:600;letter-spacing:-0.02em;line-height:1}.ft-status{font-size:13px;font-weight:500;color:var(--ft-muted);line-height:1;transition:color 150ms var(--ease),opacity 100ms var(--ease),transform 150ms var(--ease)}.ft-status.is-swap{opacity:0;transform:translateY(2px)}.ft-status[data-state="paused"]{color:#c9842a}.t-dark .ft-status[data-state="paused"]{color:rgba(255,196,120,0.85)}.ft-status[data-state="done"]{color:#2f9e62}.t-dark .ft-status[data-state="done"]{color:rgba(150,230,180,0.9)}.ft-dial-wrap{display:grid;place-items:center;flex:1 1 auto;min-height:0;margin-bottom:24px;z-index:1}.ft-dial{position:relative;width:min(100%,192px);aspect-ratio:1}.ft-dial svg{width:100%;height:100%;display:block;overflow:visible}.ft-tick{stroke-linecap:round;transition:stroke 180ms var(--ease),stroke-opacity 180ms var(--ease)}.ft-tick.off{stroke:var(--ft-tick-off)}.ft-tick.on{stroke:var(--ft-tick-on)}.ft-card[data-state="paused"] .ft-tick.on{stroke-opacity:0.72}.ft-card[data-state="paused"] .ft-tick.off{stroke-opacity:0.65}.ft-time{position:absolute;inset:0;display:grid;place-items:center;font-variant-numeric:tabular-nums;font-size:48px;font-weight:650;letter-spacing:-0.045em;line-height:1;user-select:none;pointer-events:none;transition:transform 150ms var(--ease),opacity 150ms var(--ease)}.ft-time.pop{animation:count-pop 420ms var(--ease)}.ft-time.tick-sec{animation:sec-nudge 220ms var(--ease)}@keyframes count-pop{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}@keyframes sec-nudge{0%{transform:scale(1);opacity:1}35%{transform:scale(1.015);opacity:0.92}100%{transform:scale(1);opacity:1}}.ft-breath{position:absolute;inset:16%;border-radius:50%;background:radial-gradient(circle,var(--ft-breath),transparent 70%);pointer-events:none;opacity:0}.ft-card[data-state="running"] .ft-breath{animation:breath 2.4s var(--ease) infinite}@keyframes breath{0%,100%{opacity:0.15;transform:scale(0.96)}50%{opacity:0.55;transform:scale(1)}}.ft-controls{display:grid;grid-template-columns:48px 1fr;gap:8px;height:48px;flex:0 0 auto;z-index:1}.ft-btn{appearance:none;border:0;cursor:pointer;color:var(--btn-ink);background:var(--ft-btn);font:inherit;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:100%;transition:background-color 150ms var(--ease),transform 150ms var(--ease);-webkit-tap-highlight-color:transparent}.ft-btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}.t-dark .ft-btn:focus-visible{outline-color:rgba(255,255,255,0.55)}.ft-btn-icon{width:48px;border-radius:999px;padding:0}.ft-btn-main{border-radius:999px;font-size:15px;font-weight:600;letter-spacing:-0.015em;padding:0 16px}.ft-btn svg{width:15px;height:15px;display:block}.ft-btn.press{transform:scale(0.97)}.ft-btn-icon.spin svg{animation:reset-spin 520ms var(--ease)}@keyframes reset-spin{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}@media (hover:hover) and (pointer:fine){.ft-btn:hover{background:var(--ft-btn-hover)}.ft-btn:active{transform:scale(0.97)}}.fc-card{position:relative;width:100%;max-width:400px;margin:0 auto;border-radius:var(--card-r);padding:24px;overflow:hidden;color:var(--ink)}.t-dark .fc-card{background:radial-gradient(90% 70% at 50% -10%,rgba(70,82,120,0.42),transparent 60%),linear-gradient(180deg,#1a1f2c 0%,#10131b 48%,#0b0e14 100%);box-shadow:0 12px 32px rgba(0,0,0,0.35);--panel-top:#1c2130;--panel-mid:#141820;--panel-bot:#0c0e14;--panel-top2:#161a24;--panel-bot2:#12151c;--fc-muted:rgba(255,255,255,0.45);--fc-comma:rgba(255,255,255,0.4);--fc-btn:#2a2d36;--fc-btn-hover:#353944;--digit-ink:#fff;--digit-shadow:0 1px 1px rgba(0,0,0,0.4);--face-inset:inset 0 1px 0 rgba(255,255,255,0.07),inset 0 -2px 8px rgba(0,0,0,0.45);--seam-c:rgba(0,0,0,0.55);--pin-c:rgba(255,255,255,0.08);--stack-c:rgba(0,0,0,0.4)}.t-light .fc-card{background:#fff;border:1px solid var(--hairline);box-shadow:0 8px 24px rgba(16,18,22,0.06);--panel-top:#f7f7f8;--panel-mid:#ececee;--panel-bot:#e4e4e7;--panel-top2:#f0f0f2;--panel-bot2:#e8e8eb;--fc-muted:#767676;--fc-comma:#9a9aa0;--fc-btn:#1a1a1a;--fc-btn-hover:#333;--digit-ink:#1a1a1a;--digit-shadow:none;--face-inset:inset 0 1px 0 rgba(255,255,255,0.9),inset 0 -1px 4px rgba(0,0,0,0.06);--seam-c:rgba(0,0,0,0.12);--pin-c:rgba(0,0,0,0.18);--stack-c:rgba(0,0,0,0.12)}.fc-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 1px 0 rgba(255,255,255,0.055)}.t-light .fc-card::after{box-shadow:inset 0 1px 0 rgba(255,255,255,0.9)}.fc-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px;position:relative;z-index:1}.fc-title{font-size:16px;font-weight:600;letter-spacing:-0.02em}.fc-status{font-size:13px;font-weight:500;color:var(--fc-muted)}.fc-counter{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;min-height:96px;margin-bottom:24px;position:relative;z-index:1}.fc-group{display:flex;align-items:center;gap:6px}.fc-comma{width:18px;height:80px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;font-size:26px;font-weight:650;color:var(--fc-comma);line-height:1;user-select:none;transform:translateY(2px)}.fc-digit{position:relative;width:56px;height:80px;border-radius:12px;perspective:480px;font-variant-numeric:tabular-nums;flex:0 0 auto}.fc-digit-face{position:absolute;inset:0;border-radius:inherit;overflow:hidden;background:var(--panel-mid);box-shadow:var(--face-inset)}.fc-half{position:absolute;left:0;right:0;height:50%;overflow:hidden}.fc-half span{position:absolute;left:0;right:0;height:80px;display:grid;place-items:center;font-size:42px;font-weight:650;letter-spacing:-0.045em;color:var(--digit-ink);text-shadow:var(--digit-shadow);line-height:1}.fc-half.top{top:0;background:linear-gradient(180deg,var(--panel-top),var(--panel-top2));border-radius:12px 12px 0 0}.fc-half.top span{top:0}.fc-half.bottom{bottom:0;background:linear-gradient(180deg,var(--panel-bot2),var(--panel-bot));border-radius:0 0 12px 12px}.fc-half.bottom span{bottom:0}.fc-seam{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--seam-c);z-index:5;pointer-events:none}.fc-seam::before,.fc-seam::after{content:"";position:absolute;top:50%;width:2px;height:2px;border-radius:50%;background:var(--pin-c);transform:translateY(-50%);opacity:0.55}.fc-seam::before{left:7px}.fc-seam::after{right:7px}.fc-stack{position:absolute;left:5px;right:5px;bottom:4px;height:4px;border-radius:0 0 4px 4px;background:repeating-linear-gradient(to bottom,transparent 0 1px,var(--stack-c) 1px 2px);opacity:0.5;pointer-events:none;z-index:1}.fc-flipper{position:absolute;left:0;right:0;top:0;height:50%;transform-origin:bottom center;transform-style:preserve-3d;z-index:4;pointer-events:none;visibility:hidden}.fc-flipper .front,.fc-flipper .back{position:absolute;inset:0;overflow:hidden;backface-visibility:hidden;border-radius:12px 12px 0 0}.fc-flipper .front{background:linear-gradient(180deg,var(--panel-top),var(--panel-top2))}.fc-flipper .front span,.fc-flipper .back span{position:absolute;left:0;right:0;height:80px;display:grid;place-items:center;font-size:42px;font-weight:650;letter-spacing:-0.045em;color:var(--digit-ink);text-shadow:var(--digit-shadow)}.fc-flipper .front span{top:0}.fc-flipper .back{background:linear-gradient(0deg,var(--panel-bot),var(--panel-mid));transform:rotateX(180deg)}.fc-flipper .back span{bottom:0;transform:scaleY(-1)}.fc-digit.is-flipping .fc-flipper{visibility:visible;animation:flip-down 480ms var(--flip) forwards}@keyframes flip-down{from{transform:rotateX(0deg)}to{transform:rotateX(-180deg)}}.fc-controls{display:grid;grid-template-columns:48px 1fr 1fr;gap:8px;height:48px;position:relative;z-index:1}.fc-btn{appearance:none;border:0;cursor:pointer;color:#fff;background:var(--fc-btn);font:inherit;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:100%;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:-0.015em;transition:background-color 150ms var(--ease),transform 150ms var(--ease)}.fc-btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}.fc-btn-icon{width:48px;padding:0}.fc-btn svg{width:15px;height:15px;display:block}@media (hover:hover) and (pointer:fine){.fc-btn:hover{background:var(--fc-btn-hover)}.fc-btn:active{transform:scale(0.97)}}.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media (max-width:560px){.mode-grid{grid-template-columns:1fr}}.mode-card{width:100%;background:var(--surface);border-radius:var(--radius);box-shadow:0 1px 2px rgba(16,18,22,0.04),0 8px 24px rgba(16,18,22,0.06);padding:20px 22px 22px;display:flex;flex-direction:column;gap:20px;--progress-pct:50%;color:var(--ink);border:1px solid transparent}.t-dark .mode-card{border-color:var(--hairline);box-shadow:0 1px 2px rgba(0,0,0,0.2),0 8px 24px rgba(0,0,0,0.25)}.t-light .mode-card{border-color:var(--hairline)}.mode-head{margin:0;font-size:15px;font-weight:650;letter-spacing:-0.02em;line-height:1.2}.mode-route{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.mode-endpoint{display:flex;flex-direction:column;gap:4px;min-width:0}.mode-endpoint.to{text-align:right;align-items:flex-end}.mode-code{margin:0;font-size:26px;font-weight:700;letter-spacing:-0.03em;line-height:1;color:var(--ink)}.mode-city{margin:0;font-size:12px;font-weight:500;color:var(--subtle);letter-spacing:0.005em;line-height:1.25}.mode-progress{position:relative;height:22px;display:flex;align-items:center;margin:2px 0}.mode-progress-track{position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:var(--track);border-radius:999px}.mode-progress-fill{position:absolute;left:0;top:50%;height:3px;margin-top:-1.5px;width:var(--progress-pct);background:var(--progress);border-radius:999px;transform-origin:left center;transform:scaleX(0);opacity:0.85;transition:transform 720ms var(--ease),opacity 420ms var(--ease)}.mode-progress-fill::after{content:"";position:absolute;right:-1px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:var(--progress);opacity:0;transform:scale(0.6);pointer-events:none}.mode-icon{position:absolute;top:50%;left:0;width:22px;height:22px;margin-top:-11px;margin-left:-11px;color:var(--progress);opacity:0;transition:left 720ms var(--ease),opacity 360ms var(--ease);will-change:left,opacity;z-index:2}.mode-icon-motion{display:block;width:100%;height:100%;transform-origin:center center;will-change:transform}.mode-icon svg{display:block;width:100%;height:100%;overflow:visible}.mode-card.is-ready .mode-progress-fill{transform:scaleX(1);opacity:1}.mode-card.is-ready .mode-icon{left:var(--progress-pct);opacity:1}.mode-card.is-ready.is-live[data-mode="flight"] .mode-icon-motion{animation:flight-attitude 2.9s var(--ease) infinite alternate}.mode-card.is-ready.is-live[data-mode="truck"] .mode-icon-motion{animation:truck-bob 2.5s var(--ease) infinite alternate}.mode-card.is-ready.is-live[data-mode="ocean"] .mode-icon-motion{animation:ocean-swell 3.1s var(--ease) infinite alternate}.mode-card.is-ready.is-live[data-mode="rail"] .mode-icon-motion{animation:rail-pulse 2.6s var(--ease) infinite alternate}.mode-card.is-ready.is-live .mode-progress-fill::after{animation:tip-glow 0.9s var(--ease) infinite alternate}@keyframes flight-attitude{from{transform:translateX(-2.5px) rotate(-3.5deg) translateY(1px)}to{transform:translateX(2.5px) rotate(3.5deg) translateY(-1.5px)}}@keyframes truck-bob{from{transform:translateX(-2px) translateY(1.4px)}to{transform:translateX(2.5px) translateY(-1.4px)}}@keyframes ocean-swell{from{transform:translateX(-2px) rotate(-3deg) translateY(1.2px)}to{transform:translateX(2.5px) rotate(3deg) translateY(-1.2px)}}@keyframes rail-pulse{from{transform:translateX(-2.5px)}to{transform:translateX(2.5px)}}@keyframes tip-glow{from{opacity:0.15;transform:scale(0.55)}to{opacity:0.55;transform:scale(1)}}.mode-times{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.mode-time-block{display:flex;flex-direction:column;gap:4px;min-width:0}.mode-time-block.arr{text-align:right;align-items:flex-end}.mode-time{margin:0;font-size:17px;font-weight:650;letter-spacing:-0.025em;line-height:1.1;color:var(--ink)}.mode-meta{margin:0;font-size:11px;font-weight:500;color:var(--subtle);letter-spacing:0.01em;line-height:1.25}.lane-card{width:100%;max-width:320px;margin:0 auto;background:var(--surface);border-radius:16px;border:1px solid var(--hairline);box-shadow:0 1px 2px rgba(16,18,22,0.05);padding:20px;display:flex;flex-direction:column;gap:20px;color:var(--ink)}.t-dark .lane-card{box-shadow:0 1px 2px rgba(0,0,0,0.2),0 8px 24px rgba(0,0,0,0.25)}.lane-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.lane-head h3{margin:0;font-size:15px;font-weight:650;letter-spacing:-0.02em}.lane-badge{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;background:var(--surface-2);color:var(--muted);font-size:12px;font-weight:550}.lane-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--ink);animation:pulse 2.4s var(--ease) infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.28}}.lane-route{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:12px}.lane-city{min-width:0}.lane-city .code{font-size:28px;font-weight:700;letter-spacing:-0.04em;line-height:1;font-variant-numeric:tabular-nums}.lane-city .name{margin-top:6px;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.lane-city.to{text-align:right}.lane-progress-wrap{display:flex;flex-direction:column;align-items:center;gap:8px;padding-bottom:2px;min-width:88px}.lane-rail{position:relative;width:100%;height:2px;background:var(--track);border-radius:999px;overflow:visible}.lane-rail-fill{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--ink-solid);border-radius:inherit;transition:width 900ms var(--ease)}.lane-marker{position:absolute;top:50%;left:0%;width:28px;height:28px;margin-left:-14px;margin-top:-14px;border-radius:999px;background:var(--ink-solid);color:#fff;display:grid;place-items:center;box-shadow:0 1px 2px rgba(16,18,22,0.12),0 6px 16px rgba(16,18,22,0.12);transition:left 900ms var(--ease)}.t-dark .lane-marker{color:#121212}.lane-marker svg{width:14px;height:14px;display:block}.lane-times{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-top:4px;border-top:1px solid var(--hairline)}.lane-when{font-size:18px;font-weight:650;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;line-height:1.2}.lane-meta{margin-top:4px;font-size:12px;color:var(--subtle)}.lane-times .right{text-align:right}.lane-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:-4px}.lane-chips{display:flex;flex-wrap:wrap;gap:6px}.lane-chip{height:24px;padding:0 10px;border-radius:999px;border:1px solid var(--hairline);font-size:11px;font-weight:550;color:var(--muted);display:inline-flex;align-items:center;background:var(--surface)}.lane-link{appearance:none;border:0;background:transparent;color:var(--ink);font:inherit;font-size:12px;font-weight:600;cursor:pointer;text-decoration:underline;text-decoration-color:var(--hairline-strong);text-underline-offset:3px;transition:text-decoration-color 150ms var(--ease);padding:0}@media (hover:hover) and (pointer:fine){.lane-link:hover{text-decoration-color:var(--ink)}}.footer-note{text-align:center;font-size:12px;color:var(--page-muted);margin-top:calc(2 * var(--u))}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}.ft-card[data-state="running"] .ft-breath{animation:none !important;opacity:0.35}.ft-btn:active,.ft-btn.press{transform:none}.ft-time.pop,.ft-time.tick-sec{animation:none !important}.fc-digit.is-flipping .fc-flipper{animation:none !important}.fc-btn:active{transform:none}.mode-progress-fill,.mode-icon{transition:none !important}.mode-card .mode-progress-fill{transform:scaleX(1);opacity:1}.mode-card .mode-icon{left:var(--progress-pct);opacity:1}.mode-card.is-ready.is-live .mode-icon-motion,.mode-card.is-ready.is-live[data-mode] .mode-icon-motion,.mode-card.is-ready.is-live .mode-progress-fill::after{animation:none !important}.mode-progress-fill::after{opacity:0 !important}.lane-badge .dot{animation:none !important;opacity:0.7}.lane-rail-fill,.lane-marker{transition:none !important}}
+/* ============================================================
+   Foundations product UI (CRM ink-on-paper)
+   Doctrine: ONE hue (--danger #c4342f); hierarchy via size/weight/space;
+   hairlines; ink-solid primary; seriesFill neutral ink ramp.
+   NO blue progress on these pieces (blue stays on Mode status only).
+   Interaction: transform+opacity only; 150ms cubic-bezier(0.4,0,0.2,1);
+   hover @ (hover:hover) and (pointer:fine); prefers-reduced-motion.
+   Layout grid: u=8. Recipes declared per module.
+   ============================================================ */
+.t-light{
+  --danger:#c4342f;
+  --danger-tint:rgba(196,52,47,0.09);
+  --series-ink:#1a1a1a;
+  --series-base:#e0e0e0;
+  --ink-solid-fg:#ffffff;
+  --ink-solid-hover:#333;
+  --shadow-sm:0 1px 2px rgba(16,18,22,0.05);
+  --shadow-md:0 4px 16px rgba(16,18,22,0.08),0 1px 2px rgba(16,18,22,0.04);
+  --shadow-lg:0 12px 40px rgba(16,18,22,0.14),0 2px 6px rgba(16,18,22,0.06);
+  --btn-fg:#fff;
+}
+.t-dark{
+  --danger:#f08b86;
+  --danger-tint:rgba(240,139,134,0.14);
+  --series-ink:#f2f2f3;
+  --series-base:#2b2d33;
+  --ink-solid-fg:#17181c;
+  --ink-solid-hover:#ffffff;
+  --shadow-sm:0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md:0 4px 16px rgba(0,0,0,0.35),0 1px 2px rgba(0,0,0,0.25);
+  --shadow-lg:0 16px 48px rgba(0,0,0,0.55),0 2px 8px rgba(0,0,0,0.3);
+  --btn-fg:#17181c;
+}
+/* Recipe: Panel — surface card, radius 16 (on-module), hairline border, shadow-sm */
+.f-panel{
+  background:var(--surface);
+  border:1px solid var(--hairline);
+  border-radius:16px;
+  box-shadow:var(--shadow-sm);
+  overflow:hidden;
+  color:var(--ink);
+  width:100%;
+}
+/* Recipe: Card — p-5 (40px via 5*u? wait 5*8=40 → use 20px = 2.5u from CRM p-5=1.25rem≈20) */
+.f-card{
+  background:var(--surface);
+  border:1px solid var(--hairline);
+  border-radius:16px;
+  box-shadow:var(--shadow-sm);
+  padding:20px;
+  color:var(--ink);
+}
+.f-btn{
+  appearance:none;border:0;cursor:pointer;font:inherit;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  border-radius:999px;height:36px;padding:0 16px;
+  font-size:13px;font-weight:600;letter-spacing:-0.01em;
+  transition:background-color 150ms var(--ease),transform 150ms var(--ease),opacity 150ms var(--ease),box-shadow 150ms var(--ease);
+  -webkit-tap-highlight-color:transparent;
+}
+.f-btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.f-btn-primary{background:var(--ink-solid);color:var(--ink-solid-fg);box-shadow:var(--shadow-sm)}
+.f-btn-secondary{background:var(--surface);color:var(--ink);border:1px solid var(--hairline);box-shadow:var(--shadow-sm)}
+.f-btn-danger{background:var(--danger);color:#fff;box-shadow:var(--shadow-sm)}
+.t-dark .f-btn-danger{color:#17181c}
+@media (hover:hover) and (pointer:fine){
+  .f-btn-primary:hover{background:var(--ink-solid-hover)}
+  .f-btn-secondary:hover{border-color:var(--hairline-strong)}
+  .f-btn-danger:hover{opacity:0.9}
+  .f-btn:active{transform:scale(0.97)}
+}
+/* --- StatusDot / Badge / DeltaBadge --- */
+.f-dot{display:inline-block;width:6px;height:6px;border-radius:50%;flex-shrink:0;background:var(--hairline-strong)}
+.f-dot-ink{background:var(--ink-solid)}
+.f-dot-danger{background:var(--danger)}
+.f-dot-pulse{animation:f-pulse 2.4s var(--ease) infinite}
+@keyframes f-pulse{0%,100%{opacity:1}50%{opacity:0.28}}
+.f-badge{
+  display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:999px;
+  font-size:11px;font-weight:550;background:var(--surface-2);color:var(--muted);
+}
+.f-badge-outline{background:transparent;border:1px solid var(--hairline);color:var(--muted)}
+.f-badge-danger{background:var(--danger-tint);color:var(--danger)}
+.f-delta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 8px;font-size:12px;margin:0}
+.f-delta-chg{display:inline-flex;align-items:center;gap:4px;font-weight:550;color:var(--ink);font-variant-numeric:tabular-nums}
+.f-delta-chg svg{width:14px;height:14px;color:var(--muted);flex-shrink:0}
+.f-delta-vs{color:var(--subtle);font-variant-numeric:tabular-nums}
+/* --- List / ListRow ---
+   Recipe: List — panel clip; ListRow px-5(20) py-3.5(14); name + StatusDot/pulse + ONE KPI
+   focal (name) → trailing number gap via flex; whole-row press → surface-2 hover */
+.f-list{list-style:none;margin:0;padding:0;overflow:hidden}
+.f-list-row{border-bottom:1px solid var(--hairline)}
+.f-list-row:last-child{border-bottom:0}
+.f-list-row-body{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 20px; /* py-3.5 px-5 */
+  transition:background-color 150ms var(--ease);
+  cursor:pointer;text-decoration:none;color:inherit;min-width:0;
+}
+@media (hover:hover) and (pointer:fine){
+  .f-list-row-body:hover{background:var(--surface-2)}
+}
+.f-list-name{flex:1 1 auto;min-width:0;font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.f-list-status{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--muted);flex-shrink:0}
+.f-list-kpi{flex-shrink:0;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);letter-spacing:-0.02em}
+/* --- Kpi strip ---
+   Recipe: 3-up grid gap 16 (2u); card p-5; label→value≥24px via gap-5(20)+mt; DeltaBadge caption */
+.f-kpi-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:640px){.f-kpi-strip{grid-template-columns:1fr}}
+.f-kpi{display:flex;flex-direction:column;gap:20px;min-width:0}
+.f-kpi-head{display:flex;align-items:center;gap:10px;min-width:0}
+.f-kpi-chip{
+  width:28px;height:28px;border-radius:8px;background:var(--surface-2);
+  display:grid;place-items:center;flex-shrink:0;color:var(--ink);
+}
+.f-kpi-chip svg{width:14px;height:14px}
+.f-kpi-label{font-size:13px;font-weight:550;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.f-kpi-value{margin:0;font-size:28px;font-weight:650;letter-spacing:-0.035em;font-variant-numeric:tabular-nums;line-height:1;color:var(--ink)}
+/* --- Segmented + FilterPill ---
+   Recipe: track surface-2 rounded-full p-1; active pill surface + shadow-sm; h-7 pills */
+.f-seg{
+  display:flex;width:fit-content;max-width:100%;align-items:center;gap:4px;
+  overflow-x:auto;border-radius:999px;background:var(--surface-2);padding:4px;
+}
+.f-seg-btn{
+  appearance:none;border:0;cursor:pointer;font:inherit;
+  display:inline-flex;height:28px;align-items:center;gap:6px;flex-shrink:0;
+  border-radius:999px;padding:0 12px;font-size:13px;font-weight:550;
+  background:transparent;color:var(--muted);
+  transition:background-color 150ms var(--ease),color 150ms var(--ease),box-shadow 150ms var(--ease),transform 150ms var(--ease);
+}
+.f-seg-btn[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow-sm)}
+@media (hover:hover) and (pointer:fine){
+  .f-seg-btn:hover:not([aria-pressed="true"]){color:var(--ink)}
+}
+.f-seg-flag{width:6px;height:6px;border-radius:50%;background:var(--danger)}
+.f-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.f-pill{
+  display:inline-flex;height:36px;align-items:center;gap:8px;border-radius:999px;
+  border:1px solid var(--hairline);background:var(--surface);padding:0 14px;
+  font-size:13px;font-weight:550;color:var(--ink);
+}
+.f-pill svg{width:16px;height:16px;color:var(--subtle)}
+/* --- Sheet ---
+   Recipe: card rests; opens → lifts with shadow-lg + slight translateY; backdrop opacity;
+   RecordHeader + section labels + primary ink-solid; focal→actions ≥24px */
+.f-sheet-stage{position:relative;min-height:280px}
+.f-sheet-card{
+  position:relative;z-index:2;background:var(--surface);border:1px solid var(--hairline);
+  border-radius:24px;padding:24px;box-shadow:var(--shadow-sm);color:var(--ink);
+  transform:translateY(0);opacity:1;
+  transition:transform 150ms var(--ease),opacity 150ms var(--ease),box-shadow 150ms var(--ease);
+  max-width:360px;margin:0 auto;
+}
+.f-sheet-card.is-open{
+  transform:translateY(-8px);
+  box-shadow:var(--shadow-lg);
+}
+.f-sheet-backdrop{
+  position:absolute;inset:0;z-index:1;border-radius:16px;
+  background:rgba(16,18,22,0.28);opacity:0;pointer-events:none;
+  transition:opacity 150ms var(--ease);
+}
+.t-dark .f-sheet-backdrop{background:rgba(0,0,0,0.55)}
+.f-sheet-stage.is-open .f-sheet-backdrop{opacity:1;pointer-events:auto}
+.f-rec-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:24px}
+.f-rec-title{margin:0;font-size:16px;font-weight:650;letter-spacing:-0.02em}
+.f-rec-sub{margin:6px 0 0;font-size:12px;color:var(--muted)}
+.f-sec-label{margin:0 0 8px;font-size:11px;font-weight:650;letter-spacing:0.06em;text-transform:uppercase;color:var(--subtle)}
+.f-sec{margin-bottom:20px}
+.f-sec:last-of-type{margin-bottom:0}
+.f-dl{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;margin:0}
+.f-dl dt{margin:0;font-size:11px;font-weight:550;color:var(--subtle)}
+.f-dl dd{margin:4px 0 0;font-size:13px;font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
+.f-sheet-actions{display:flex;gap:8px;margin-top:24px;justify-content:flex-end}
+.f-sheet-trigger{margin-top:16px;text-align:center}
+/* --- BreakdownPanel / SeriesBar ---
+   Recipe: panel; header p-5; SeriesBar h-2.5 rounded-full gap-1; LegendRow py-3; ink ramp via seriesFill */
+.f-bd-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:20px 20px 16px}
+.f-bd-title{margin:0;font-size:13px;font-weight:550;color:var(--ink)}
+.f-bd-total{margin:8px 0 0;font-size:24px;font-weight:650;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;color:var(--ink);line-height:1}
+.f-bd-more{appearance:none;border:0;background:transparent;font:inherit;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;padding:0;text-decoration:underline;text-decoration-color:var(--hairline-strong);text-underline-offset:3px;transition:color 150ms var(--ease),text-decoration-color 150ms var(--ease)}
+@media (hover:hover) and (pointer:fine){.f-bd-more:hover{color:var(--ink);text-decoration-color:var(--ink)}}
+.f-series{display:flex;height:10px;gap:4px;overflow:hidden;border-radius:999px;padding:0 20px 16px}
+.f-series-seg{height:100%;border-radius:999px;min-width:6px}
+.f-swatch{display:inline-block;width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.f-legend-name{flex:1;min-width:0;font-size:13px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* --- EmptyState ---
+   Recipe: centered quiet copy; ink-solid CTA; py-11 px-6 */
+.f-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:44px 24px}
+.f-empty-title{margin:0;font-size:13px;font-weight:550;color:var(--ink)}
+.f-empty-desc{margin:6px 0 0;max-width:42ch;font-size:13px;color:var(--muted);line-height:1.45}
+.f-empty-action{margin-top:16px}
+/* --- Training chrome (Focus language) — clearly separate from product ink --- */
+.train-cluster{
+  max-width:320px;margin:0 auto;border-radius:24px;padding:20px;
+  display:flex;flex-direction:column;gap:16px;
+}
+.t-light .train-cluster{
+  background:linear-gradient(180deg,#ffffff 0%,#fafafa 100%);
+  border:1px solid var(--hairline);
+  box-shadow:0 8px 24px rgba(16,18,22,0.06);
+  --train-btn:#1a1a1a;--train-btn-hover:#333;--train-muted:#767676;
+}
+.t-dark .train-cluster{
+  background:radial-gradient(90% 70% at 50% -10%,rgba(70,82,120,0.42),transparent 60%),linear-gradient(180deg,#1a1f2c 0%,#10131b 48%,#0b0e14 100%);
+  box-shadow:0 12px 32px rgba(0,0,0,0.35);
+  --train-btn:#2a2d36;--train-btn-hover:#353944;--train-muted:rgba(255,255,255,0.45);
+}
+.train-label{margin:0;font-size:11px;font-weight:650;letter-spacing:0.06em;text-transform:uppercase;color:var(--train-muted)}
+.train-title{margin:0;font-size:15px;font-weight:600;letter-spacing:-0.02em}
+.train-pills{display:flex;gap:8px}
+.train-pill{
+  appearance:none;border:0;cursor:pointer;font:inherit;color:#fff;
+  background:var(--train-btn);border-radius:999px;height:40px;padding:0 16px;
+  font-size:13px;font-weight:600;flex:1;
+  transition:background-color 150ms var(--ease),transform 150ms var(--ease);
+}
+@media (hover:hover) and (pointer:fine){
+  .train-pill:hover{background:var(--train-btn-hover)}
+  .train-pill:active{transform:scale(0.97)}
+}
+.train-note{margin:0;font-size:12px;color:var(--train-muted);line-height:1.4}
+.doctrine-note{font-size:12px;color:var(--page-muted);margin:0 0 calc(2*var(--u));line-height:1.45;max-width:64ch}
+@media (prefers-reduced-motion:reduce){
+  .f-dot-pulse{animation:none !important;opacity:0.7}
+  .f-sheet-card,.f-sheet-backdrop,.f-seg-btn,.f-btn,.f-list-row-body,.train-pill{transition-duration:0.01ms !important}
+  .f-sheet-card.is-open{transform:none}
+  .f-btn:active,.train-pill:active{transform:none}
+}
+</style></head><body><header class="topbar"><h1>Endurance components · Foundations</h1><div class="filters" role="group" aria-label="Theme filter"><button type="button" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="light" aria-pressed="false">Light</button><button type="button" data-filter="dark" aria-pressed="false">Dark</button></div></header><main class="page"><section id="focus-timer" aria-labelledby="ft-heading"><div class="section-head"><h2 id="ft-heading">Focus timer</h2></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="ft-card" id="ft-light" data-state="running" role="group" aria-label="Focus timer light"><div class="ft-header"><div class="ft-title">Focus</div><div class="ft-status" data-state="running">In progress</div></div><div class="ft-dial-wrap"><div class="ft-dial"><div class="ft-breath" aria-hidden="true"></div><svg viewBox="0 0 200 200" aria-hidden="true"><g class="ft-ticks" transform="translate(100,100)"></g></svg><div class="ft-time">13:41</div></div></div><div class="ft-controls"><button class="ft-btn ft-btn-icon" type="button" data-action="reset" aria-label="Reset timer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button><button class="ft-btn ft-btn-main" type="button" data-action="toggle" aria-label="Pause timer"><svg class="ft-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg><span class="ft-label">Pause</span></button></div></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="ft-card" id="ft-dark" data-state="running" role="group" aria-label="Focus timer dark"><div class="ft-header"><div class="ft-title">Focus</div><div class="ft-status" data-state="running">In progress</div></div><div class="ft-dial-wrap"><div class="ft-dial"><div class="ft-breath" aria-hidden="true"></div><svg viewBox="0 0 200 200" aria-hidden="true"><g class="ft-ticks" transform="translate(100,100)"></g></svg><div class="ft-time">13:41</div></div></div><div class="ft-controls"><button class="ft-btn ft-btn-icon" type="button" data-action="reset" aria-label="Reset timer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button><button class="ft-btn ft-btn-main" type="button" data-action="toggle" aria-label="Pause timer"><svg class="ft-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg><span class="ft-label">Pause</span></button></div></div></div></div></section><section id="flip-counter" aria-labelledby="fc-heading"><div class="section-head"><h2 id="fc-heading">Flip counter</h2></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="fc-card" role="group" aria-label="Flip counter light"><div class="fc-head"><div class="fc-title">Count</div><div class="fc-status" data-state="idle">Ready</div></div><div class="fc-counter" data-flip="light" aria-live="polite" aria-atomic="true"></div><div class="fc-controls"><button class="fc-btn fc-btn-icon" type="button" data-flip-action="reset" data-flip-target="light" aria-label="Reset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.3"/><path d="M21 3v6h-6"/></svg></button><button class="fc-btn" type="button" data-flip-action="demo" data-flip-target="light">1,333</button><button class="fc-btn" type="button" data-flip-action="big" data-flip-target="light">12,847</button></div></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="fc-card" role="group" aria-label="Flip counter dark"><div class="fc-head"><div class="fc-title">Count</div><div class="fc-status" data-state="idle">Ready</div></div><div class="fc-counter" data-flip="dark" aria-live="polite" aria-atomic="true"></div><div class="fc-controls"><button class="fc-btn fc-btn-icon" type="button" data-flip-action="reset" data-flip-target="dark" aria-label="Reset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.3"/><path d="M21 3v6h-6"/></svg></button><button class="fc-btn" type="button" data-flip-action="demo" data-flip-target="dark">1,333</button><button class="fc-btn" type="button" data-flip-action="big" data-flip-target="dark">12,847</button></div></div></div></div></section><section id="mode-status" aria-labelledby="mode-heading"><div class="section-head"><h2 id="mode-heading">Mode status</h2></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="mode-grid" data-mode-stage="light"></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="mode-grid" data-mode-stage="dark"></div></div></div></section><section id="lane" aria-labelledby="lane-heading"><div class="section-head"><h2 id="lane-heading">Lane</h2></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><article class="lane-card" aria-label="Lane status Dallas to Atlanta light"><div class="lane-head"><h3>Lane</h3><span class="lane-badge"><span class="dot" aria-hidden="true"></span> In transit</span></div><div class="lane-route"><div class="lane-city"><div class="code">DAL</div><div class="name">Dallas, TX</div></div><div class="lane-progress-wrap" aria-hidden="true"><div class="lane-rail"><div class="lane-rail-fill" data-lane="light"></div><div class="lane-marker" data-lane-marker="light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7v-5z"/><circle cx="7" cy="17" r="1.6" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="1.6" fill="currentColor" stroke="none"/></svg></div></div></div><div class="lane-city to"><div class="code">ATL</div><div class="name">Atlanta, GA</div></div></div><div class="lane-times"><div><div class="lane-when">06:00</div><div class="lane-meta">Pickup · CT</div></div><div class="right"><div class="lane-when">18:30</div><div class="lane-meta">Delivery · ET</div></div></div><div class="lane-foot"><div class="lane-chips"><span class="lane-chip">FTL · Dry van</span><span class="lane-chip">Load LD-2841</span></div><button type="button" class="lane-link">Track</button></div></article></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><article class="lane-card" aria-label="Lane status Dallas to Atlanta dark"><div class="lane-head"><h3>Lane</h3><span class="lane-badge"><span class="dot" aria-hidden="true"></span> In transit</span></div><div class="lane-route"><div class="lane-city"><div class="code">DAL</div><div class="name">Dallas, TX</div></div><div class="lane-progress-wrap" aria-hidden="true"><div class="lane-rail"><div class="lane-rail-fill" data-lane="dark"></div><div class="lane-marker" data-lane-marker="dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7v-5z"/><circle cx="7" cy="17" r="1.6" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="1.6" fill="currentColor" stroke="none"/></svg></div></div></div><div class="lane-city to"><div class="code">ATL</div><div class="name">Atlanta, GA</div></div></div><div class="lane-times"><div><div class="lane-when">06:00</div><div class="lane-meta">Pickup · CT</div></div><div class="right"><div class="lane-when">18:30</div><div class="lane-meta">Delivery · ET</div></div></div><div class="lane-foot"><div class="lane-chips"><span class="lane-chip">FTL · Dry van</span><span class="lane-chip">Load LD-2841</span></div><button type="button" class="lane-link">Track</button></div></article></div></div></section>
+<section id="list" aria-labelledby="list-heading">
+<div class="section-head">
+<h2 id="list-heading">List</h2>
+<p class="doctrine-note">Foundations logistics ListRows — name · StatusDot/pulse · one KPI. px-5 / py-3.5, hairlines, whole-row surface-2 hover. Ink only — no blue.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light</p>
+<div class="f-panel" role="region" aria-label="Shipments list light">
+<ul class="f-list">
+<li class="f-list-row"><a class="f-list-row-body" href="#list" role="link"><span class="f-list-name">DAL → ATL · Schneider</span><span class="f-list-status"><span class="f-dot f-dot-ink f-dot-pulse" aria-hidden="true"></span>In transit</span><span class="f-list-kpi">$2,840</span></a></li>
+<li class="f-list-row"><a class="f-list-row-body" href="#list"><span class="f-list-name">CHI → NYC · JB Hunt</span><span class="f-list-status"><span class="f-dot f-dot-ink" aria-hidden="true"></span>Delivered</span><span class="f-list-kpi">$1,920</span></a></li>
+<li class="f-list-row"><a class="f-list-row-body" href="#list"><span class="f-list-name">LAX → SEA · Knight-Swift</span><span class="f-list-status"><span class="f-dot f-dot-ink f-dot-pulse" aria-hidden="true"></span>In transit</span><span class="f-list-kpi">$3,110</span></a></li>
+<li class="f-list-row"><a class="f-list-row-body" href="#list"><span class="f-list-name">HOU → MIA · Werner</span><span class="f-list-status"><span class="f-dot f-dot-danger" aria-hidden="true"></span>Exception</span><span class="f-list-kpi">$4,050</span></a></li>
+<li class="f-list-row"><a class="f-list-row-body" href="#list"><span class="f-list-name">DEN → PHX · XPO</span><span class="f-list-status"><span class="f-dot" aria-hidden="true"></span>Booked</span><span class="f-list-kpi">$1,480</span></a></li>
+</ul>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark</p>
+<div class="f-panel" role="region" aria-label="Shipments list dark">
+<ul class="f-list">
+<li class="f-list-row"><a class="f-list-row-body" href="#list"><span class="f-list-name">DAL → ATL · Schneider</span><span class="f-list-status"><span class="f-dot f-dot-ink f-dot-pulse" aria-hidden="true"></span>In transit</span><span class="f-list-kpi">$2,840</span></a></li>
+<li class="f-list-row"><a class="f-list-row-body" href="#list"><span class="f-list-name">CHI → NYC · JB Hunt</span><span class="f-list-status"><span class="f-dot f-dot-ink" aria-hidden="true"></span>Delivered</span><span class="f-list-kpi">$1,920</span></a></li>
+<li class="f-list-row"><a class="f-list-row-body" href="#list"><span class="f-list-name">LAX → SEA · Knight-Swift</span><span class="f-list-status"><span class="f-dot f-dot-ink f-dot-pulse" aria-hidden="true"></span>In transit</span><span class="f-list-kpi">$3,110</span></a></li>
+<li class="f-list-row"><a class="f-list-row-body" href="#list"><span class="f-list-name">HOU → MIA · Werner</span><span class="f-list-status"><span class="f-dot f-dot-danger" aria-hidden="true"></span>Exception</span><span class="f-list-kpi">$4,050</span></a></li>
+<li class="f-list-row"><a class="f-list-row-body" href="#list"><span class="f-list-name">DEN → PHX · XPO</span><span class="f-list-status"><span class="f-dot" aria-hidden="true"></span>Booked</span><span class="f-list-kpi">$1,480</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="kpi-strip" aria-labelledby="kpi-heading">
+<div class="section-head">
+<h2 id="kpi-heading">Kpi strip</h2>
+<p class="doctrine-note">Loads · On-time % · Margin — ink numbers, DeltaBadge by arrow (not hue).</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light</p>
+<div class="f-kpi-strip">
+<article class="f-card f-kpi" aria-label="Loads">
+<div class="f-kpi-head"><span class="f-kpi-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="1.5" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="1.5" fill="currentColor" stroke="none"/></svg></span><p class="f-kpi-label">Loads</p></div>
+<p class="f-kpi-value">248</p>
+<p class="f-delta"><span class="f-delta-chg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>12%</span><span class="f-delta-vs">vs 221</span></p>
+</article>
+<article class="f-card f-kpi" aria-label="On-time percent">
+<div class="f-kpi-head"><span class="f-kpi-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><p class="f-kpi-label">On-time %</p></div>
+<p class="f-kpi-value">94.2%</p>
+<p class="f-delta"><span class="f-delta-chg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>1.4%</span><span class="f-delta-vs">vs 95.6%</span></p>
+</article>
+<article class="f-card f-kpi" aria-label="Margin">
+<div class="f-kpi-head"><span class="f-kpi-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 16l5-5 4 4 7-7"/><path d="M14 8h6v6"/></svg></span><p class="f-kpi-label">Margin</p></div>
+<p class="f-kpi-value">18.6%</p>
+<p class="f-delta"><span class="f-delta-chg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>0.8%</span><span class="f-delta-vs">vs 17.8%</span></p>
+</article>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark</p>
+<div class="f-kpi-strip">
+<article class="f-card f-kpi" aria-label="Loads dark">
+<div class="f-kpi-head"><span class="f-kpi-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="1.5" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="1.5" fill="currentColor" stroke="none"/></svg></span><p class="f-kpi-label">Loads</p></div>
+<p class="f-kpi-value">248</p>
+<p class="f-delta"><span class="f-delta-chg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>12%</span><span class="f-delta-vs">vs 221</span></p>
+</article>
+<article class="f-card f-kpi" aria-label="On-time percent dark">
+<div class="f-kpi-head"><span class="f-kpi-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><p class="f-kpi-label">On-time %</p></div>
+<p class="f-kpi-value">94.2%</p>
+<p class="f-delta"><span class="f-delta-chg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>1.4%</span><span class="f-delta-vs">vs 95.6%</span></p>
+</article>
+<article class="f-card f-kpi" aria-label="Margin dark">
+<div class="f-kpi-head"><span class="f-kpi-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 16l5-5 4 4 7-7"/><path d="M14 8h6v6"/></svg></span><p class="f-kpi-label">Margin</p></div>
+<p class="f-kpi-value">18.6%</p>
+<p class="f-delta"><span class="f-delta-chg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>0.8%</span><span class="f-delta-vs">vs 17.8%</span></p>
+</article>
+</div>
+</div>
+</div>
+</section>
+
+<section id="segmented" aria-labelledby="seg-heading">
+<div class="section-head">
+<h2 id="seg-heading">Segmented + FilterPill</h2>
+<p class="doctrine-note">Status filters on surface-2 track; active pill lifts with shadow-sm. Exception flag uses --danger only.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light</p>
+<nav class="f-seg" aria-label="Shipment status light" data-seg>
+<button type="button" class="f-seg-btn" aria-pressed="true" data-seg-opt>All</button>
+<button type="button" class="f-seg-btn" aria-pressed="false" data-seg-opt>In transit</button>
+<button type="button" class="f-seg-btn" aria-pressed="false" data-seg-opt>Delivered</button>
+<button type="button" class="f-seg-btn" aria-pressed="false" data-seg-opt>Exception<span class="f-seg-flag" aria-hidden="true"></span></button>
+</nav>
+<div class="f-pills">
+<span class="f-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7z"/></svg>FTL</span>
+<span class="f-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>This week</span>
+<span class="f-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h7"/></svg>Carrier</span>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark</p>
+<nav class="f-seg" aria-label="Shipment status dark" data-seg>
+<button type="button" class="f-seg-btn" aria-pressed="true" data-seg-opt>All</button>
+<button type="button" class="f-seg-btn" aria-pressed="false" data-seg-opt>In transit</button>
+<button type="button" class="f-seg-btn" aria-pressed="false" data-seg-opt>Delivered</button>
+<button type="button" class="f-seg-btn" aria-pressed="false" data-seg-opt>Exception<span class="f-seg-flag" aria-hidden="true"></span></button>
+</nav>
+<div class="f-pills">
+<span class="f-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7z"/></svg>FTL</span>
+<span class="f-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>This week</span>
+<span class="f-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h7"/></svg>Carrier</span>
+</div>
+</div>
+</div>
+</section>
+
+<section id="sheet" aria-labelledby="sheet-heading">
+<div class="section-head">
+<h2 id="sheet-heading">Sheet</h2>
+<p class="doctrine-note">Detail sheet lifts with shadow + translateY; RecordHeader, section labels, ink-solid primary. Transform/opacity only · 150ms.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light</p>
+<div class="f-sheet-stage" data-sheet>
+<div class="f-sheet-backdrop" data-sheet-backdrop aria-hidden="true"></div>
+<article class="f-sheet-card" data-sheet-card aria-label="Shipment detail light">
+<div class="f-rec-head">
+<div>
+<h3 class="f-rec-title">LD-2841</h3>
+<p class="f-rec-sub">DAL → ATL · Schneider National</p>
+</div>
+<span class="f-badge"><span class="f-dot f-dot-ink f-dot-pulse" style="margin-right:6px" aria-hidden="true"></span>In transit</span>
+</div>
+<div class="f-sec">
+<p class="f-sec-label">Schedule</p>
+<dl class="f-dl">
+<div><dt>Pickup</dt><dd>06:00 CT</dd></div>
+<div><dt>Delivery</dt><dd>18:30 ET</dd></div>
+<div><dt>Mode</dt><dd>FTL · Dry van</dd></div>
+<div><dt>Miles</dt><dd>782</dd></div>
+</dl>
+</div>
+<div class="f-sec">
+<p class="f-sec-label">Commercial</p>
+<dl class="f-dl">
+<div><dt>Rate</dt><dd>$2,840</dd></div>
+<div><dt>Margin</dt><dd>19.4%</dd></div>
+</dl>
+</div>
+<div class="f-sheet-actions">
+<button type="button" class="f-btn f-btn-secondary" data-sheet-close>Close</button>
+<button type="button" class="f-btn f-btn-primary">Track load</button>
+</div>
+</article>
+<div class="f-sheet-trigger"><button type="button" class="f-btn f-btn-primary" data-sheet-open>Open sheet</button></div>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark</p>
+<div class="f-sheet-stage" data-sheet>
+<div class="f-sheet-backdrop" data-sheet-backdrop aria-hidden="true"></div>
+<article class="f-sheet-card" data-sheet-card aria-label="Shipment detail dark">
+<div class="f-rec-head">
+<div>
+<h3 class="f-rec-title">LD-2841</h3>
+<p class="f-rec-sub">DAL → ATL · Schneider National</p>
+</div>
+<span class="f-badge"><span class="f-dot f-dot-ink f-dot-pulse" style="margin-right:6px" aria-hidden="true"></span>In transit</span>
+</div>
+<div class="f-sec">
+<p class="f-sec-label">Schedule</p>
+<dl class="f-dl">
+<div><dt>Pickup</dt><dd>06:00 CT</dd></div>
+<div><dt>Delivery</dt><dd>18:30 ET</dd></div>
+<div><dt>Mode</dt><dd>FTL · Dry van</dd></div>
+<div><dt>Miles</dt><dd>782</dd></div>
+</dl>
+</div>
+<div class="f-sec">
+<p class="f-sec-label">Commercial</p>
+<dl class="f-dl">
+<div><dt>Rate</dt><dd>$2,840</dd></div>
+<div><dt>Margin</dt><dd>19.4%</dd></div>
+</dl>
+</div>
+<div class="f-sheet-actions">
+<button type="button" class="f-btn f-btn-secondary" data-sheet-close>Close</button>
+<button type="button" class="f-btn f-btn-primary">Track load</button>
+</div>
+</article>
+<div class="f-sheet-trigger"><button type="button" class="f-btn f-btn-primary" data-sheet-open>Open sheet</button></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="breakdown" aria-labelledby="bd-heading">
+<div class="section-head">
+<h2 id="bd-heading">BreakdownPanel</h2>
+<p class="doctrine-note">Mode mix volumes — SeriesBar ink ramp (seriesFill), not rainbow. Air / Truck / Ocean / Rail.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light</p>
+<div class="f-panel" data-breakdown role="region" aria-label="Mode mix light">
+<div class="f-bd-head">
+<div>
+<h3 class="f-bd-title">Mode mix</h3>
+<p class="f-bd-total">1,284 loads</p>
+</div>
+<button type="button" class="f-bd-more">View all</button>
+</div>
+<div class="f-series" aria-hidden="true" data-series></div>
+<ul class="f-list" data-legend></ul>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark</p>
+<div class="f-panel" data-breakdown role="region" aria-label="Mode mix dark">
+<div class="f-bd-head">
+<div>
+<h3 class="f-bd-title">Mode mix</h3>
+<p class="f-bd-total">1,284 loads</p>
+</div>
+<button type="button" class="f-bd-more">View all</button>
+</div>
+<div class="f-series" aria-hidden="true" data-series></div>
+<ul class="f-list" data-legend></ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="empty" aria-labelledby="empty-heading">
+<div class="section-head">
+<h2 id="empty-heading">EmptyState</h2>
+<p class="doctrine-note">Quiet empty list — ink-solid CTA. No decorative hue.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light</p>
+<div class="f-panel">
+<div class="f-empty">
+<p class="f-empty-title">No shipments yet</p>
+<p class="f-empty-desc">When loads are booked they will land here — carriers, status, and the one number that matters.</p>
+<div class="f-empty-action"><button type="button" class="f-btn f-btn-primary">Book a load</button></div>
+</div>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark</p>
+<div class="f-panel">
+<div class="f-empty">
+<p class="f-empty-title">No shipments yet</p>
+<p class="f-empty-desc">When loads are booked they will land here — carriers, status, and the one number that matters.</p>
+<div class="f-empty-action"><button type="button" class="f-btn f-btn-primary">Book a load</button></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="training-chrome" aria-labelledby="train-heading">
+<div class="section-head">
+<h2 id="train-heading">Training chrome</h2>
+<p class="doctrine-note">Focus-timer language (charcoal pills) — training only, separate from Foundations ink product sections above.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light · training</p>
+<div class="train-cluster" role="group" aria-label="Training control cluster light">
+<p class="train-label">Training chrome</p>
+<p class="train-title">Focus controls</p>
+<div class="train-pills">
+<button type="button" class="train-pill">Pause</button>
+<button type="button" class="train-pill">Reset</button>
+</div>
+<p class="train-note">Charcoal Focus language — not product ink.</p>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark · training</p>
+<div class="train-cluster" role="group" aria-label="Training control cluster dark">
+<p class="train-label">Training chrome</p>
+<p class="train-title">Focus controls</p>
+<div class="train-pills">
+<button type="button" class="train-pill">Pause</button>
+<button type="button" class="train-pill">Reset</button>
+</div>
+<p class="train-note">Charcoal Focus language — not product ink.</p>
+</div>
+</div>
+</div>
+</section>
+</main><p class="footer-note">Focus · Flip · Mode · Lane · List · Kpi · Segmented · Sheet · Breakdown · Empty · Training chrome — Light / Dark. New CRM pieces: ink on paper, --danger only, no blue accents.</p><script>(function () {
 var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 document.querySelectorAll(".filters button").forEach(function (btn) {
 btn.addEventListener("click", function () {
@@ -398,5 +928,65 @@ document.querySelectorAll("[data-lane-marker]").forEach(function (marker) {
 marker.style.left = progress * 100 + "%";
 if (reduceMotion) marker.style.transition = "none";
 });
+});
+
+/* Foundations product interactions */
+function seriesFill(index, count) {
+  var step = count <= 1 ? 0 : index / (count - 1);
+  var weight = Math.round((1 - step * 0.72) * 100);
+  return "color-mix(in oklab, var(--series-ink) " + weight + "%, var(--series-base))";
+}
+var MODE_MIX = [
+  { name: "Truck", share: 48, value: "616" },
+  { name: "Air", share: 22, value: "282" },
+  { name: "Ocean", share: 18, value: "231" },
+  { name: "Rail", share: 12, value: "155" }
+];
+document.querySelectorAll("[data-breakdown]").forEach(function (panel) {
+  var series = panel.querySelector("[data-series]");
+  var legend = panel.querySelector("[data-legend]");
+  var count = MODE_MIX.length;
+  series.innerHTML = "";
+  legend.innerHTML = "";
+  MODE_MIX.forEach(function (row, index) {
+    var seg = document.createElement("div");
+    seg.className = "f-series-seg";
+    seg.style.width = Math.max(row.share, 1.5) + "%";
+    seg.style.background = seriesFill(index, count);
+    series.appendChild(seg);
+    var li = document.createElement("li");
+    li.className = "f-list-row";
+    li.innerHTML =
+      '<div class="f-list-row-body" style="cursor:default;padding:12px 20px">' +
+      '<span class="f-swatch" style="background:' + seriesFill(index, count) + '" aria-hidden="true"></span>' +
+      '<span class="f-legend-name">' + row.name + "</span>" +
+      '<span class="f-badge">' + row.share + "%</span>" +
+      '<span class="f-list-kpi">' + row.value + "</span>" +
+      "</div>";
+    legend.appendChild(li);
+  });
+});
+document.querySelectorAll("[data-seg]").forEach(function (nav) {
+  nav.querySelectorAll("[data-seg-opt]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      nav.querySelectorAll("[data-seg-opt]").forEach(function (b) {
+        b.setAttribute("aria-pressed", String(b === btn));
+      });
+    });
+  });
+});
+document.querySelectorAll("[data-sheet]").forEach(function (stage) {
+  var card = stage.querySelector("[data-sheet-card]");
+  var openBtn = stage.querySelector("[data-sheet-open]");
+  var closeBtn = stage.querySelector("[data-sheet-close]");
+  var backdrop = stage.querySelector("[data-sheet-backdrop]");
+  function setOpen(open) {
+    stage.classList.toggle("is-open", open);
+    card.classList.toggle("is-open", open);
+    if (openBtn) openBtn.textContent = open ? "Sheet open" : "Open sheet";
+  }
+  if (openBtn) openBtn.addEventListener("click", function () { setOpen(true); });
+  if (closeBtn) closeBtn.addEventListener("click", function () { setOpen(false); });
+  if (backdrop) backdrop.addEventListener("click", function () { setOpen(false); });
 });
 })();</script></body></html>
