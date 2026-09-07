@@ -461,6 +461,202 @@
   .f-sheet-card.is-open{transform:none}
   .f-btn:active,.train-pill:active{transform:none}
 }
+
+/* ============================================================
+   Looking Glass product (CRM ink remap)
+   Doctrine: same Endurance CRM tokens as Foundations.
+   Accent and lamp rainbow retired. Status = ink ramp + danger only.
+   Primary = ink-solid. No blue accent hex. No AI purple.
+   ============================================================ */
+.lg-stack{display:flex;flex-direction:column;gap:16px;width:100%}
+.lg-matrix-label{margin:0 0 8px;font-size:11px;font-weight:650;letter-spacing:0.04em;text-transform:uppercase;color:var(--subtle)}
+.lg-shell{
+  display:grid;grid-template-columns:148px 1fr;gap:0;
+  background:var(--surface);border:1px solid var(--hairline);border-radius:16px;
+  box-shadow:var(--shadow-sm);overflow:hidden;min-height:220px;color:var(--ink);
+}
+.lg-side{
+  background:var(--surface-2);border-right:1px solid var(--hairline);
+  padding:12px 8px;display:flex;flex-direction:column;gap:2px;
+}
+.lg-side-brand{
+  font-size:11px;font-weight:650;letter-spacing:0.04em;text-transform:uppercase;
+  color:var(--subtle);padding:4px 10px 10px;
+}
+.lg-nav{
+  appearance:none;border:0;background:transparent;color:var(--muted);
+  font:inherit;font-size:12px;font-weight:550;text-align:left;
+  display:flex;align-items:center;gap:8px;width:100%;
+  padding:8px 10px;border-radius:8px;cursor:default;
+  transition:background-color 150ms var(--ease),color 150ms var(--ease);
+}
+.lg-nav .ico{width:6px;height:6px;border-radius:50%;background:var(--hairline-strong);flex-shrink:0}
+.lg-nav[aria-current="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow-sm);font-weight:600}
+.lg-nav[aria-current="true"] .ico{background:var(--ink-solid)}
+.lg-nav .tag{margin-left:auto;font-size:11px;font-variant-numeric:tabular-nums;color:var(--subtle);font-weight:600}
+.lg-nav .tag.is-danger{color:var(--danger)}
+.lg-main{padding:16px 18px;display:flex;flex-direction:column;gap:12px;min-width:0;background:var(--surface)}
+.lg-main-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.lg-main-title{margin:0;font-size:15px;font-weight:650;letter-spacing:-0.02em}
+.lg-main-meta{font-size:12px;color:var(--muted)}
+.lg-main-body{flex:1;border:1px dashed var(--hairline);border-radius:10px;background:var(--surface-2);padding:14px;font-size:12px;color:var(--muted);line-height:1.45}
+
+/* Line / workstream rows */
+.lg-lines{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--hairline);border-radius:16px;box-shadow:var(--shadow-sm);overflow:hidden}
+.lg-line{border-bottom:1px solid var(--hairline)}
+.lg-line:last-child{border-bottom:0}
+.lg-line-body{
+  display:grid;grid-template-columns:8px minmax(0,1fr) auto;align-items:center;gap:12px;
+  padding:12px 16px;cursor:default;transition:background-color 150ms var(--ease);color:var(--ink);
+}
+@media (hover:hover) and (pointer:fine){
+  .lg-line-body:hover,.lg-line.is-hover .lg-line-body{background:var(--surface-2)}
+}
+.lg-lamp{width:7px;height:7px;border-radius:50%;background:var(--ink);opacity:0.35;flex-shrink:0}
+.lg-lamp.is-ready{opacity:0.45}
+.lg-lamp.is-awaiting{opacity:0.7}
+.lg-lamp.is-live{opacity:1}
+.lg-lamp.is-stale{opacity:0.28;width:6px;height:6px}
+.lg-lamp.is-blocked{background:var(--danger);opacity:1}
+.lg-lamp.is-pulse{animation:f-pulse 2.4s var(--ease) infinite}
+.lg-line-title{display:block;font-size:13px;font-weight:550;letter-spacing:-0.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lg-line-sub{display:block;margin-top:2px;font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lg-line-age{font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);letter-spacing:-0.02em}
+.lg-line.is-blocked .lg-line-title{color:var(--ink)}
+.lg-line.is-blocked .lg-line-age{color:var(--danger)}
+
+/* Handoff card */
+.lg-handoff{
+  background:var(--surface);border:1px solid var(--hairline);border-radius:16px;
+  box-shadow:var(--shadow-sm);padding:16px 18px;color:var(--ink);display:flex;flex-direction:column;gap:10px;
+}
+.lg-overline{margin:0;font-size:11px;font-weight:650;letter-spacing:0.06em;text-transform:uppercase;color:var(--subtle)}
+.lg-handoff-note{margin:0;font-size:12px;color:var(--muted);line-height:1.45}
+.lg-field-label{display:block;font-size:11px;font-weight:600;color:var(--muted);margin:4px 0 4px}
+.lg-field-label span{font-weight:500;color:var(--subtle)}
+.lg-field{
+  width:100%;min-height:52px;resize:vertical;font:inherit;font-size:13px;color:var(--ink);
+  background:var(--surface-2);border:1px solid var(--hairline);border-radius:10px;padding:10px 12px;
+}
+.lg-wip{
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;
+  background:var(--surface-2);border:1px solid var(--hairline);font-size:12px;color:var(--muted);
+}
+.lg-wip code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:var(--ink);background:var(--surface);border:1px solid var(--hairline);border-radius:6px;padding:2px 6px}
+.lg-ack{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--muted);line-height:1.4}
+.lg-ack input{margin-top:2px;accent-color:var(--ink-solid)}
+.lg-handoff-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.lg-msg{margin:0;font-size:12px;color:var(--muted)}
+.lg-msg.is-err{color:var(--danger)}
+.lg-msg.is-ok{color:var(--muted)}
+
+/* Commons piece */
+.lg-piece-list{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--hairline);border-radius:16px;box-shadow:var(--shadow-sm);overflow:hidden}
+.lg-piece{border-bottom:1px solid var(--hairline)}
+.lg-piece:last-child{border-bottom:0}
+.lg-piece-row{
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:10px 12px;
+  padding:12px 16px;width:100%;appearance:none;border:0;background:transparent;font:inherit;text-align:left;color:var(--ink);cursor:default;
+}
+@media (hover:hover) and (pointer:fine){.lg-piece-row:hover{background:var(--surface-2)}}
+.lg-tier{
+  display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;
+  border:1px solid var(--hairline);font-size:10px;font-weight:650;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);background:var(--surface);
+}
+.lg-tier.is-doctrine{border-color:transparent;background:var(--danger-tint);color:var(--danger)}
+.lg-tier.is-default{border-color:var(--hairline-strong);color:var(--ink);opacity:0.85}
+.lg-piece-title{display:block;font-size:13px;font-weight:550}
+.lg-piece-sub{display:block;margin-top:2px;font-size:11px;color:var(--muted)}
+.lg-meter{display:inline-flex;align-items:flex-end;gap:2px;height:14px}
+.lg-meter i{display:block;width:3px;height:8px;border-radius:1px;background:var(--ink);opacity:0.22}
+.lg-meter i.on{opacity:0.9;height:12px}
+.lg-meter i.warn{opacity:0.55;height:10px}
+.lg-meter i.bad{background:var(--danger);opacity:1;height:12px}
+.lg-age-badge{font-size:11px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--muted);background:var(--surface-2);border-radius:999px;padding:2px 8px}
+.lg-piece-expand{padding:0 16px 12px 16px;font-size:12px;color:var(--muted);line-height:1.45}
+.lg-piece-expand ul{margin:6px 0 0;padding-left:16px}
+.lg-empty{
+  background:var(--surface);border:1px solid var(--hairline);border-radius:16px;box-shadow:var(--shadow-sm);
+  padding:28px 20px;text-align:center;color:var(--ink);
+}
+.lg-empty-title{margin:0 0 6px;font-size:14px;font-weight:600}
+.lg-empty-desc{margin:0;font-size:12px;color:var(--muted);line-height:1.45}
+
+/* Yoda rail */
+.lg-rail{
+  background:var(--surface);border:1px solid var(--hairline);border-radius:16px;box-shadow:var(--shadow-sm);
+  display:flex;flex-direction:column;min-height:280px;overflow:hidden;color:var(--ink);
+}
+.lg-rail-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+  padding:12px 14px;border-bottom:1px solid var(--hairline);font-size:13px;font-weight:650;
+}
+.lg-rail-head .meta{font-size:11px;font-weight:500;color:var(--subtle)}
+.lg-thread{flex:1;padding:12px 14px;display:flex;flex-direction:column;gap:10px;overflow:auto;min-height:140px}
+.lg-turn{max-width:92%;font-size:12.5px;line-height:1.45;padding:8px 10px;border-radius:10px}
+.lg-turn.mine{align-self:flex-end;background:var(--ink-solid);color:var(--ink-solid-fg)}
+.lg-turn.yoda{align-self:flex-start;background:var(--surface-2);color:var(--ink);border:1px solid var(--hairline)}
+.lg-turn.yoda p{margin:0}
+.lg-shown{
+  appearance:none;border:0;background:transparent;color:var(--muted);font:inherit;font-size:11px;font-weight:600;
+  margin-top:6px;padding:0;cursor:default;display:inline-flex;align-items:center;gap:6px;
+}
+.lg-shown::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--ink-solid)}
+.lg-typing{display:inline-flex;gap:4px;align-items:center;height:14px}
+.lg-typing i{width:5px;height:5px;border-radius:50%;background:var(--ink);opacity:0.35;animation:lg-type 1.2s var(--ease) infinite}
+.lg-typing i:nth-child(2){animation-delay:0.15s}
+.lg-typing i:nth-child(3){animation-delay:0.3s}
+@keyframes lg-type{0%,100%{opacity:0.25;transform:translateY(0)}50%{opacity:0.85;transform:translateY(-2px)}}
+.lg-composer{
+  display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end;
+  padding:10px 12px;border-top:1px solid var(--hairline);background:var(--surface);
+}
+.lg-composer textarea{
+  width:100%;min-height:36px;max-height:80px;resize:none;font:inherit;font-size:13px;color:var(--ink);
+  background:var(--surface-2);border:1px solid var(--hairline);border-radius:10px;padding:8px 10px;
+}
+.lg-send{
+  appearance:none;border:0;cursor:pointer;width:36px;height:36px;border-radius:999px;
+  background:var(--ink-solid);color:var(--ink-solid-fg);display:grid;place-items:center;
+  transition:background-color 150ms var(--ease),transform 150ms var(--ease);
+}
+.lg-send:disabled{opacity:0.35;cursor:default}
+.lg-send svg{width:14px;height:14px}
+@media (hover:hover) and (pointer:fine){.lg-send:not(:disabled):hover{background:var(--ink-solid-hover)}.lg-send:active{transform:scale(0.97)}}
+
+/* Connections */
+.lg-conn-list{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--hairline);border-radius:16px;box-shadow:var(--shadow-sm);overflow:hidden}
+.lg-conn{border-bottom:1px solid var(--hairline)}
+.lg-conn:last-child{border-bottom:0}
+.lg-conn-row{
+  display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:10px;
+  padding:12px 16px;color:var(--ink);
+}
+.lg-conn-name{font-size:13px;font-weight:550}
+.lg-conn-sub{display:block;margin-top:2px;font-size:11px;color:var(--muted)}
+.lg-health{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--muted)}
+.lg-health.is-bad{color:var(--danger)}
+.lg-conn-actions{display:flex;gap:6px}
+
+/* Shift brief */
+.lg-brief{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+  background:var(--surface);border:1px solid var(--hairline);border-radius:16px;box-shadow:var(--shadow-sm);
+  padding:14px 16px;color:var(--ink);
+}
+@media (max-width:480px){.lg-brief{grid-template-columns:1fr}}
+.lg-kpi{display:flex;flex-direction:column;gap:2px;min-width:0}
+.lg-kpi b{font-size:22px;font-weight:650;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;line-height:1.1;color:var(--ink)}
+.lg-kpi.is-blocked b{color:var(--danger)}
+.lg-kpi.is-awaiting b{color:var(--ink);opacity:0.85}
+.lg-kpi.is-rotting b{color:var(--ink);opacity:0.65;font-weight:600}
+.lg-kpi span{font-size:11px;color:var(--subtle);font-weight:550}
+
+@media (prefers-reduced-motion:reduce){
+  .lg-lamp.is-pulse,.lg-typing i{animation:none !important;opacity:0.6}
+  .lg-send:active{transform:none}
+}
+
 </style></head><body><header class="topbar"><h1>Endurance components · Foundations</h1><div class="filters" role="group" aria-label="Theme filter"><button type="button" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="light" aria-pressed="false">Light</button><button type="button" data-filter="dark" aria-pressed="false">Dark</button></div></header><main class="page"><section id="focus-timer" aria-labelledby="ft-heading"><div class="section-head"><h2 id="ft-heading">Focus timer</h2></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="ft-card" id="ft-light" data-state="running" role="group" aria-label="Focus timer light"><div class="ft-header"><div class="ft-title">Focus</div><div class="ft-status" data-state="running">In progress</div></div><div class="ft-dial-wrap"><div class="ft-dial"><div class="ft-breath" aria-hidden="true"></div><svg viewBox="0 0 200 200" aria-hidden="true"><g class="ft-ticks" transform="translate(100,100)"></g></svg><div class="ft-time">13:41</div></div></div><div class="ft-controls"><button class="ft-btn ft-btn-icon" type="button" data-action="reset" aria-label="Reset timer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button><button class="ft-btn ft-btn-main" type="button" data-action="toggle" aria-label="Pause timer"><svg class="ft-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg><span class="ft-label">Pause</span></button></div></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="ft-card" id="ft-dark" data-state="running" role="group" aria-label="Focus timer dark"><div class="ft-header"><div class="ft-title">Focus</div><div class="ft-status" data-state="running">In progress</div></div><div class="ft-dial-wrap"><div class="ft-dial"><div class="ft-breath" aria-hidden="true"></div><svg viewBox="0 0 200 200" aria-hidden="true"><g class="ft-ticks" transform="translate(100,100)"></g></svg><div class="ft-time">13:41</div></div></div><div class="ft-controls"><button class="ft-btn ft-btn-icon" type="button" data-action="reset" aria-label="Reset timer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button><button class="ft-btn ft-btn-main" type="button" data-action="toggle" aria-label="Pause timer"><svg class="ft-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg><span class="ft-label">Pause</span></button></div></div></div></div></section><section id="flip-counter" aria-labelledby="fc-heading"><div class="section-head"><h2 id="fc-heading">Flip counter</h2></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="fc-card" role="group" aria-label="Flip counter light"><div class="fc-head"><div class="fc-title">Count</div><div class="fc-status" data-state="idle">Ready</div></div><div class="fc-counter" data-flip="light" aria-live="polite" aria-atomic="true"></div><div class="fc-controls"><button class="fc-btn fc-btn-icon" type="button" data-flip-action="reset" data-flip-target="light" aria-label="Reset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.3"/><path d="M21 3v6h-6"/></svg></button><button class="fc-btn" type="button" data-flip-action="demo" data-flip-target="light">1,333</button><button class="fc-btn" type="button" data-flip-action="big" data-flip-target="light">12,847</button></div></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="fc-card" role="group" aria-label="Flip counter dark"><div class="fc-head"><div class="fc-title">Count</div><div class="fc-status" data-state="idle">Ready</div></div><div class="fc-counter" data-flip="dark" aria-live="polite" aria-atomic="true"></div><div class="fc-controls"><button class="fc-btn fc-btn-icon" type="button" data-flip-action="reset" data-flip-target="dark" aria-label="Reset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.3"/><path d="M21 3v6h-6"/></svg></button><button class="fc-btn" type="button" data-flip-action="demo" data-flip-target="dark">1,333</button><button class="fc-btn" type="button" data-flip-action="big" data-flip-target="dark">12,847</button></div></div></div></div></section><section id="mode-status" aria-labelledby="mode-heading"><div class="section-head"><h2 id="mode-heading">Mode status</h2><p class="doctrine-note">Ink rails + icons (var(--ink-solid)), not blue. One-shot settle only; no tip-glow or marker breath loops.</p></div><div class="pair"><div class="pane pane-light t-light"><p class="pane-label">Light</p><div class="mode-grid" data-mode-stage="light"></div></div><div class="pane pane-dark t-dark"><p class="pane-label">Dark</p><div class="mode-grid" data-mode-stage="dark"></div></div></div></section><section id="button" aria-labelledby="button-heading">
 <div class="section-head">
 <h2 id="button-heading">Button + LinkButton</h2>
@@ -1144,6 +1340,339 @@
 </div>
 </section>
 
+<section id="looking-glass" aria-labelledby="lg-heading">
+<div class="section-head">
+<h2 id="lg-heading">Looking Glass</h2>
+<p class="doctrine-note">LG patterns on CRM ink. Accent/lamp rainbow retired here so every Endurance surface shares one system. Workstream primitive, handoff not telepresence, blocked/awaiting/rotting headline, no editor.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light · shell chrome</p>
+<div class="lg-shell" aria-label="Looking Glass shell">
+<aside class="lg-side" aria-label="Sidebar">
+<div class="lg-side-brand">Looking Glass</div>
+<button type="button" class="lg-nav" aria-current="true"><span class="ico" aria-hidden="true"></span>Commons<span class="tag">42</span></button>
+<button type="button" class="lg-nav"><span class="ico" aria-hidden="true"></span>Floor<span class="tag is-danger">3</span></button>
+<button type="button" class="lg-nav"><span class="ico" aria-hidden="true"></span>Lines</button>
+<button type="button" class="lg-nav"><span class="ico" aria-hidden="true"></span>Projects</button>
+<button type="button" class="lg-nav"><span class="ico" aria-hidden="true"></span>Team</button>
+</aside>
+<div class="lg-main">
+<div class="lg-main-head"><h3 class="lg-main-title">Commons</h3><span class="lg-main-meta">Panel chrome</span></div>
+<div class="lg-main-body">Main pane uses Panel language: surface on canvas, hairline, ink type. No accent rail.</div>
+</div>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark · shell chrome</p>
+<div class="lg-shell" aria-label="Looking Glass shell">
+<aside class="lg-side" aria-label="Sidebar">
+<div class="lg-side-brand">Looking Glass</div>
+<button type="button" class="lg-nav" aria-current="true"><span class="ico" aria-hidden="true"></span>Commons<span class="tag">42</span></button>
+<button type="button" class="lg-nav"><span class="ico" aria-hidden="true"></span>Floor<span class="tag is-danger">3</span></button>
+<button type="button" class="lg-nav"><span class="ico" aria-hidden="true"></span>Lines</button>
+<button type="button" class="lg-nav"><span class="ico" aria-hidden="true"></span>Projects</button>
+<button type="button" class="lg-nav"><span class="ico" aria-hidden="true"></span>Team</button>
+</aside>
+<div class="lg-main">
+<div class="lg-main-head"><h3 class="lg-main-title">Commons</h3><span class="lg-main-meta">Panel chrome</span></div>
+<div class="lg-main-body">Main pane uses Panel language: surface on canvas, hairline, ink type. No accent rail.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="lg-line" aria-labelledby="lg-line-heading">
+<div class="section-head">
+<h2 id="lg-line-heading">Workstream / Line row</h2>
+<p class="doctrine-note">ListRow-like: name, lamp (ink/danger), one age. States: default, hover, blocked, awaiting. No blue/green/amber/purple lamps.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light</p>
+<ul class="lg-lines" aria-label="Workstream lines">
+<li class="lg-line"><div class="lg-line-body"><span class="lg-lamp is-ready" aria-hidden="true"></span><span><span class="lg-line-title">Margins fold polish</span><span class="lg-line-sub">endurance-site · ready</span></span><span class="lg-line-age">2d</span></div></li>
+<li class="lg-line is-hover"><div class="lg-line-body"><span class="lg-lamp is-live is-pulse" aria-hidden="true"></span><span><span class="lg-line-title">CRM list densify</span><span class="lg-line-sub">endurance-crm · live · hover</span></span><span class="lg-line-age">5h</span></div></li>
+<li class="lg-line is-blocked"><div class="lg-line-body"><span class="lg-lamp is-blocked" aria-hidden="true"></span><span><span class="lg-line-title">Client SSO cutover</span><span class="lg-line-sub">need human · blocked on legal</span></span><span class="lg-line-age">11d</span></div></li>
+<li class="lg-line"><div class="lg-line-body"><span class="lg-lamp is-awaiting" aria-hidden="true"></span><span><span class="lg-line-title">Handoff note review</span><span class="lg-line-sub">awaiting teammate ack</span></span><span class="lg-line-age">1d</span></div></li>
+</ul>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark</p>
+<ul class="lg-lines" aria-label="Workstream lines">
+<li class="lg-line"><div class="lg-line-body"><span class="lg-lamp is-ready" aria-hidden="true"></span><span><span class="lg-line-title">Margins fold polish</span><span class="lg-line-sub">endurance-site · ready</span></span><span class="lg-line-age">2d</span></div></li>
+<li class="lg-line is-hover"><div class="lg-line-body"><span class="lg-lamp is-live is-pulse" aria-hidden="true"></span><span><span class="lg-line-title">CRM list densify</span><span class="lg-line-sub">endurance-crm · live · hover</span></span><span class="lg-line-age">5h</span></div></li>
+<li class="lg-line is-blocked"><div class="lg-line-body"><span class="lg-lamp is-blocked" aria-hidden="true"></span><span><span class="lg-line-title">Client SSO cutover</span><span class="lg-line-sub">need human · blocked on legal</span></span><span class="lg-line-age">11d</span></div></li>
+<li class="lg-line"><div class="lg-line-body"><span class="lg-lamp is-awaiting" aria-hidden="true"></span><span><span class="lg-line-title">Handoff note review</span><span class="lg-line-sub">awaiting teammate ack</span></span><span class="lg-line-age">1d</span></div></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="lg-handoff" aria-labelledby="lg-handoff-heading">
+<div class="section-head">
+<h2 id="lg-handoff-heading">Handoff card</h2>
+<p class="doctrine-note">Done / Next / Danger fields, WIP pointer, assign + ack. Primary ink-solid. Error uses danger text; success stays muted.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light</p>
+<div class="lg-stack">
+<div class="lg-handoff" aria-label="Handoff card">
+<p class="lg-overline">Handoff</p>
+<p class="lg-handoff-note">Alex holds this line since Sep 5, 2:14 PM. The note travels with the claim.</p>
+<label class="lg-field-label">What is done</label>
+<textarea class="lg-field" rows="2" readonly>Ship token remap on gallery. Live blue accent retired in the specimen.</textarea>
+<label class="lg-field-label">What is next <span>(required to transfer)</span></label>
+<textarea class="lg-field" rows="2" readonly>Verify Vercel 200, then wire eng token PR.</textarea>
+<label class="lg-field-label">What is dangerous</label>
+<textarea class="lg-field" rows="2" readonly>Do not reintroduce lamp rainbow in board CSS.</textarea>
+<div class="lg-wip"><span>WIP</span><code>ws/margins-fold</code><button type="button" class="f-btn f-btn-sm f-btn-secondary">Copy ref</button></div>
+<label class="lg-ack"><input type="checkbox" checked disabled /><span>I acknowledge laptop-local work may be the only copy.</span></label>
+<div class="lg-handoff-actions">
+<button type="button" class="f-btn f-btn-md f-btn-primary">Save note</button>
+<button type="button" class="f-btn f-btn-md f-btn-secondary">Transfer</button>
+</div>
+<p class="lg-msg is-ok">Note saved on the server. It survives refresh.</p>
+</div>
+<div class="lg-handoff" aria-label="Handoff error state">
+<p class="lg-overline">Handoff · error</p>
+<p class="lg-handoff-note">Transfer needs a next sentence and an assignee.</p>
+<div class="lg-handoff-actions">
+<button type="button" class="f-btn f-btn-md f-btn-primary">Transfer</button>
+</div>
+<p class="lg-msg is-err">Handoff failed: next field is required.</p>
+</div>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark</p>
+<div class="lg-stack">
+<div class="lg-handoff" aria-label="Handoff card">
+<p class="lg-overline">Handoff</p>
+<p class="lg-handoff-note">Alex holds this line since Sep 5, 2:14 PM. The note travels with the claim.</p>
+<label class="lg-field-label">What is done</label>
+<textarea class="lg-field" rows="2" readonly>Ship token remap on gallery. Live blue accent retired in the specimen.</textarea>
+<label class="lg-field-label">What is next <span>(required to transfer)</span></label>
+<textarea class="lg-field" rows="2" readonly>Verify Vercel 200, then wire eng token PR.</textarea>
+<label class="lg-field-label">What is dangerous</label>
+<textarea class="lg-field" rows="2" readonly>Do not reintroduce lamp rainbow in board CSS.</textarea>
+<div class="lg-wip"><span>WIP</span><code>ws/margins-fold</code><button type="button" class="f-btn f-btn-sm f-btn-secondary">Copy ref</button></div>
+<label class="lg-ack"><input type="checkbox" checked disabled /><span>I acknowledge laptop-local work may be the only copy.</span></label>
+<div class="lg-handoff-actions">
+<button type="button" class="f-btn f-btn-md f-btn-primary">Save note</button>
+<button type="button" class="f-btn f-btn-md f-btn-secondary">Transfer</button>
+</div>
+<p class="lg-msg is-ok">Note saved on the server. It survives refresh.</p>
+</div>
+<div class="lg-handoff" aria-label="Handoff error state">
+<p class="lg-overline">Handoff · error</p>
+<p class="lg-handoff-note">Transfer needs a next sentence and an assignee.</p>
+<div class="lg-handoff-actions">
+<button type="button" class="f-btn f-btn-md f-btn-primary">Transfer</button>
+</div>
+<p class="lg-msg is-err">Handoff failed: next field is required.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="lg-commons" aria-labelledby="lg-commons-heading">
+<div class="section-head">
+<h2 id="lg-commons-heading">Commons piece row</h2>
+<p class="doctrine-note">Tier, title, sub, meter, age badge, expand uses. Empty commons state. Doctrine tier uses danger tint only.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light</p>
+<div class="lg-stack">
+<ul class="lg-piece-list" aria-label="Commons pieces">
+<li class="lg-piece">
+<button type="button" class="lg-piece-row" aria-expanded="true">
+<span class="lg-tier is-doctrine">doctrine</span>
+<span><span class="lg-piece-title">ink-on-paper tokens</span><span class="lg-piece-sub">shared palette · kept by design · moved 3d</span></span>
+<span class="lg-meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="bad"></i><i class="warn"></i></span>
+<span class="lg-age-badge">3d</span>
+</button>
+<div class="lg-piece-expand">Uses: endurance-crm · looking-glass · rjs. One repo drifted on --accent.</div>
+</li>
+<li class="lg-piece">
+<button type="button" class="lg-piece-row" aria-expanded="false">
+<span class="lg-tier is-default">default</span>
+<span><span class="lg-piece-title">ListRow densify</span><span class="lg-piece-sub">row recipe · kept by eng · moved 8d</span></span>
+<span class="lg-meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span>
+<span class="lg-age-badge">8d</span>
+</button>
+</li>
+<li class="lg-piece">
+<button type="button" class="lg-piece-row" aria-expanded="false">
+<span class="lg-tier">menu</span>
+<span><span class="lg-piece-title">sidebar order</span><span class="lg-piece-sub">local choice · kept by product</span></span>
+<span class="lg-meter" aria-hidden="true"><i class="on"></i><i class="warn"></i></span>
+<span class="lg-age-badge">14d</span>
+</button>
+</li>
+</ul>
+<div class="lg-empty">
+<p class="lg-empty-title">Nothing in the commons matches</p>
+<p class="lg-empty-desc">Clear the filter, or pick another category from the sidebar.</p>
+</div>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark</p>
+<div class="lg-stack">
+<ul class="lg-piece-list" aria-label="Commons pieces">
+<li class="lg-piece">
+<button type="button" class="lg-piece-row" aria-expanded="true">
+<span class="lg-tier is-doctrine">doctrine</span>
+<span><span class="lg-piece-title">ink-on-paper tokens</span><span class="lg-piece-sub">shared palette · kept by design · moved 3d</span></span>
+<span class="lg-meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="bad"></i><i class="warn"></i></span>
+<span class="lg-age-badge">3d</span>
+</button>
+<div class="lg-piece-expand">Uses: endurance-crm · looking-glass · rjs. One repo drifted on --accent.</div>
+</li>
+<li class="lg-piece">
+<button type="button" class="lg-piece-row" aria-expanded="false">
+<span class="lg-tier is-default">default</span>
+<span><span class="lg-piece-title">ListRow densify</span><span class="lg-piece-sub">row recipe · kept by eng · moved 8d</span></span>
+<span class="lg-meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span>
+<span class="lg-age-badge">8d</span>
+</button>
+</li>
+<li class="lg-piece">
+<button type="button" class="lg-piece-row" aria-expanded="false">
+<span class="lg-tier">menu</span>
+<span><span class="lg-piece-title">sidebar order</span><span class="lg-piece-sub">local choice · kept by product</span></span>
+<span class="lg-meter" aria-hidden="true"><i class="on"></i><i class="warn"></i></span>
+<span class="lg-age-badge">14d</span>
+</button>
+</li>
+</ul>
+<div class="lg-empty">
+<p class="lg-empty-title">Nothing in the commons matches</p>
+<p class="lg-empty-desc">Clear the filter, or pick another category from the sidebar.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="lg-rail" aria-labelledby="lg-rail-heading">
+<div class="section-head">
+<h2 id="lg-rail-heading">Yoda Rail</h2>
+<p class="doctrine-note">Thread (mine / yoda), composer, send, typing. No decorative AI purple. Send is ink-solid.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light</p>
+<div class="lg-rail" aria-label="Yoda rail">
+<div class="lg-rail-head">Yoda<span class="meta">brain mounted · 12 pages</span></div>
+<div class="lg-thread">
+<div class="lg-turn mine">What needs a human?</div>
+<div class="lg-turn yoda"><p>Three lines are blocked. Floor shows Client SSO cutover first. Commons has one doctrine drift on tokens.</p><button type="button" class="lg-shown">Floor · need human</button></div>
+<div class="lg-turn yoda" aria-live="polite" aria-label="Yoda is answering"><span class="lg-typing"><i></i><i></i><i></i></span></div>
+</div>
+<form class="lg-composer" onsubmit="return false;">
+<textarea rows="1" placeholder="Ask across every account" aria-label="Ask Yoda">Where are we duplicating work?</textarea>
+<button type="submit" class="lg-send" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h12"/><path d="M13 6l6 6-6 6"/></svg></button>
+</form>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark</p>
+<div class="lg-rail" aria-label="Yoda rail">
+<div class="lg-rail-head">Yoda<span class="meta">brain mounted · 12 pages</span></div>
+<div class="lg-thread">
+<div class="lg-turn mine">What needs a human?</div>
+<div class="lg-turn yoda"><p>Three lines are blocked. Floor shows Client SSO cutover first. Commons has one doctrine drift on tokens.</p><button type="button" class="lg-shown">Floor · need human</button></div>
+<div class="lg-turn yoda" aria-live="polite" aria-label="Yoda is answering"><span class="lg-typing"><i></i><i></i><i></i></span></div>
+</div>
+<form class="lg-composer" onsubmit="return false;">
+<textarea rows="1" placeholder="Ask across every account" aria-label="Ask Yoda">Where are we duplicating work?</textarea>
+<button type="submit" class="lg-send" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h12"/><path d="M13 6l6 6-6 6"/></svg></button>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<section id="lg-connections" aria-labelledby="lg-conn-heading">
+<div class="section-head">
+<h2 id="lg-conn-heading">Connections / credential row</h2>
+<p class="doctrine-note">Service name, health, verify. Badge / StatusDot ink language. Unhealthy = danger only.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light</p>
+<ul class="lg-conn-list" aria-label="Connections">
+<li class="lg-conn"><div class="lg-conn-row">
+<span><span class="lg-conn-name">GitHub</span><span class="lg-conn-sub">Team key · spend: org pool</span></span>
+<span class="lg-health"><span class="f-dot f-dot-ink" aria-hidden="true"></span> Healthy</span>
+<span class="lg-conn-actions"><button type="button" class="f-btn f-btn-sm f-btn-secondary">Verify</button></span>
+</div></li>
+<li class="lg-conn"><div class="lg-conn-row">
+<span><span class="lg-conn-name">Vercel</span><span class="lg-conn-sub">Needs attention · last probe failed</span></span>
+<span class="lg-health is-bad"><span class="f-dot f-dot-danger" aria-hidden="true"></span> Unhealthy</span>
+<span class="lg-conn-actions"><button type="button" class="f-btn f-btn-sm f-btn-primary">Verify</button></span>
+</div></li>
+<li class="lg-conn"><div class="lg-conn-row">
+<span><span class="lg-conn-name">Anthropic</span><span class="lg-conn-sub">Yours · personal override</span></span>
+<span class="lg-health"><span class="f-dot f-dot-ink" aria-hidden="true"></span> Untested</span>
+<span class="lg-conn-actions"><button type="button" class="f-btn f-btn-sm f-btn-secondary">Verify</button></span>
+</div></li>
+</ul>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark</p>
+<ul class="lg-conn-list" aria-label="Connections">
+<li class="lg-conn"><div class="lg-conn-row">
+<span><span class="lg-conn-name">GitHub</span><span class="lg-conn-sub">Team key · spend: org pool</span></span>
+<span class="lg-health"><span class="f-dot f-dot-ink" aria-hidden="true"></span> Healthy</span>
+<span class="lg-conn-actions"><button type="button" class="f-btn f-btn-sm f-btn-secondary">Verify</button></span>
+</div></li>
+<li class="lg-conn"><div class="lg-conn-row">
+<span><span class="lg-conn-name">Vercel</span><span class="lg-conn-sub">Needs attention · last probe failed</span></span>
+<span class="lg-health is-bad"><span class="f-dot f-dot-danger" aria-hidden="true"></span> Unhealthy</span>
+<span class="lg-conn-actions"><button type="button" class="f-btn f-btn-sm f-btn-primary">Verify</button></span>
+</div></li>
+<li class="lg-conn"><div class="lg-conn-row">
+<span><span class="lg-conn-name">Anthropic</span><span class="lg-conn-sub">Yours · personal override</span></span>
+<span class="lg-health"><span class="f-dot f-dot-ink" aria-hidden="true"></span> Untested</span>
+<span class="lg-conn-actions"><button type="button" class="f-btn f-btn-sm f-btn-secondary">Verify</button></span>
+</div></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="lg-shift-brief" aria-labelledby="lg-brief-heading">
+<div class="section-head">
+<h2 id="lg-brief-heading">Shift-brief strip</h2>
+<p class="doctrine-note">Compact blocked / awaiting / rotting KPIs in ink. Blocked count may use danger; awaiting and rotting stay on the neutral ink ramp.</p>
+</div>
+<div class="pair">
+<div class="pane pane-light t-light">
+<p class="pane-label">Light · compact</p>
+<div class="lg-brief" aria-label="Shift brief">
+<div class="lg-kpi is-blocked"><b>3</b><span>Blocked</span></div>
+<div class="lg-kpi is-awaiting"><b>7</b><span>Awaiting</span></div>
+<div class="lg-kpi is-rotting"><b>4</b><span>Rotting</span></div>
+</div>
+</div>
+<div class="pane pane-dark t-dark">
+<p class="pane-label">Dark · compact</p>
+<div class="lg-brief" aria-label="Shift brief">
+<div class="lg-kpi is-blocked"><b>3</b><span>Blocked</span></div>
+<div class="lg-kpi is-awaiting"><b>7</b><span>Awaiting</span></div>
+<div class="lg-kpi is-rotting"><b>4</b><span>Rotting</span></div>
+</div>
+</div>
+</div>
+</section>
+
 <section id="training-chrome" aria-labelledby="train-heading">
 <div class="section-head">
 <h2 id="train-heading">Training chrome</h2>
@@ -1176,7 +1705,7 @@
 </div>
 </div>
 </section>
-</main><p class="footer-note">Focus · Flip · Mode · Commons (Button, Panel/Card, Forms, Badge, Page chrome, Avatar, DataTable) · Lane · List · Kpi · Segmented · Sheet · Breakdown · Empty · Training chrome. Light / Dark. Ink-on-paper: ink rails, --danger only, no blue accents. Training charcoal stays training-only.</p><script>(function () {
+</main><p class="footer-note">Focus · Flip · Mode · Commons (Button, Panel/Card, Forms, Badge, Page chrome, Avatar, DataTable) · Lane · List · Kpi · Segmented · Sheet · Breakdown · Empty · Looking Glass (shell, line, handoff, commons, Yoda rail, connections, shift-brief) · Training chrome. Light / Dark. Ink-on-paper: ink rails, --danger only, no blue accents. LG remapped to CRM ink. Training charcoal stays training-only.</p><script>(function () {
 var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 document.querySelectorAll(".filters button").forEach(function (btn) {
 btn.addEventListener("click", function () {
