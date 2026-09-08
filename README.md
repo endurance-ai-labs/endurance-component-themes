@@ -80,5 +80,6 @@ npm run dev
 ## Deploy notes
 
 Vercel project: `endurance-component-themes-gallery`, linked to this repo.
-After this app ships, the project should detect Next.js. Confirm the four
-auth env vars are present on Production before relying on the lock.
+Vercel should treat this as Next.js (`vercel.json` pins `framework: nextjs`).
+The gallery stays locked without env vars. Google sign-in works after the
+four auth env vars are set on Production.

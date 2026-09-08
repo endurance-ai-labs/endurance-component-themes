@@ -46,11 +46,7 @@ describe("assertProductionAuth", () => {
 
   it("fails closed when SESSION_SECRET is missing in production", () => {
     assert.throws(
-      () =>
-        assertProductionAuth({
-          VERCEL_ENV: "production",
-          ALLOWED_EMAIL_DOMAIN: "endurancelabs.ai",
-        }),
+      () => assertProductionAuth({ VERCEL_ENV: "production" }),
       /SESSION_SECRET/,
     );
     assert.throws(
@@ -58,29 +54,16 @@ describe("assertProductionAuth", () => {
         assertProductionAuth({
           VERCEL_ENV: "production",
           SESSION_SECRET: "   ",
-          ALLOWED_EMAIL_DOMAIN: "endurancelabs.ai",
         }),
       /SESSION_SECRET/,
     );
   });
 
-  it("fails closed when ALLOWED_EMAIL_DOMAIN is missing in production", () => {
-    assert.throws(
-      () =>
-        assertProductionAuth({
-          VERCEL_ENV: "production",
-          SESSION_SECRET: "secret",
-        }),
-      /ALLOWED_EMAIL_DOMAIN/,
-    );
-  });
-
-  it("passes when both are set in production", () => {
+  it("passes in production when SESSION_SECRET is set", () => {
     assert.doesNotThrow(() =>
       assertProductionAuth({
         VERCEL_ENV: "production",
         SESSION_SECRET: "secret",
-        ALLOWED_EMAIL_DOMAIN: "endurancelabs.ai",
       }),
     );
   });
@@ -141,8 +124,11 @@ describe("allowedDomainForEnv", () => {
     assert.equal(allowedDomainForEnv({ NODE_ENV: "development" }), "endurancelabs.ai");
   });
 
-  it("throws in production when unset", () => {
-    assert.throws(() => allowedDomainForEnv({ VERCEL_ENV: "production" }), /ALLOWED_EMAIL_DOMAIN/);
+  it("defaults to Endurance on production when unset so /sign-in can render", () => {
+    assert.equal(
+      allowedDomainForEnv({ VERCEL_ENV: "production" }),
+      "endurancelabs.ai",
+    );
   });
 
   it("uses the configured domain", () => {

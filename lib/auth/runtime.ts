@@ -19,22 +19,17 @@ export function isVercelPreview(env: AuthEnv = process.env): boolean {
 }
 
 /**
- * Fail closed on a production deploy that forgot its locks.
+ * Fail closed on a production deploy that forgot its cookie secret.
  *
- * SESSION_SECRET and ALLOWED_EMAIL_DOMAIN used to have softer local defaults.
- * That is fine on a laptop. On `VERCEL_ENV=production` an unset value is a
- * misconfigured instance, not a reason to fall back.
+ * ALLOWED_EMAIL_DOMAIN defaults to endurancelabs.ai so /sign-in can render
+ * before Production env vars are attached. SESSION_SECRET cannot default:
+ * minting a cookie without one is a misconfigured instance.
  */
 export function assertProductionAuth(env: AuthEnv = process.env): void {
   if (!isVercelProduction(env)) return;
   if (!env.SESSION_SECRET?.trim()) {
     throw new Error(
       "SESSION_SECRET is not set. Generate one with `openssl rand -base64 32`.",
-    );
-  }
-  if (!env.ALLOWED_EMAIL_DOMAIN?.trim()) {
-    throw new Error(
-      "ALLOWED_EMAIL_DOMAIN is not set. Production must name the sign-in domain.",
     );
   }
 }
@@ -85,13 +80,10 @@ export function devLoginName(env: AuthEnv = process.env): string {
  */
 export function allowedDomainForEnv(env: AuthEnv = process.env): string {
   const value = env.ALLOWED_EMAIL_DOMAIN?.trim();
-  if (value) return value;
-  if (isVercelProduction(env)) {
-    throw new Error(
-      "ALLOWED_EMAIL_DOMAIN is not set. Production must name the sign-in domain.",
-    );
-  }
-  return "endurancelabs.ai";
+  // This gallery is Endurance-only. Default the company domain so /sign-in
+  // can render before Production env vars are attached. Minting a session
+  // still goes through assertProductionAuth.
+  return value || "endurancelabs.ai";
 }
 
 export function isAllowedEmailForEnv(email: string, env: AuthEnv = process.env): boolean {
