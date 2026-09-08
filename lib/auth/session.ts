@@ -2,11 +2,6 @@ import { SignJWT, jwtVerify } from "jose";
 import { isAllowedEmail } from "@/lib/auth/domain";
 import { assertProductionAuth } from "@/lib/auth/runtime";
 
-// Production deploys that forgot SESSION_SECRET / ALLOWED_EMAIL_DOMAIN fail
-// here, at import, the same way a missing lock fails closed.
-// Preview and local stay deferred so a laptop `next build` still works.
-assertProductionAuth();
-
 /**
  * Session cookie, signed with `SESSION_SECRET`.
  *
@@ -48,6 +43,9 @@ export function sessionCookieOptions(maxAge: number = SESSION_MAX_AGE) {
 }
 
 export async function signSession(session: Session) {
+  // Fail here, when minting, not at import. A production `next build`
+  // evaluates route modules and must still complete before env vars exist.
+  assertProductionAuth();
   return new SignJWT(session)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
@@ -57,6 +55,7 @@ export async function signSession(session: Session) {
 
 export async function verifySession(token: string | undefined): Promise<Session | null> {
   if (!token) return null;
+  if (!process.env.SESSION_SECRET?.trim()) return null;
   try {
     const { payload } = await jwtVerify(token, key(), { algorithms: ["HS256"] });
     const email = typeof payload.email === "string" ? payload.email : null;
